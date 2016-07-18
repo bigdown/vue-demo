@@ -15,6 +15,10 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue'
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=40000'
       }
     ]
   },

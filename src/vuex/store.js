@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  isshow:false
+  isshow:false,
+  title:'首页'
 }
 
 const mutations = { 
@@ -13,6 +14,9 @@ const mutations = {
 	},
 	NOTOSHOW(state){
 		state.isshow = false
+	},
+	MODIFYTITLE(state , strTitle){
+		state.title = strTitle
 	}
 }
 

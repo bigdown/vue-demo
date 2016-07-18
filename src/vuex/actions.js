@@ -5,3 +5,7 @@ export const yesToShow = ({ dispatch }) => {
 export const noToShow = ({ dispatch }) => {
 	dispatch('NOTOSHOW')
 }
+
+export const modifyTitle = ({ dispatch },title) => {
+	dispatch('MODIFYTITLE')
+} 

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import store from '../vuex/store'
-import { yesToShow,noToShow } from '../vuex/actions'
+import store from './vuex/store'
+import { yesToShow,noToShow } from './vuex/actions'
 
 export default {
   store,
