@@ -1,8 +1,6 @@
 <template>
 	<header>
-		<span class="icon left icon-home"></span>
-		<span class="icon right "></span>
-		<div>{{ title }}</div>
+		<input class="input-default" type="text" placeholder="搜索话题、问题或人" />
 	</header>
 </template>
 
@@ -40,24 +38,22 @@ export default {
 		right: 0px;
 		/*width: 100%;*/
 		height: 40px;
-		line-height: 40px;
-		text-align: center;
-		border-bottom: 1px solid #DDD;
+		/*text-align: center;*/
 		padding: 5px;
+		background: #1D8AE7;
 	}
-	.icon{
+	input{
+		margin: 0;
+		padding: 0;
+		text-indent: 40px;
 		height: 40px;
-		width: 40px;
-		display: block;
+		width: 100%;
+		font-size: 20px;
+		border: none;
 	}
-	.icon-home{
-		background: url(../assets/bear.png) no-repeat;
-		background-size: contain;
-	}
-	.left{
-		float: left;
-	}
-	.right{
-		float: right;
+	.input-default{
+		background: url(../assets/search.png) no-repeat #49A1EB;
+		color: #6CAFE7;
+		background-size: 40px 40px;
 	}
 </style>

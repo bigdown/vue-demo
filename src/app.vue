@@ -1,14 +1,14 @@
 <template>
-  <div class="">
-	
-  	<div>{{ message }}</div>
-  	<div>{{ isshow }}</div>
-  	<div v-on:click="yesToShow()">dianji</div>
-	<router-view></router-view>
+  <div class="content">
+  	<hea></hea>
+    <router-view></router-view>
+    <foo></foo>
   </div>
 </template>
 
 <script>
+import Hea from './components/header_search.vue'
+import Foo from './components/footer.vue'
 import store from './vuex/store'
 import { yesToShow,noToShow } from './vuex/actions'
 
@@ -27,17 +27,20 @@ export default {
   		yesToShow,
   		noToShow
   	}
-  }
+  },
+  components: {Hea, Foo}
 }
 </script>
 
-<style app>
+<style scoped>
 	html,body{
 		margin: 0;
 		padding: 0;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-	}
-
+	} 
+  .content{
+    padding: 50px 0;
+  }
 </style>

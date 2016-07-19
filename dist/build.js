@@ -10335,8 +10335,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-b9301b62&file=app.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./app.vue", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-b9301b62&file=app.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./app.vue");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-b9301b62&file=app.vue&scoped=true!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./app.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-b9301b62&file=app.vue&scoped=true!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./app.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -10354,7 +10354,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\thtml,body{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\twidth: 100%;\r\n\t\theight: 100%;\r\n\t\toverflow: hidden;\r\n\t}\r\n\r\n", ""]);
+	exports.push([module.id, "\r\n\thtml[_v-b9301b62],body[_v-b9301b62]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\twidth: 100%;\r\n\t\theight: 100%;\r\n\t\toverflow: hidden;\r\n\t}\r\n  .content[_v-b9301b62]{\r\n    padding: 50px 0;\r\n  }\r\n", ""]);
 
 	// exports
 
@@ -10686,12 +10686,12 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// <template>
-	//   <div class="">
+	//   <div class="content">
 	//
 	//   	<div>{{ message }}</div>
 	//   	<div>{{ isshow }}</div>
 	//   	<div v-on:click="yesToShow()">dianji</div>
-	// 	<router-view></router-view>
+	//     <router-view></router-view>
 	//   </div>
 	// </template>
 	//
@@ -10718,7 +10718,7 @@
 	};
 	// </script>
 	//
-	// <style app>
+	// <style scoped>
 	// 	html,body{
 	// 		margin: 0;
 	// 		padding: 0;
@@ -10726,7 +10726,9 @@
 	// 		height: 100%;
 	// 		overflow: hidden;
 	// 	}
-	//
+	//   .content{
+	//     padding: 50px 0;
+	//   }
 	// </style>
 
 /***/ },
@@ -11471,7 +11473,7 @@
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n  <div class=\"\">\r\n\t\r\n  \t<div>{{ message }}</div>\r\n  \t<div>{{ isshow }}</div>\r\n  \t<div v-on:click=\"yesToShow()\">dianji</div>\r\n\t<router-view></router-view>\r\n  </div>\r\n";
+	module.exports = "\n  <div class=\"content\" _v-b9301b62=\"\">\n\t\n  \t<div _v-b9301b62=\"\">{{ message }}</div>\n  \t<div _v-b9301b62=\"\">{{ isshow }}</div>\n  \t<div v-on:click=\"yesToShow()\" _v-b9301b62=\"\">dianji</div>\n    <router-view _v-b9301b62=\"\"></router-view>\n  </div>\n";
 
 /***/ },
 /* 13 */
@@ -11512,8 +11514,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2760127e&file=header.vue!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2760127e&file=header.vue!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2760127e&file=header.vue&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2760127e&file=header.vue&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11531,13 +11533,18 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\thtml,body{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\twidth: 100%;\r\n\t}\r\n\theader{\r\n\t\tposition: fixed;\r\n\t\ttop: 0px;\r\n\t\tleft: 0px;\r\n\t\tright: 0px;\r\n\t\t/*width: 100%;*/\r\n\t\theight: 40px;\r\n\t\tline-height: 40px;\r\n\t\ttext-align: center;\r\n\t\tborder-bottom: 1px solid #DDD;\r\n\t\tpadding: 5px;\r\n\t}\r\n\t.icon{\r\n\t\theight: 40px;\r\n\t\twidth: 40px;\r\n\t\tdisplay: block;\r\n\t}\r\n\t.icon-home{\r\n\t\tbackground: url(" + __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../assets/bear.png\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())) + ") no-repeat;\r\n\t\tbackground-size: contain;\r\n\t}\r\n\t.left{\r\n\t\tfloat: left;\r\n\t}\r\n\t.right{\r\n\t\tfloat: right;\r\n\t}\r\n", ""]);
+	exports.push([module.id, "\r\n\thtml[_v-2760127e],body[_v-2760127e]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\twidth: 100%;\r\n\t}\r\n\theader[_v-2760127e]{\r\n\t\tposition: fixed;\r\n\t\ttop: 0px;\r\n\t\tleft: 0px;\r\n\t\tright: 0px;\r\n\t\t/*width: 100%;*/\r\n\t\theight: 40px;\r\n\t\tline-height: 40px;\r\n\t\ttext-align: center;\r\n\t\tborder-bottom: 1px solid #DDD;\r\n\t\tpadding: 5px;\r\n\t}\r\n\t.icon[_v-2760127e]{\r\n\t\theight: 40px;\r\n\t\twidth: 40px;\r\n\t\tdisplay: block;\r\n\t}\r\n\t.icon-home[_v-2760127e]{\r\n\t\tbackground: url(" + __webpack_require__(16) + ") no-repeat;\r\n\t\tbackground-size: contain;\r\n\t}\r\n\t.left[_v-2760127e]{\r\n\t\tfloat: left;\r\n\t}\r\n\t.right[_v-2760127e]{\r\n\t\tfloat: right;\r\n\t}\r\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 16 */,
+/* 16 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFMTU1QkMxMEE5NEExMUU1OEY3NURDREU1MzdCQTcyMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFMTU1QkMxMUE5NEExMUU1OEY3NURDREU1MzdCQTcyMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNTVCQzBFQTk0QTExRTU4Rjc1RENERTUzN0JBNzIzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNTVCQzBGQTk0QTExRTU4Rjc1RENERTUzN0JBNzIzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+8+ccmQAAFQFJREFUeNrsXQeUXNV5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"
+
+/***/ },
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -11559,14 +11566,15 @@
 	// 	<header>
 	// 		<span class="icon left icon-home"></span>
 	// 		<span class="icon right "></span>
-	// 		<div>首页</div>
+	// 		<div>{{ title }}</div>
 	// 	</header>
 	// </template>
 	//
 	// <script>
 	exports.default = {
+		store: _store2.default,
 		data: function data() {
-			_store2.default;
+			return {};
 		},
 
 		vuex: {
@@ -11582,7 +11590,7 @@
 	};
 	// </script>
 	//
-	// <style header>
+	// <style scoped>
 	// 	html,body{
 	// 		margin: 0;
 	// 		padding: 0;
@@ -11621,7 +11629,7 @@
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n\t<header>\r\n\t\t<span class=\"icon left icon-home\"></span>\r\n\t\t<span class=\"icon right \"></span>\r\n\t\t<div>首页</div>\r\n\t</header>\r\n";
+	module.exports = "\n\t<header _v-2760127e=\"\">\n\t\t<span class=\"icon left icon-home\" _v-2760127e=\"\"></span>\n\t\t<span class=\"icon right \" _v-2760127e=\"\"></span>\n\t\t<div _v-2760127e=\"\">{{ title }}</div>\n\t</header>\n";
 
 /***/ },
 /* 19 */
