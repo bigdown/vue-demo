@@ -38,7 +38,6 @@ export default {
 		top: 0px;
 		left: 0px;
 		right: 0px;
-		/*width: 100%;*/
 		height: 40px;
 		line-height: 40px;
 		text-align: center;

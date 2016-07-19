@@ -11,26 +11,44 @@ var router = new VueRouter({
 	transitionOnLoad: true
 })
 
-var content = Vue.extend({
-    template: '<p>This is content!</p>'
+var home = Vue.extend({
+    template: '<p>This is home!</p>'
 })
 
-var about = Vue.extend({
-    template: '<p>This is about!</p>'
+var menu = Vue.extend({
+    template: '<p>This is menu!</p>'
 })
 
+var clame = Vue.extend({
+    template: '<p>This is clame!</p>'
+})
+var line = Vue.extend({
+    template: '<p>This is line!</p>'
+})
+var message = Vue.extend({
+    template: '<p>This is message!</p>'
+})
 router.map({
 	'/home':{
-    	component: content
+    	component: home
 	},
-    '/about':{
-    	component: about
+    '/menu':{
+    	component: menu
+    },
+    '/clame':{
+        component: clame
+    },
+    '/line':{
+        component: line
+    },
+    '/message':{
+        component: message
     }
 })
 
-// router.redirect({
-//   '*': '/home'
-// })
+router.redirect({
+  '*': '/home'
+})
 
 var InitApp = Vue.extend({})
 router.start(App,'#app')

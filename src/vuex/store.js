@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 const state = {
   isshow:false,
-  title:'首页'
+  title:'首页',
+  menuitem : 0
 }
 
 const mutations = { 
@@ -17,6 +18,9 @@ const mutations = {
 	},
 	MODIFYTITLE(state , strTitle){
 		state.title = strTitle
+	},
+	MODIFYMENU(state,item){
+		state.menuitem = item
 	}
 }
 

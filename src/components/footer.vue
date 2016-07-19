@@ -1,11 +1,11 @@
 <template>
 	<footer>
 		<ul>
-			<li class="icon-home"></li>
-			<li class="icon-clame"></li>
-			<li class="icon-line"></li>
-			<li class="icon-message"></li>
-			<li class="icon-menu"></li>
+			<li v-link="{ path: '/home' }" @click="clickmenu(0)" class="icon-home"></li>
+			<li v-link="{ path: '/clame' }" @click="clickmenu(1)" class="icon-clame"></li>
+			<li v-link="{ path: '/line' }" @click="clickmenu(2)" class="icon-line"></li>
+			<li v-link="{ path: '/message' }" @click="clickmenu(3)" class="icon-message"></li>
+			<li v-link="{ path: '/menu' }" @click="clickmenu(4)" class="icon-menu"></li>
 		</ul>
 	</footer>
 </template>
@@ -18,6 +18,11 @@ export default {
 	data(){
 		return {
 
+		}
+	},
+	methods:{
+		clickmenu:function(index){
+			alert(index)
 		}
 	},
 	vuex:{
