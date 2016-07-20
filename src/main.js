@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './app.vue'
 import VueRouter from 'vue-router'
-
+import VueTouch from 'vue-touch'
+import Home from './components/home.vue'
 Vue.use(VueRouter)
+Vue.use(VueTouch)
 
 var router = new VueRouter({
 	hashbang: true,
@@ -11,9 +13,6 @@ var router = new VueRouter({
 	transitionOnLoad: true
 })
 
-var home = Vue.extend({
-    template: '<p>This is home!</p>'
-})
 
 var menu = Vue.extend({
     template: '<p>This is menu!</p>'
@@ -30,7 +29,7 @@ var message = Vue.extend({
 })
 router.map({
 	'/home':{
-    	component: home
+    	component: Home
 	},
     '/menu':{
     	component: menu

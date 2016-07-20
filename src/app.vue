@@ -40,7 +40,7 @@ export default {
 		height: 100%;
 		overflow: hidden;
 	} 
-  .content{
+/*  .content{
     padding: 50px 0;
-  }
+  }*/
 </style>

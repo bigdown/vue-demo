@@ -4,9 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  isshow:false,
-  title:'首页',
-  menuitem : 0
+  isshow:true,
+  title:'首页'
 }
 
 const mutations = { 
@@ -18,9 +17,6 @@ const mutations = {
 	},
 	MODIFYTITLE(state , strTitle){
 		state.title = strTitle
-	},
-	MODIFYMENU(state,item){
-		state.menuitem = item
 	}
 }
 

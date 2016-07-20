@@ -1,5 +1,5 @@
 <template>
-	<header>
+	<header v-if="show" :transition="menushow">
 		<input class="input-default" type="text" placeholder="搜索话题、问题或人" />
 	</header>
 </template>
@@ -16,7 +16,8 @@ export default {
 	},
 	vuex:{
 		getters:{
-			title:state => state.title
+			title:state => state.title,
+			show:state => state.isshow
 		},
 		actions:{
 			modifyTitle
@@ -56,4 +57,12 @@ export default {
 		color: #6CAFE7;
 		background-size: 40px 40px;
 	}
+	.footershow-transition {
+		transition: all .3s ease;
+	}
+	.footershow-enter, .footershow-leave {
+		height: 0;
+		opacity: 0;
+	}	
+
 </style>

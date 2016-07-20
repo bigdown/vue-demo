@@ -7,5 +7,5 @@ export const noToShow = ({ dispatch }) => {
 }
 
 export const modifyTitle = ({ dispatch },title) => {
-	dispatch('MODIFYTITLE')
+	dispatch('MODIFYTITLE',title)
 } 

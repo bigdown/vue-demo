@@ -54,41 +54,66 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _header = __webpack_require__(13);
-
-	var _header2 = _interopRequireDefault(_header);
-
-	var _vueRouter = __webpack_require__(19);
+	var _vueRouter = __webpack_require__(29);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
+
+	var _vueTouch = __webpack_require__(30);
+
+	var _vueTouch2 = _interopRequireDefault(_vueTouch);
+
+	var _home = __webpack_require__(32);
+
+	var _home2 = _interopRequireDefault(_home);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_vue2.default.use(_vueRouter2.default);
+	_vue2.default.use(_vueTouch2.default);
 
 	var router = new _vueRouter2.default({
-	   hashbang: true,
-	   history: false,
-	   saveScrollPosition: true,
-	   transitionOnLoad: true
+	    hashbang: true,
+	    history: false,
+	    saveScrollPosition: true,
+	    transitionOnLoad: true
 	});
 
+	var menu = _vue2.default.extend({
+	    template: '<p>This is menu!</p>'
+	});
+
+	var clame = _vue2.default.extend({
+	    template: '<p>This is clame!</p>'
+	});
+	var line = _vue2.default.extend({
+	    template: '<p>This is line!</p>'
+	});
+	var message = _vue2.default.extend({
+	    template: '<p>This is message!</p>'
+	});
 	router.map({
-	   '/home': {
-	      component: _header2.default
-	   },
-	   '/header': {
-	      component: function component(resolve) {
-	         !/* require */(/* empty */function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(13)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.call(this));
-	      }
-	   }
+	    '/home': {
+	        component: _home2.default
+	    },
+	    '/menu': {
+	        component: menu
+	    },
+	    '/clame': {
+	        component: clame
+	    },
+	    '/line': {
+	        component: line
+	    },
+	    '/message': {
+	        component: message
+	    }
 	});
 
 	router.redirect({
-	   '*': '/home'
+	    '*': '/home'
 	});
 
-	// var InitApp = Vue.extend({})
+	var InitApp = _vue2.default.extend({});
 	router.start(_app2.default, '#app');
 
 /***/ },
@@ -10303,7 +10328,7 @@
 	var __vue_script__, __vue_template__
 	__webpack_require__(4)
 	__vue_script__ = __webpack_require__(8)
-	__vue_template__ = __webpack_require__(12)
+	__vue_template__ = __webpack_require__(28)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10354,7 +10379,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\thtml[_v-b9301b62],body[_v-b9301b62]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\twidth: 100%;\r\n\t\theight: 100%;\r\n\t\toverflow: hidden;\r\n\t}\r\n  .content[_v-b9301b62]{\r\n    padding: 50px 0;\r\n  }\r\n", ""]);
+	exports.push([module.id, "\r\n\thtml[_v-b9301b62],body[_v-b9301b62]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\twidth: 100%;\r\n\t\theight: 100%;\r\n\t\toverflow: hidden;\r\n\t} \r\n/*  .content{\r\n    padding: 50px 0;\r\n  }*/\r\n", ""]);
 
 	// exports
 
@@ -10677,21 +10702,27 @@
 	  value: true
 	});
 
-	var _store = __webpack_require__(9);
+	var _header_search = __webpack_require__(9);
+
+	var _header_search2 = _interopRequireDefault(_header_search);
+
+	var _footer = __webpack_require__(18);
+
+	var _footer2 = _interopRequireDefault(_footer);
+
+	var _store = __webpack_require__(14);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _actions = __webpack_require__(11);
+	var _actions = __webpack_require__(16);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// <template>
 	//   <div class="content">
-	//
-	//   	<div>{{ message }}</div>
-	//   	<div>{{ isshow }}</div>
-	//   	<div v-on:click="yesToShow()">dianji</div>
+	//   	<hea></hea>
 	//     <router-view></router-view>
+	//     <foo></foo>
 	//   </div>
 	// </template>
 	//
@@ -10714,7 +10745,8 @@
 	      yesToShow: _actions.yesToShow,
 	      noToShow: _actions.noToShow
 	    }
-	  }
+	  },
+	  components: { Hea: _header_search2.default, Foo: _footer2.default }
 	};
 	// </script>
 	//
@@ -10725,14 +10757,171 @@
 	// 		width: 100%;
 	// 		height: 100%;
 	// 		overflow: hidden;
-	// 	}
-	//   .content{
+	// 	} 
+	// /*  .content{
 	//     padding: 50px 0;
-	//   }
+	//   }*/
 	// </style>
 
 /***/ },
 /* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(10)
+	__vue_script__ = __webpack_require__(13)
+	__vue_template__ = __webpack_require__(17)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "E:\\nodejs\\vue-demo\\src\\components\\header_search.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(11);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(7)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1b16c596&file=header_search.vue&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header_search.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1b16c596&file=header_search.vue&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header_search.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(6)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\r\n\thtml[_v-1b16c596],body[_v-1b16c596]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\twidth: 100%;\r\n\t}\r\n\theader[_v-1b16c596]{\r\n\t\tposition: fixed;\r\n\t\ttop: 0px;\r\n\t\tleft: 0px;\r\n\t\tright: 0px;\r\n\t\t/*width: 100%;*/\r\n\t\theight: 40px;\r\n\t\t/*text-align: center;*/\r\n\t\tpadding: 5px;\r\n\t\tbackground: #1D8AE7;\r\n\t}\r\n\tinput[_v-1b16c596]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\ttext-indent: 40px;\r\n\t\theight: 40px;\r\n\t\twidth: 100%;\r\n\t\tfont-size: 20px;\r\n\t\tborder: none;\r\n\t}\r\n\t.input-default[_v-1b16c596]{\r\n\t\tbackground: url(" + __webpack_require__(12) + ") no-repeat #49A1EB;\r\n\t\tcolor: #6CAFE7;\r\n\t\tbackground-size: 40px 40px;\r\n\t}\r\n\t.footershow-transition[_v-1b16c596] {\r\n\t\t-webkit-transition: all .3s ease;\r\n\t\ttransition: all .3s ease;\r\n\t}\r\n\t.footershow-enter[_v-1b16c596], .footershow-leave[_v-1b16c596] {\r\n\t\theight: 0;\r\n\t\topacity: 0;\r\n\t}\t\r\n\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAKCklEQVRYCe1YaW9bxxWd5S3ctS+2YdeSbcmx48ZJ2sBNjAYBChRFUaD9M/k//QtFga4uin5o0aYx7LhWYlmGLNVyZIrUQorL22Z67swjHymTch0UhT9kKD3OcmfuuefeuTOP/Ce/3GNvXhGaEyjF6e/NKQ4nXJrrNwcSIRHMAAK0N4kswBpFFNeK61MIVCB4iF5QrkW/x0yHzEtifYlXVbK1TpHUGZWW05TZHjRqmjjoM46K/Ttl1dOGRsMi4/sqzPQUWQokVUliUA9E5kFz0ml9WMOrnIZkaMwZamWNnmLGjao+L1TR1Gfh0BP/9MSH4oFwpdhQwQjx1puerf+K2mi2sg0wKvKskv4TeNI6hF9iZ0TXKyDR8Gi2kMOILiw5YCfqlgahFVM0RhVTqEFNPIXGNjJT7dA3e46GZRQQB9Z4QqmUcRQXTDkqLIp4puxOl2TBY5KzRLNWyA+Pw9px1ErcSPgaBhvb/pewKCg4zEd0UNAwy4rWUscFES4teG+fyS/N5BYquZLPXMEixZoBqzY6T/e7azvhRq3dSjwtXIpCFPt8HYCj2aIghX96gULLwjcqnpbtT67Pv7eUP1txSq7ID2g6k2cXJstvnSnePB9/ttn588MX+0khcXIDIq9RHQ2LFgBbhiQukB2Vl4TnSvrH7yzcvlSedinkOprtBiqMY6W04Nx3naIvplwxPeOdqbgzZfGbL/Z3mp1Y+EyM21hjgY6GZULb5AHNwZpkyWIx+dHbUx9drsw4LGLsWSNY2w3WngdfH3bDKPFdOT+Ru3bWv77on5/wgfsHl8uRUr+9f7jTTgh1n/mxSIYGRsOCCEUU1hKCq7go1Y3zpe8vVaYc1lZsrdr5y9rel7tBPcx1lEy0RNRvHgYbu431Be/21dnri/kpyT74TvnFQdR40mkmggk5pPZVjbGwYCCQIeQR5otF/d5yeaFAvtjYD391r7b2PGopj7u+dkw8a95V6nmXH2yF9fae+8HCd+d9yL+/XHr8ovXkMIq1fC2+Mq8P3rco/YB6hfyjcixcmXMuz3iwoB6pO/d2v/o6avMS84pagAQOHhB+XAol88es8Kia/OmLaj1QkF+a8VZmZV5GZj+/iqKB8QxWb9vRoKacRWQppfKOunp2YtIVCLJHL+IHO52O8rV0AQapE2I2ByizXblwA517+DxYexGHjFVcsXJmoujSTibZdGVTO/UxAMvOs9I2wePKypjn8HMzOZ+xUOn1Z81G7CtpUqXxnhEnacAzmQ4sO43EX985jpTGrLPTBfBs1gY4yECKDoHTSwZrUA63MMwEZ1jJlbpisk+cqOpBO+Segt9S4zGJVFgtVhkCIGRu9agFeUyvFCjfmqFUEItahgc1nqiPhtXTSoRAwsGXKQGyFIXueGPNRsFwiCg3UxzswtMmpCuf+BoDi7yHAiM5DpZ2bBqCFwu+5MQBuaIXLdQ00vaBOjZLOZ+jbIWsG7MUIMD15CyvA5NOVsfBogXM25COE7HfVAAmpbi4UM7zgKvEnJKAThj6oYKoN3s3xua9sIDDSWBWvaFCsx3Ilh4uczODhtStJ0EZF73cCXkoI3XIp1EinlabHU3xe+1cfj4fSxUCFnKHMZ9g0YWGMOKFRWF0Lhe/dS6HkMKsp3vNLvYk6CU9KV29IBgPq2fAEDjkLCxkNhfvJOJxtXUQICGyixPOrZXpogx0EsGX8KNWsBybkKpaJywJKzL8aHXy4qQL+VoXOaXVToDGIrCxAXQWH2yx7sJoOmRxjMnyEKOJRESgxHo9ur99PHO5XBT849VpnHJ/e3S0H0Qh87WQFGNcS5VIHc76yYcrEz9cna4IHFP6wXbzcU0FOAqQ4wg9LToQl0NcDDbklZ9/Oti2dexoax9WQmBEkVZhiMN4qiTLLj83la/kOAjD5SGOQ65jjyfTfrI6yz+5Wvl4dWqxIGH7Vr1750F185DF3CdE1o1QQA7q8ZXqNj0DOEazRYRiFayEGvKQdtarnTtf1v3c3KUJZzEvoPvSYnmz1q012mGMlCtmSv7SXP78pCzjFGJ0y3B4cmXOibj8qha0Ew+ntXW2pYzeK2l10mSe4DwrfORPIybaSc78RIGKYnFcFsH7F9yf3jy7PC08xhLoVjpJYnhHcOFI6eKLsYCxp/Woule9uTwP/24dqV8/aHy+1ezKPOeuUY4HnaLm0gTybLY1Iz1go9mipIiP+Uptke5xwv+5HR60d793ufzO+cJcXhQEdwUOR6zIkQtaSu911f1/t++uHxVZ49ry4pwv8/NMvDvJdHR3J+xgmwgHWO2acAcdJdarREEP1Lg3n9T/2S4lj2rhNZnzr71g56j2+Qa7NFc6P1uYKgEZvWIctNj2XmujevyswQ87ci6f/2yrfWupPOmwlWn3Z+/OSXlw7xnuXrh9uwYMvbXgOkesGcOMeSmy0Wz1/E1CRAV9jIVcxNrb67LDbvJkv+M/6TgUMJDgYcKCkHUi0OYy6dRC8buHDej9cKkw6fDVGZffmMRR+o/t7nGCcCW9CF1iDhFGPA1wZdkiKq3SXoXgWMYyYaIeUvTl+JHWIV4Wu4qyFSmgVQWKQ+bj+h8mavMg/uODOqLt9nKxItnqrMduTCVq/+9bnUAXzD3NAEpVU/6wevGUV37xKbXsWL9CqqjP/lnp/g5HhfI6lBMQiSK4IwWSEzIo9eIEoHORyWZH7R22izmxOOXnOJsqyNlJv36c1BudBBKQ7Skg/SdgWUykmwZNGdq6aR9ZA52ErreYOQzIweZGiBEaNRoggk7FnEaQ7NSOPc+bn3CRjSfzeBlx20Fcb0WRggGYTBMM5X31hq1U7cmvTMhOA8t4e4RmBKxBhm5yHsUA1eyH4hcG4MC0ViC8jjrJ/lHL9+TshJ+XbKIgRS63daDQj3kg3ATAkLrRIU+/J5BSeqCQTQgdOp85ognhYpAgHaKbcFlBdFKNPsSoufrAm4I5ue1m9w9rR+Dy1qUS9mKtEQQhEp7JX/RFt3NwbbTRI4NFOSWFgR3Qq/UFTaUv0DtAbJom0JhA1BFZINRcFvtzhRPp3OZR8PuH+y3uJ0r/da1ea0qGN1v6PYUWsa7sz8hg9bu+WcUiGzmXNivHqwffOAr27u4DcrMtlXBx+TAOJ0yGsmx2BitjIhtNayOGiE5wQ+caOYuaAIZiVKXz4F4Sww41jkXOy1VbuOXgRc4DFGKXrCHHG2QQTksGq9eTfpOIYcBqOzFqnWx9bZfE8rRVbQE2FICiREKZANcyWo5zaV93ze2KxqwdBn9vMk3NooxawyUDP9w/0BoUGaxDRaaSbopQbHpogOiFcCpvbbGj/ZXHskXzBxX1Z5iKpaPfl/FkrO9fNVMstJWztYhDs+nSRdAmIzIBLDsWVl/lf10hesaUIZVG5hRhGj/NiWN0/D+6v4X1Oix/y9brsPUf3uuMpyt3MXEAAAAASUVORK5CYII="
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _store = __webpack_require__(14);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _actions = __webpack_require__(16);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// <template>
+	// 	<header v-if="show" :transition="menushow">
+	// 		<input class="input-default" type="text" placeholder="搜索话题、问题或人" />
+	// 	</header>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+		store: _store2.default,
+		data: function data() {
+			return {};
+		},
+
+		vuex: {
+			getters: {
+				title: function title(state) {
+					return state.title;
+				},
+				show: function show(state) {
+					return state.isshow;
+				}
+			},
+			actions: {
+				modifyTitle: _actions.modifyTitle
+			}
+		}
+	};
+	// </script>
+	//
+	// <style scoped>
+	// 	html,body{
+	// 		margin: 0;
+	// 		padding: 0;
+	// 		width: 100%;
+	// 	}
+	// 	header{
+	// 		position: fixed;
+	// 		top: 0px;
+	// 		left: 0px;
+	// 		right: 0px;
+	// 		/*width: 100%;*/
+	// 		height: 40px;
+	// 		/*text-align: center;*/
+	// 		padding: 5px;
+	// 		background: #1D8AE7;
+	// 	}
+	// 	input{
+	// 		margin: 0;
+	// 		padding: 0;
+	// 		text-indent: 40px;
+	// 		height: 40px;
+	// 		width: 100%;
+	// 		font-size: 20px;
+	// 		border: none;
+	// 	}
+	// 	.input-default{
+	// 		background: url(../assets/search.png) no-repeat #49A1EB;
+	// 		color: #6CAFE7;
+	// 		background-size: 40px 40px;
+	// 	}
+	// 	.footershow-transition {
+	// 		transition: all .3s ease;
+	// 	}
+	// 	.footershow-enter, .footershow-leave {
+	// 		height: 0;
+	// 		opacity: 0;
+	// 	}	
+	//
+	// </style>
+
+/***/ },
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10745,7 +10934,7 @@
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vuex = __webpack_require__(10);
+	var _vuex = __webpack_require__(15);
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
@@ -10754,7 +10943,7 @@
 	_vue2.default.use(_vuex2.default);
 
 	var state = {
-		isshow: false,
+		isshow: true,
 		title: '首页'
 	};
 
@@ -10776,7 +10965,7 @@
 	});
 
 /***/ },
-/* 10 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -11443,7 +11632,7 @@
 	}));
 
 /***/ },
-/* 11 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -11466,23 +11655,23 @@
 	var modifyTitle = exports.modifyTitle = function modifyTitle(_ref3, title) {
 		var dispatch = _ref3.dispatch;
 
-		dispatch('MODIFYTITLE');
+		dispatch('MODIFYTITLE', title);
 	};
 
 /***/ },
-/* 12 */
+/* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"content\" _v-b9301b62=\"\">\n\t\n  \t<div _v-b9301b62=\"\">{{ message }}</div>\n  \t<div _v-b9301b62=\"\">{{ isshow }}</div>\n  \t<div v-on:click=\"yesToShow()\" _v-b9301b62=\"\">dianji</div>\n    <router-view _v-b9301b62=\"\"></router-view>\n  </div>\n";
+	module.exports = "\n\t<header v-if=\"show\" :transition=\"menushow\" _v-1b16c596=\"\">\n\t\t<input class=\"input-default\" type=\"text\" placeholder=\"搜索话题、问题或人\" _v-1b16c596=\"\">\n\t</header>\n";
 
 /***/ },
-/* 13 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(14)
-	__vue_script__ = __webpack_require__(17)
-	__vue_template__ = __webpack_require__(18)
+	__webpack_require__(19)
+	__vue_script__ = __webpack_require__(26)
+	__vue_template__ = __webpack_require__(27)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -11490,7 +11679,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "E:\\nodejs\\vue-demo\\src\\components\\header.vue"
+	  var id = "E:\\nodejs\\vue-demo\\src\\components\\footer.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -11499,13 +11688,13 @@
 	})()}
 
 /***/ },
-/* 14 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(15);
+	var content = __webpack_require__(20);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(7)(content, {});
@@ -11514,8 +11703,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2760127e&file=header.vue&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2760127e&file=header.vue&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-69c4da62&file=footer.vue&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./footer.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-69c4da62&file=footer.vue&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./footer.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11525,7 +11714,7 @@
 	}
 
 /***/ },
-/* 15 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
@@ -11533,19 +11722,43 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\thtml[_v-2760127e],body[_v-2760127e]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\twidth: 100%;\r\n\t}\r\n\theader[_v-2760127e]{\r\n\t\tposition: fixed;\r\n\t\ttop: 0px;\r\n\t\tleft: 0px;\r\n\t\tright: 0px;\r\n\t\t/*width: 100%;*/\r\n\t\theight: 40px;\r\n\t\tline-height: 40px;\r\n\t\ttext-align: center;\r\n\t\tborder-bottom: 1px solid #DDD;\r\n\t\tpadding: 5px;\r\n\t}\r\n\t.icon[_v-2760127e]{\r\n\t\theight: 40px;\r\n\t\twidth: 40px;\r\n\t\tdisplay: block;\r\n\t}\r\n\t.icon-home[_v-2760127e]{\r\n\t\tbackground: url(" + __webpack_require__(16) + ") no-repeat;\r\n\t\tbackground-size: contain;\r\n\t}\r\n\t.left[_v-2760127e]{\r\n\t\tfloat: left;\r\n\t}\r\n\t.right[_v-2760127e]{\r\n\t\tfloat: right;\r\n\t}\r\n", ""]);
+	exports.push([module.id, "\r\n\tfooter[_v-69c4da62]{\r\n\t\tposition: fixed;\r\n\t\tbottom: 0px;\r\n\t\tleft: 0px;\r\n\t\tright: 0px;\r\n\t\theight: 40px;\r\n\t\tline-height: 40px;\r\n\t\ttext-align: center;\r\n\t\tborder-top: 1px solid #DDD;\r\n\t\tpadding: 5px;\r\n\t\tbackground: #FFF;\r\n\t}\r\n\tul[_v-69c4da62]{\r\n\t\tbox-sizing: border-box;\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t}\r\n\tli[_v-69c4da62]{\r\n\t\t/*display: inline-block;*/\r\n\t\twidth:20%;\r\n\t\tfloat: left;\r\n\t\tlist-style: none;\r\n\t\theight: 40px;\r\n\t}\r\n\t\r\n\tli[_v-69c4da62]:before{\r\n\t\tcontent: '';\r\n\t}\r\n\t.icon-message[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(21) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-clame[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(22) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-home[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(23) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-line[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(24) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-menu[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(25) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.v-link-active[_v-69c4da62]{\r\n\t\t-webkit-filter: grayscale(0);\r\n\t\tfilter: grayscale(0);\r\n\t}\r\n\t.footershow-transition[_v-69c4da62] {\r\n\t\t-webkit-transition: all .3s ease;\r\n\t\ttransition: all .3s ease;\r\n\t}\r\n\t.footershow-enter[_v-69c4da62], .footershow-leave[_v-69c4da62] {\r\n\t\t/*top: -50px;*/\r\n\t}\r\n\r\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 16 */
+/* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFMTU1QkMxMEE5NEExMUU1OEY3NURDREU1MzdCQTcyMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFMTU1QkMxMUE5NEExMUU1OEY3NURDREU1MzdCQTcyMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNTVCQzBFQTk0QTExRTU4Rjc1RENERTUzN0JBNzIzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNTVCQzBGQTk0QTExRTU4Rjc1RENERTUzN0JBNzIzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+8+ccmQAAFQFJREFUeNrsXQeUXNV5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"
+	module.exports = "data:image/png;base64,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"
 
 /***/ },
-/* 17 */
+/* 22 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAABBCAYAAACO98lFAAALcElEQVR4nO1bzY8cRxV/Vd2zsx+2E2dtK7GdSAY5uUQJASkRXznAgVPEATkHuME5ZyRO/A3hxAkhECefciBSLkhJFCEhC+IYjCxBxIeNvHactXfXu7MzXcWr91FV3TOTne7xOCFsSbPTU91d/erVe7/3e696jccG/+fNftoCfBbaoRLgUAnUHrASAry4sZ55QCfdPz5S3jPPc8qO901p5sEO95DGbq0E1baZ8NvT92RhJ61Sm2n5CdebCeea8s3SzOJC5CSxPzvD5e0Bu4O2pofOIT1N3mdDHDRWe1vooITmBCdhq5z3hieQg6W3fN5MM0CT3ecnzMVPfmYcztS+ZmmfjxA5p0O3xgTvHSpZbjEzqDusalgW4yac87ONEZuMhTLwSlsI4htBZe/w2Hoe1hYzj9rZEjw91TfMMP9ot28oINP5VAVk1wT38Y3rTHqGCcee7zEWOsFPa0zQhzr8HuH3EL9JFzKhFCrl43kOLuvn68alNToZORfGrGTQ0BdhxJgGKhmciIce9hdkXK6VlXUKkUGwLfxcvV3B23+5BTc+3oUh4R+DmQsGhsNa46NSVAmWlJb6ZY7jgkETgjPlSE9hCnrGqaN9+Noz6/DcE304XgAppI1JdFLCLn6ubnv46a8uwdV7R2HTLcMIBUpBQAVwUfw0YcOuNGPjWOLQKnAUb+l+JyZRhrOugmPFAJ4+sg2vvXIeXn7qCBw17byiE08Y4ec3b1+HS7f7cL9cgSEsoZAoYGFrZl7XryNXmqRz0zDb/Bp1BxcUSuHVRowhiMbjO87Alc0Kfv3OLfjShVU41m8HdZ14QhDs8j/vwFbxGB71xnyPTRndwTJeaC8ZqUmANs0Ix5QSbAn7giuFM076vONxK9NDWY7B+/+6DQMXOheuBG7bu0N8ePBJ1oGxQnKI3wgC+OxL4hgB3BTAcjAWW1BRlfSxI4WxrQCmtTYGqABH9/dHoth2imipBJ4V+bg35ALM7mTFBfBc4BI0ZydCWp4AXSdT9XVs0EnqU9K1GopZefX0OcFreIaPKvStco1O7uBlNY3yepmEd0Mo8LNihjjwkEAryE/rYuUeuZrsBU865+JKh+aisni6vZIjDYdaiyG5hF1Xwj7ikCkKSLPNuYXS8tm00F4JEn51TdiyCbOhxMk/4jfh+y89CS99saRrRp4nFky4MGykCp9hornhNksyJkzemri+I/z73rUteOPyJtwYFegSTtIQHoctsX262QkTrIhsPMYJZwm0LQpQVgN49TtfgB89twZn+oYMNNmJYoVON2vKCBMbgsQSSrE9JGb499nTa+BXT8Iv3v03DPwSVJFGd0+D2ivB+Jjdoj2iJeg0cbXdCB5fN7DcT2afih2uhgDjR41fDAxRFXpmCd1j/bijBTBi8kYwKdlMu9bBHSzjGq2zJdRXMx4Vfbj41m149NsVEhZfEyesWIheNvHmsUwjn7Cu6xDYbaxQ74/uG/jtHzaRofaIugcLcATSPlKzBYfIjAgZEAUUZK5BoP3yCPz17gh+cnED3WNEEUQxIwjLkUIsh3IQX4c1z5rhU+zfRu5hMo49mB3u2RV8Vh/PFRw0NSAYQwQqT7AWoIRMHQJIWvwIAoyqsFp9GFkWrnJyIV1XSCjNCyU+C4cCssohaGJV4mECquFnBZZ4QUkhmlN7P4V7zNIeQHmtDnKBxiwRYAZyjVpwYqR5nkshz2f3C9Sa5nCOrqMuy3GFXRBdIVigT5bCkSFLsRbLE5pj19mZrfZhDcPkqtsBU+2hkBWRnrLoUcGDrMFJRujF7NFynJh/hddWtLqM+r2yEPqNHAGt7D4sw6Y/ita2RuHTi8uo5bSafTclNLFaFcCC9FDM9d4AfvDiWXj1m4/gbx/VM7bI2SjNfpedz6/Zx1+/u7IDv3x3A/62tY/KKhhnnJAXP2XAA1p3d5BMToVEL4VetQvfeuEs/PDlPjxmmRSpTJMmPGm9cqagyRJkx997/gjs+FX42ZvX8BvVjAySyhectHQIkHPQ5maAI2MuStgZDmCz6sOyrQukRRVt+d2+8Z23qnHPXey4Nxjg5Jeyu1Ju8XB4gmJbmLTRRIrDU+Dzv792F35e3IWTvWHGELkGEVC9iBwysEwmWQEPQLNQ48XBuFVZthHaPaTL7/wdM0bEhwCOuZ9577PRF6mE+Ewj2oe4GBUKdWe3gjcubUPpBxArS5L8BLizGhVCMkW+7BKYm4L4QB7tLEUV5AjeEucchQSqWIMKwdSQH4itmJTjtjWGDmTJZn6bDFgTorByQ7uMoGWpFqAXE2Uwmj6L6RZQ4w0mWJWlVAwna6EK/u45+SKiJBZHDNHXJaG/RtPrhSqBG0X8uKJaCgnmXUHfDeDs8haswg4u0oCqHWGi/V5JJq9KcJWLbFILrxYtYR81c69agZtVGKHE0LpE91RG85VckQA53TBsGw9BCTX0SgoIf/u2gmdO9uHH3z0Hz56qpzPN6NBcL8WBgB0fXAd4/a0b8McNTsWJKHmuM8ScwxSRJGl+rzWIBZMlTpUm6dsisbGjPfjy+afg+ZMGjjdkmBQZoNEHwGr9yhmApx8v4fLNPSrhuehSqexOY4orjfGElq2DO+SYr+Jz9a+yffjzP+7C+9dPwAtnQyRIkwsrHGTUviYfgOy6D/4zgA839oQa8wV5UVZXPNYqtbzXMX1oD4yKwpodSnwOWeTAoBKu78Drb27D+RNDZIxVVNnIJ/DimchwEh11P2KAIn34sYUrtzDkIiniYgmvNN0qEYn3IXSgKF0ae3FK4FZ3BiFLNBsLe24ZLm9sw9WbI2KRlADRctvMZ+uOUggiEADiPSNbokKXODNsbuHLb6ZsNlmI6ZI1cOsMjGGFmZykXeGQMIY47swa7NpVkDQoCWo1ZRbFaXkctRTK5xH91doCztClNs1fzlmfhdeOWNBRCVpDEqGCMqyP8dsW2I+hz1MVmAGUy/NAe4ZUIYobMlqk5YqxpsusJKXBOaoon0hrrXUI0s0c+pijniC70V6DEmfzJqyocIeMHNJv3Swh5RmIIvsM1eIOlRWcUFYZZukk7MZAYJWl1XezWmqjU3QAkZ8FllRaHuwhMZiUaHE12Cuwel9TEO9j2PpExDXqFeg8WzZZMQXiuyAPIYFKuepKvwS7V0nlVIiKV9FS2AT16QaS18aEegjUliyELchZVnAEWk1Ng5uhold6RVbTnH1WHVgm8/jzTzwKq9UWFF72/zwDGa+ylY8houMyc/W1Y/34T/woGvJuFo8ZzwOX31fcfTi3vkYvarS1htZKCCIF87nwjdPwpP0IFYEZo6l4t0iucaDszok1s0vQ5qr4TTgO2+pVtA5L9eTax8hoeK0lsOSQSym481KcxrwE9uCUvwUXvroOR5ZyMJ2ttX9xK6Sz+JAdPP7TRgUX37uB7G4L9isPw1HFdVUBPeYILFCvZ/ktFamP62YMWUsVsk079moS1a6XypQOiFUROaM6BI6Lyjl9fAVeefEMfP3cKpxAHSy1UkEHJahElDLj4b5JgTMlU9OHnJZAtZUgb2Htg3UugYKcB90kmqW1V0Lc/5etL5N2qdMM/WQgbAqluHeQBNHPJ6kwYU1NBphdCR1e8PYZhzcUw2MyrW+h0s+cImfSZJuvXrPCA4U1EDclJOLK1nhcCJJF+rmMP/ucur3Cp4KNxeVGdpT3xcnreSZDNSDIeXHTQvRdwMgfVB59ZGRgcZN41jZHyX3sIPs9yWzz2JH3jZv2ZL/JrGrMchrjtAScBb3lnrWJr/WKBURh9Vxmw9N51eTO2rl2kX/BL3ibzHTneNQ8oWSW4ef9p49PCnnTsbzdvA6qE+Tnu4zfWQnTH9a1tDHfw+fhHwtwhzkrHJ9CW+D/QP3vtM/Hf77M2Q6VAIdKoHaoBDhUArX/Atggrmu2hB0NAAAAAElFTkSuQmCC"
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ },
+/* 25 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ },
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11554,20 +11767,26 @@
 		value: true
 	});
 
-	var _store = __webpack_require__(9);
+	var _store = __webpack_require__(14);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _actions = __webpack_require__(11);
+	var _actions = __webpack_require__(16);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// <template>
-	// 	<header>
-	// 		<span class="icon left icon-home"></span>
-	// 		<span class="icon right "></span>
-	// 		<div>{{ title }}</div>
-	// 	</header>
+	// 	<footer v-if="show" :transition="footershow">
+	// 		<ul>
+	// <!-- 			<li v-for="menu in menus" v-link="{ path: '/'+menu.text}" v-bind:class="'icon-'+menu.text">
+	// 			</li> -->
+	// 			<li v-link="{ path: '/home' }" class="icon-home"></li>
+	// 			<li v-link="{ path: '/clame' }" class="icon-clame"></li>
+	// 			<li v-link="{ path: '/line' }" class="icon-line"></li>
+	// 			<li v-link="{ path: '/message' }" class="icon-message"></li>
+	// 			<li v-link="{ path: '/menu' }" class="icon-menu"></li>
+	// 		</ul>
+	// 	</footer>
 	// </template>
 	//
 	// <script>
@@ -11577,10 +11796,14 @@
 			return {};
 		},
 
+		methods: {},
 		vuex: {
 			getters: {
 				title: function title(state) {
 					return state.title;
+				},
+				show: function show(state) {
+					return state.isshow;
 				}
 			},
 			actions: {
@@ -11591,48 +11814,91 @@
 	// </script>
 	//
 	// <style scoped>
-	// 	html,body{
-	// 		margin: 0;
-	// 		padding: 0;
-	// 		width: 100%;
-	// 	}
-	// 	header{
+	// 	footer{
 	// 		position: fixed;
-	// 		top: 0px;
+	// 		bottom: 0px;
 	// 		left: 0px;
 	// 		right: 0px;
-	// 		/*width: 100%;*/
 	// 		height: 40px;
 	// 		line-height: 40px;
 	// 		text-align: center;
-	// 		border-bottom: 1px solid #DDD;
+	// 		border-top: 1px solid #DDD;
 	// 		padding: 5px;
+	// 		background: #FFF;
 	// 	}
-	// 	.icon{
+	// 	ul{
+	// 		box-sizing: border-box;
+	// 		margin: 0;
+	// 		padding: 0;
+	// 	}
+	// 	li{
+	// 		/*display: inline-block;*/
+	// 		width:20%;
+	// 		float: left;
+	// 		list-style: none;
 	// 		height: 40px;
-	// 		width: 40px;
-	// 		display: block;
+	// 	}
+	//
+	// 	li:before{
+	// 		content: '';
+	// 	}
+	// 	.icon-message{
+	// 		background: url(../assets/message.png) center center no-repeat;
+	// 		background-size: 40px 40px;
+	// 		-webkit-filter: grayscale(1);
+	// 		filter: grayscale(1);
+	// 	}
+	// 	.icon-clame{
+	// 		background: url(../assets/clame.png) center center no-repeat;
+	// 		background-size: 40px 40px;
+	// 		-webkit-filter: grayscale(1);
+	// 		filter: grayscale(1);
 	// 	}
 	// 	.icon-home{
-	// 		background: url(../assets/bear.png) no-repeat;
-	// 		background-size: contain;
+	// 		background: url(../assets/home.png) center center no-repeat;
+	// 		background-size: 40px 40px;
+	// 		-webkit-filter: grayscale(1);
+	// 		filter: grayscale(1);
 	// 	}
-	// 	.left{
-	// 		float: left;
+	// 	.icon-line{
+	// 		background: url(../assets/line.png) center center no-repeat;
+	// 		background-size: 40px 40px;
+	// 		-webkit-filter: grayscale(1);
+	// 		filter: grayscale(1);
 	// 	}
-	// 	.right{
-	// 		float: right;
+	// 	.icon-menu{
+	// 		background: url(../assets/menu.png) center center no-repeat;
+	// 		background-size: 40px 40px;
+	// 		-webkit-filter: grayscale(1);
+	// 		filter: grayscale(1);
 	// 	}
+	// 	.v-link-active{
+	// 		-webkit-filter: grayscale(0);
+	// 		filter: grayscale(0);
+	// 	}
+	// 	.footershow-transition {
+	// 		transition: all .3s ease;
+	// 	}
+	// 	.footershow-enter, .footershow-leave {
+	// 		/*top: -50px;*/
+	// 	}
+	//
 	// </style>
 
 /***/ },
-/* 18 */
+/* 27 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\t<header _v-2760127e=\"\">\n\t\t<span class=\"icon left icon-home\" _v-2760127e=\"\"></span>\n\t\t<span class=\"icon right \" _v-2760127e=\"\"></span>\n\t\t<div _v-2760127e=\"\">{{ title }}</div>\n\t</header>\n";
+	module.exports = "\n\t<footer v-if=\"show\" :transition=\"footershow\" _v-69c4da62=\"\">\n\t\t<ul _v-69c4da62=\"\">\n<!-- \t\t\t<li v-for=\"menu in menus\" v-link=\"{ path: '/'+menu.text}\" v-bind:class=\"'icon-'+menu.text\">\n\t\t\t</li> -->\n\t\t\t<li v-link=\"{ path: '/home' }\" class=\"icon-home\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/clame' }\" class=\"icon-clame\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/line' }\" class=\"icon-line\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/message' }\" class=\"icon-message\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/menu' }\" class=\"icon-menu\" _v-69c4da62=\"\"></li>\n\t\t</ul>\n\t</footer>\n";
 
 /***/ },
-/* 19 */
+/* 28 */
+/***/ function(module, exports) {
+
+	module.exports = "\n  <div class=\"content\" _v-b9301b62=\"\">\n  \t<hea _v-b9301b62=\"\"></hea>\n    <router-view _v-b9301b62=\"\"></router-view>\n    <foo _v-b9301b62=\"\"></foo>\n  </div>\n";
+
+/***/ },
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -14344,6 +14610,3001 @@
 	  return Router;
 
 	}));
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	;(function () {
+
+	  var vueTouch = {}
+	  var Hammer =  true
+	    ? __webpack_require__(31)
+	    : window.Hammer
+	  var gestures = ['tap', 'pan', 'pinch', 'press', 'rotate', 'swipe']
+	  var directions = ['up', 'down', 'left', 'right', 'horizontal', 'vertical', 'all']
+	  var customEvents = {}
+
+	  if (!Hammer) {
+	    throw new Error('[vue-touch] cannot locate Hammer.js.')
+	  }
+
+	  // exposed global options
+	  vueTouch.config = {}
+
+	  vueTouch.install = function (Vue) {
+
+	    Vue.directive('touch', {
+
+	      isFn: true,
+	      acceptStatement: true,
+	      priority: Vue.directive('on').priority,
+
+	      bind: function () {
+	        if (!this.el.hammer) {
+	          this.el.hammer = new Hammer.Manager(this.el)
+	        }
+	        var mc = this.mc = this.el.hammer
+	        // determine event type
+	        var event = this.arg
+	        if (!event) {
+	          console.warn('[vue-touch] event type argument is required.')
+	        }
+	        var recognizerType, recognizer
+
+	        if (customEvents[event]) {
+	          // custom event
+	          var custom = customEvents[event]
+	          recognizerType = custom.type
+	          recognizer = new Hammer[capitalize(recognizerType)](custom)
+	          recognizer.recognizeWith(mc.recognizers)
+	          mc.add(recognizer)
+	        } else {
+	          // built-in event
+	          for (var i = 0; i < gestures.length; i++) {
+	            if (event.indexOf(gestures[i]) === 0) {
+	              recognizerType = gestures[i]
+	              break
+	            }
+	          }
+	          if (!recognizerType) {
+	            console.warn('[vue-touch] invalid event type: ' + event)
+	            return
+	          }
+	          recognizer = mc.get(recognizerType)
+	          if (!recognizer) {
+	            // add recognizer
+	            recognizer = new Hammer[capitalize(recognizerType)]()
+	            // make sure multiple recognizers work together...
+	            recognizer.recognizeWith(mc.recognizers)
+	            mc.add(recognizer)
+	          }
+	          // apply global options
+	          var globalOptions = vueTouch.config[recognizerType]
+	          if (globalOptions) {
+	            guardDirections(globalOptions)
+	            recognizer.set(globalOptions)
+	          }
+	          // apply local options
+	          var localOptions =
+	            this.el.hammerOptions &&
+	            this.el.hammerOptions[recognizerType]
+	          if (localOptions) {
+	            guardDirections(localOptions)
+	            recognizer.set(localOptions)
+	          }
+	        }
+	        this.recognizer = recognizer
+	      },
+
+	      update: function (fn) {
+	        var mc = this.mc
+	        var event = this.arg
+	        // teardown old handler
+	        if (this.handler) {
+	          mc.off(event, this.handler)
+	        }
+	        if (typeof fn !== 'function') {
+	          this.handler = null
+	          console.warn(
+	            '[vue-touch] invalid handler function for v-touch: ' +
+	            this.arg + '="' + this.descriptor.raw
+	          )
+	        } else {
+	          mc.on(event, (this.handler = fn))
+	        }
+	      },
+
+	      unbind: function () {
+	        if (this.handler) {
+	          this.mc.off(this.arg, this.handler)
+	        }
+	        if (!Object.keys(this.mc.handlers).length) {
+	          this.mc.destroy()
+	          this.el.hammer = null
+	        }
+	      }
+	    })
+
+	    Vue.directive('touch-options', {
+	      priority: Vue.directive('on').priority + 1,
+	      update: function (options) {
+	        var opts = this.el.hammerOptions || (this.el.hammerOptions = {})
+	        if (!this.arg) {
+	          console.warn('[vue-touch] recognizer type argument for v-touch-options is required.')
+	        } else {
+	          opts[this.arg] = options
+	        }
+	      }
+	    })
+	  }
+
+	  /**
+	   * Register a custom event.
+	   *
+	   * @param {String} event
+	   * @param {Object} options - a Hammer.js recognizer option object.
+	   *                           required fields:
+	   *                           - type: the base recognizer to use for this event
+	   */
+
+	  vueTouch.registerCustomEvent = function (event, options) {
+	    options.event = event
+	    customEvents[event] = options
+	  }
+
+	  function capitalize (str) {
+	    return str.charAt(0).toUpperCase() + str.slice(1)
+	  }
+
+	  function guardDirections (options) {
+	    var dir = options.direction
+	    if (typeof dir === 'string') {
+	      var hammerDirection = 'DIRECTION_' + dir.toUpperCase()
+	      if (directions.indexOf(dir) > -1 && Hammer.hasOwnProperty(hammerDirection)) {
+	        options.direction = Hammer[hammerDirection]
+	      } else {
+	        console.warn('[vue-touch] invalid direction: ' + dir)
+	      }
+	    }
+	  }
+
+	  if (true) {
+	    module.exports = vueTouch
+	  } else if (typeof define == "function" && define.amd) {
+	    define([], function(){ return vueTouch })
+	  } else if (window.Vue) {
+	    window.VueTouch = vueTouch
+	    Vue.use(vueTouch)
+	  }
+
+	})()
+
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
+	 * http://hammerjs.github.io/
+	 *
+	 * Copyright (c) 2016 Jorik Tangelder;
+	 * Licensed under the MIT license */
+	(function(window, document, exportName, undefined) {
+	  'use strict';
+
+	var VENDOR_PREFIXES = ['', 'webkit', 'Moz', 'MS', 'ms', 'o'];
+	var TEST_ELEMENT = document.createElement('div');
+
+	var TYPE_FUNCTION = 'function';
+
+	var round = Math.round;
+	var abs = Math.abs;
+	var now = Date.now;
+
+	/**
+	 * set a timeout with a given scope
+	 * @param {Function} fn
+	 * @param {Number} timeout
+	 * @param {Object} context
+	 * @returns {number}
+	 */
+	function setTimeoutContext(fn, timeout, context) {
+	    return setTimeout(bindFn(fn, context), timeout);
+	}
+
+	/**
+	 * if the argument is an array, we want to execute the fn on each entry
+	 * if it aint an array we don't want to do a thing.
+	 * this is used by all the methods that accept a single and array argument.
+	 * @param {*|Array} arg
+	 * @param {String} fn
+	 * @param {Object} [context]
+	 * @returns {Boolean}
+	 */
+	function invokeArrayArg(arg, fn, context) {
+	    if (Array.isArray(arg)) {
+	        each(arg, context[fn], context);
+	        return true;
+	    }
+	    return false;
+	}
+
+	/**
+	 * walk objects and arrays
+	 * @param {Object} obj
+	 * @param {Function} iterator
+	 * @param {Object} context
+	 */
+	function each(obj, iterator, context) {
+	    var i;
+
+	    if (!obj) {
+	        return;
+	    }
+
+	    if (obj.forEach) {
+	        obj.forEach(iterator, context);
+	    } else if (obj.length !== undefined) {
+	        i = 0;
+	        while (i < obj.length) {
+	            iterator.call(context, obj[i], i, obj);
+	            i++;
+	        }
+	    } else {
+	        for (i in obj) {
+	            obj.hasOwnProperty(i) && iterator.call(context, obj[i], i, obj);
+	        }
+	    }
+	}
+
+	/**
+	 * wrap a method with a deprecation warning and stack trace
+	 * @param {Function} method
+	 * @param {String} name
+	 * @param {String} message
+	 * @returns {Function} A new function wrapping the supplied method.
+	 */
+	function deprecate(method, name, message) {
+	    var deprecationMessage = 'DEPRECATED METHOD: ' + name + '\n' + message + ' AT \n';
+	    return function() {
+	        var e = new Error('get-stack-trace');
+	        var stack = e && e.stack ? e.stack.replace(/^[^\(]+?[\n$]/gm, '')
+	            .replace(/^\s+at\s+/gm, '')
+	            .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@') : 'Unknown Stack Trace';
+
+	        var log = window.console && (window.console.warn || window.console.log);
+	        if (log) {
+	            log.call(window.console, deprecationMessage, stack);
+	        }
+	        return method.apply(this, arguments);
+	    };
+	}
+
+	/**
+	 * extend object.
+	 * means that properties in dest will be overwritten by the ones in src.
+	 * @param {Object} target
+	 * @param {...Object} objects_to_assign
+	 * @returns {Object} target
+	 */
+	var assign;
+	if (typeof Object.assign !== 'function') {
+	    assign = function assign(target) {
+	        if (target === undefined || target === null) {
+	            throw new TypeError('Cannot convert undefined or null to object');
+	        }
+
+	        var output = Object(target);
+	        for (var index = 1; index < arguments.length; index++) {
+	            var source = arguments[index];
+	            if (source !== undefined && source !== null) {
+	                for (var nextKey in source) {
+	                    if (source.hasOwnProperty(nextKey)) {
+	                        output[nextKey] = source[nextKey];
+	                    }
+	                }
+	            }
+	        }
+	        return output;
+	    };
+	} else {
+	    assign = Object.assign;
+	}
+
+	/**
+	 * extend object.
+	 * means that properties in dest will be overwritten by the ones in src.
+	 * @param {Object} dest
+	 * @param {Object} src
+	 * @param {Boolean} [merge=false]
+	 * @returns {Object} dest
+	 */
+	var extend = deprecate(function extend(dest, src, merge) {
+	    var keys = Object.keys(src);
+	    var i = 0;
+	    while (i < keys.length) {
+	        if (!merge || (merge && dest[keys[i]] === undefined)) {
+	            dest[keys[i]] = src[keys[i]];
+	        }
+	        i++;
+	    }
+	    return dest;
+	}, 'extend', 'Use `assign`.');
+
+	/**
+	 * merge the values from src in the dest.
+	 * means that properties that exist in dest will not be overwritten by src
+	 * @param {Object} dest
+	 * @param {Object} src
+	 * @returns {Object} dest
+	 */
+	var merge = deprecate(function merge(dest, src) {
+	    return extend(dest, src, true);
+	}, 'merge', 'Use `assign`.');
+
+	/**
+	 * simple class inheritance
+	 * @param {Function} child
+	 * @param {Function} base
+	 * @param {Object} [properties]
+	 */
+	function inherit(child, base, properties) {
+	    var baseP = base.prototype,
+	        childP;
+
+	    childP = child.prototype = Object.create(baseP);
+	    childP.constructor = child;
+	    childP._super = baseP;
+
+	    if (properties) {
+	        assign(childP, properties);
+	    }
+	}
+
+	/**
+	 * simple function bind
+	 * @param {Function} fn
+	 * @param {Object} context
+	 * @returns {Function}
+	 */
+	function bindFn(fn, context) {
+	    return function boundFn() {
+	        return fn.apply(context, arguments);
+	    };
+	}
+
+	/**
+	 * let a boolean value also be a function that must return a boolean
+	 * this first item in args will be used as the context
+	 * @param {Boolean|Function} val
+	 * @param {Array} [args]
+	 * @returns {Boolean}
+	 */
+	function boolOrFn(val, args) {
+	    if (typeof val == TYPE_FUNCTION) {
+	        return val.apply(args ? args[0] || undefined : undefined, args);
+	    }
+	    return val;
+	}
+
+	/**
+	 * use the val2 when val1 is undefined
+	 * @param {*} val1
+	 * @param {*} val2
+	 * @returns {*}
+	 */
+	function ifUndefined(val1, val2) {
+	    return (val1 === undefined) ? val2 : val1;
+	}
+
+	/**
+	 * addEventListener with multiple events at once
+	 * @param {EventTarget} target
+	 * @param {String} types
+	 * @param {Function} handler
+	 */
+	function addEventListeners(target, types, handler) {
+	    each(splitStr(types), function(type) {
+	        target.addEventListener(type, handler, false);
+	    });
+	}
+
+	/**
+	 * removeEventListener with multiple events at once
+	 * @param {EventTarget} target
+	 * @param {String} types
+	 * @param {Function} handler
+	 */
+	function removeEventListeners(target, types, handler) {
+	    each(splitStr(types), function(type) {
+	        target.removeEventListener(type, handler, false);
+	    });
+	}
+
+	/**
+	 * find if a node is in the given parent
+	 * @method hasParent
+	 * @param {HTMLElement} node
+	 * @param {HTMLElement} parent
+	 * @return {Boolean} found
+	 */
+	function hasParent(node, parent) {
+	    while (node) {
+	        if (node == parent) {
+	            return true;
+	        }
+	        node = node.parentNode;
+	    }
+	    return false;
+	}
+
+	/**
+	 * small indexOf wrapper
+	 * @param {String} str
+	 * @param {String} find
+	 * @returns {Boolean} found
+	 */
+	function inStr(str, find) {
+	    return str.indexOf(find) > -1;
+	}
+
+	/**
+	 * split string on whitespace
+	 * @param {String} str
+	 * @returns {Array} words
+	 */
+	function splitStr(str) {
+	    return str.trim().split(/\s+/g);
+	}
+
+	/**
+	 * find if a array contains the object using indexOf or a simple polyFill
+	 * @param {Array} src
+	 * @param {String} find
+	 * @param {String} [findByKey]
+	 * @return {Boolean|Number} false when not found, or the index
+	 */
+	function inArray(src, find, findByKey) {
+	    if (src.indexOf && !findByKey) {
+	        return src.indexOf(find);
+	    } else {
+	        var i = 0;
+	        while (i < src.length) {
+	            if ((findByKey && src[i][findByKey] == find) || (!findByKey && src[i] === find)) {
+	                return i;
+	            }
+	            i++;
+	        }
+	        return -1;
+	    }
+	}
+
+	/**
+	 * convert array-like objects to real arrays
+	 * @param {Object} obj
+	 * @returns {Array}
+	 */
+	function toArray(obj) {
+	    return Array.prototype.slice.call(obj, 0);
+	}
+
+	/**
+	 * unique array with objects based on a key (like 'id') or just by the array's value
+	 * @param {Array} src [{id:1},{id:2},{id:1}]
+	 * @param {String} [key]
+	 * @param {Boolean} [sort=False]
+	 * @returns {Array} [{id:1},{id:2}]
+	 */
+	function uniqueArray(src, key, sort) {
+	    var results = [];
+	    var values = [];
+	    var i = 0;
+
+	    while (i < src.length) {
+	        var val = key ? src[i][key] : src[i];
+	        if (inArray(values, val) < 0) {
+	            results.push(src[i]);
+	        }
+	        values[i] = val;
+	        i++;
+	    }
+
+	    if (sort) {
+	        if (!key) {
+	            results = results.sort();
+	        } else {
+	            results = results.sort(function sortUniqueArray(a, b) {
+	                return a[key] > b[key];
+	            });
+	        }
+	    }
+
+	    return results;
+	}
+
+	/**
+	 * get the prefixed property
+	 * @param {Object} obj
+	 * @param {String} property
+	 * @returns {String|Undefined} prefixed
+	 */
+	function prefixed(obj, property) {
+	    var prefix, prop;
+	    var camelProp = property[0].toUpperCase() + property.slice(1);
+
+	    var i = 0;
+	    while (i < VENDOR_PREFIXES.length) {
+	        prefix = VENDOR_PREFIXES[i];
+	        prop = (prefix) ? prefix + camelProp : property;
+
+	        if (prop in obj) {
+	            return prop;
+	        }
+	        i++;
+	    }
+	    return undefined;
+	}
+
+	/**
+	 * get a unique id
+	 * @returns {number} uniqueId
+	 */
+	var _uniqueId = 1;
+	function uniqueId() {
+	    return _uniqueId++;
+	}
+
+	/**
+	 * get the window object of an element
+	 * @param {HTMLElement} element
+	 * @returns {DocumentView|Window}
+	 */
+	function getWindowForElement(element) {
+	    var doc = element.ownerDocument || element;
+	    return (doc.defaultView || doc.parentWindow || window);
+	}
+
+	var MOBILE_REGEX = /mobile|tablet|ip(ad|hone|od)|android/i;
+
+	var SUPPORT_TOUCH = ('ontouchstart' in window);
+	var SUPPORT_POINTER_EVENTS = prefixed(window, 'PointerEvent') !== undefined;
+	var SUPPORT_ONLY_TOUCH = SUPPORT_TOUCH && MOBILE_REGEX.test(navigator.userAgent);
+
+	var INPUT_TYPE_TOUCH = 'touch';
+	var INPUT_TYPE_PEN = 'pen';
+	var INPUT_TYPE_MOUSE = 'mouse';
+	var INPUT_TYPE_KINECT = 'kinect';
+
+	var COMPUTE_INTERVAL = 25;
+
+	var INPUT_START = 1;
+	var INPUT_MOVE = 2;
+	var INPUT_END = 4;
+	var INPUT_CANCEL = 8;
+
+	var DIRECTION_NONE = 1;
+	var DIRECTION_LEFT = 2;
+	var DIRECTION_RIGHT = 4;
+	var DIRECTION_UP = 8;
+	var DIRECTION_DOWN = 16;
+
+	var DIRECTION_HORIZONTAL = DIRECTION_LEFT | DIRECTION_RIGHT;
+	var DIRECTION_VERTICAL = DIRECTION_UP | DIRECTION_DOWN;
+	var DIRECTION_ALL = DIRECTION_HORIZONTAL | DIRECTION_VERTICAL;
+
+	var PROPS_XY = ['x', 'y'];
+	var PROPS_CLIENT_XY = ['clientX', 'clientY'];
+
+	/**
+	 * create new input type manager
+	 * @param {Manager} manager
+	 * @param {Function} callback
+	 * @returns {Input}
+	 * @constructor
+	 */
+	function Input(manager, callback) {
+	    var self = this;
+	    this.manager = manager;
+	    this.callback = callback;
+	    this.element = manager.element;
+	    this.target = manager.options.inputTarget;
+
+	    // smaller wrapper around the handler, for the scope and the enabled state of the manager,
+	    // so when disabled the input events are completely bypassed.
+	    this.domHandler = function(ev) {
+	        if (boolOrFn(manager.options.enable, [manager])) {
+	            self.handler(ev);
+	        }
+	    };
+
+	    this.init();
+
+	}
+
+	Input.prototype = {
+	    /**
+	     * should handle the inputEvent data and trigger the callback
+	     * @virtual
+	     */
+	    handler: function() { },
+
+	    /**
+	     * bind the events
+	     */
+	    init: function() {
+	        this.evEl && addEventListeners(this.element, this.evEl, this.domHandler);
+	        this.evTarget && addEventListeners(this.target, this.evTarget, this.domHandler);
+	        this.evWin && addEventListeners(getWindowForElement(this.element), this.evWin, this.domHandler);
+	    },
+
+	    /**
+	     * unbind the events
+	     */
+	    destroy: function() {
+	        this.evEl && removeEventListeners(this.element, this.evEl, this.domHandler);
+	        this.evTarget && removeEventListeners(this.target, this.evTarget, this.domHandler);
+	        this.evWin && removeEventListeners(getWindowForElement(this.element), this.evWin, this.domHandler);
+	    }
+	};
+
+	/**
+	 * create new input type manager
+	 * called by the Manager constructor
+	 * @param {Hammer} manager
+	 * @returns {Input}
+	 */
+	function createInputInstance(manager) {
+	    var Type;
+	    var inputClass = manager.options.inputClass;
+
+	    if (inputClass) {
+	        Type = inputClass;
+	    } else if (SUPPORT_POINTER_EVENTS) {
+	        Type = PointerEventInput;
+	    } else if (SUPPORT_ONLY_TOUCH) {
+	        Type = TouchInput;
+	    } else if (!SUPPORT_TOUCH) {
+	        Type = MouseInput;
+	    } else {
+	        Type = TouchMouseInput;
+	    }
+	    return new (Type)(manager, inputHandler);
+	}
+
+	/**
+	 * handle input events
+	 * @param {Manager} manager
+	 * @param {String} eventType
+	 * @param {Object} input
+	 */
+	function inputHandler(manager, eventType, input) {
+	    var pointersLen = input.pointers.length;
+	    var changedPointersLen = input.changedPointers.length;
+	    var isFirst = (eventType & INPUT_START && (pointersLen - changedPointersLen === 0));
+	    var isFinal = (eventType & (INPUT_END | INPUT_CANCEL) && (pointersLen - changedPointersLen === 0));
+
+	    input.isFirst = !!isFirst;
+	    input.isFinal = !!isFinal;
+
+	    if (isFirst) {
+	        manager.session = {};
+	    }
+
+	    // source event is the normalized value of the domEvents
+	    // like 'touchstart, mouseup, pointerdown'
+	    input.eventType = eventType;
+
+	    // compute scale, rotation etc
+	    computeInputData(manager, input);
+
+	    // emit secret event
+	    manager.emit('hammer.input', input);
+
+	    manager.recognize(input);
+	    manager.session.prevInput = input;
+	}
+
+	/**
+	 * extend the data with some usable properties like scale, rotate, velocity etc
+	 * @param {Object} manager
+	 * @param {Object} input
+	 */
+	function computeInputData(manager, input) {
+	    var session = manager.session;
+	    var pointers = input.pointers;
+	    var pointersLength = pointers.length;
+
+	    // store the first input to calculate the distance and direction
+	    if (!session.firstInput) {
+	        session.firstInput = simpleCloneInputData(input);
+	    }
+
+	    // to compute scale and rotation we need to store the multiple touches
+	    if (pointersLength > 1 && !session.firstMultiple) {
+	        session.firstMultiple = simpleCloneInputData(input);
+	    } else if (pointersLength === 1) {
+	        session.firstMultiple = false;
+	    }
+
+	    var firstInput = session.firstInput;
+	    var firstMultiple = session.firstMultiple;
+	    var offsetCenter = firstMultiple ? firstMultiple.center : firstInput.center;
+
+	    var center = input.center = getCenter(pointers);
+	    input.timeStamp = now();
+	    input.deltaTime = input.timeStamp - firstInput.timeStamp;
+
+	    input.angle = getAngle(offsetCenter, center);
+	    input.distance = getDistance(offsetCenter, center);
+
+	    computeDeltaXY(session, input);
+	    input.offsetDirection = getDirection(input.deltaX, input.deltaY);
+
+	    var overallVelocity = getVelocity(input.deltaTime, input.deltaX, input.deltaY);
+	    input.overallVelocityX = overallVelocity.x;
+	    input.overallVelocityY = overallVelocity.y;
+	    input.overallVelocity = (abs(overallVelocity.x) > abs(overallVelocity.y)) ? overallVelocity.x : overallVelocity.y;
+
+	    input.scale = firstMultiple ? getScale(firstMultiple.pointers, pointers) : 1;
+	    input.rotation = firstMultiple ? getRotation(firstMultiple.pointers, pointers) : 0;
+
+	    input.maxPointers = !session.prevInput ? input.pointers.length : ((input.pointers.length >
+	        session.prevInput.maxPointers) ? input.pointers.length : session.prevInput.maxPointers);
+
+	    computeIntervalInputData(session, input);
+
+	    // find the correct target
+	    var target = manager.element;
+	    if (hasParent(input.srcEvent.target, target)) {
+	        target = input.srcEvent.target;
+	    }
+	    input.target = target;
+	}
+
+	function computeDeltaXY(session, input) {
+	    var center = input.center;
+	    var offset = session.offsetDelta || {};
+	    var prevDelta = session.prevDelta || {};
+	    var prevInput = session.prevInput || {};
+
+	    if (input.eventType === INPUT_START || prevInput.eventType === INPUT_END) {
+	        prevDelta = session.prevDelta = {
+	            x: prevInput.deltaX || 0,
+	            y: prevInput.deltaY || 0
+	        };
+
+	        offset = session.offsetDelta = {
+	            x: center.x,
+	            y: center.y
+	        };
+	    }
+
+	    input.deltaX = prevDelta.x + (center.x - offset.x);
+	    input.deltaY = prevDelta.y + (center.y - offset.y);
+	}
+
+	/**
+	 * velocity is calculated every x ms
+	 * @param {Object} session
+	 * @param {Object} input
+	 */
+	function computeIntervalInputData(session, input) {
+	    var last = session.lastInterval || input,
+	        deltaTime = input.timeStamp - last.timeStamp,
+	        velocity, velocityX, velocityY, direction;
+
+	    if (input.eventType != INPUT_CANCEL && (deltaTime > COMPUTE_INTERVAL || last.velocity === undefined)) {
+	        var deltaX = input.deltaX - last.deltaX;
+	        var deltaY = input.deltaY - last.deltaY;
+
+	        var v = getVelocity(deltaTime, deltaX, deltaY);
+	        velocityX = v.x;
+	        velocityY = v.y;
+	        velocity = (abs(v.x) > abs(v.y)) ? v.x : v.y;
+	        direction = getDirection(deltaX, deltaY);
+
+	        session.lastInterval = input;
+	    } else {
+	        // use latest velocity info if it doesn't overtake a minimum period
+	        velocity = last.velocity;
+	        velocityX = last.velocityX;
+	        velocityY = last.velocityY;
+	        direction = last.direction;
+	    }
+
+	    input.velocity = velocity;
+	    input.velocityX = velocityX;
+	    input.velocityY = velocityY;
+	    input.direction = direction;
+	}
+
+	/**
+	 * create a simple clone from the input used for storage of firstInput and firstMultiple
+	 * @param {Object} input
+	 * @returns {Object} clonedInputData
+	 */
+	function simpleCloneInputData(input) {
+	    // make a simple copy of the pointers because we will get a reference if we don't
+	    // we only need clientXY for the calculations
+	    var pointers = [];
+	    var i = 0;
+	    while (i < input.pointers.length) {
+	        pointers[i] = {
+	            clientX: round(input.pointers[i].clientX),
+	            clientY: round(input.pointers[i].clientY)
+	        };
+	        i++;
+	    }
+
+	    return {
+	        timeStamp: now(),
+	        pointers: pointers,
+	        center: getCenter(pointers),
+	        deltaX: input.deltaX,
+	        deltaY: input.deltaY
+	    };
+	}
+
+	/**
+	 * get the center of all the pointers
+	 * @param {Array} pointers
+	 * @return {Object} center contains `x` and `y` properties
+	 */
+	function getCenter(pointers) {
+	    var pointersLength = pointers.length;
+
+	    // no need to loop when only one touch
+	    if (pointersLength === 1) {
+	        return {
+	            x: round(pointers[0].clientX),
+	            y: round(pointers[0].clientY)
+	        };
+	    }
+
+	    var x = 0, y = 0, i = 0;
+	    while (i < pointersLength) {
+	        x += pointers[i].clientX;
+	        y += pointers[i].clientY;
+	        i++;
+	    }
+
+	    return {
+	        x: round(x / pointersLength),
+	        y: round(y / pointersLength)
+	    };
+	}
+
+	/**
+	 * calculate the velocity between two points. unit is in px per ms.
+	 * @param {Number} deltaTime
+	 * @param {Number} x
+	 * @param {Number} y
+	 * @return {Object} velocity `x` and `y`
+	 */
+	function getVelocity(deltaTime, x, y) {
+	    return {
+	        x: x / deltaTime || 0,
+	        y: y / deltaTime || 0
+	    };
+	}
+
+	/**
+	 * get the direction between two points
+	 * @param {Number} x
+	 * @param {Number} y
+	 * @return {Number} direction
+	 */
+	function getDirection(x, y) {
+	    if (x === y) {
+	        return DIRECTION_NONE;
+	    }
+
+	    if (abs(x) >= abs(y)) {
+	        return x < 0 ? DIRECTION_LEFT : DIRECTION_RIGHT;
+	    }
+	    return y < 0 ? DIRECTION_UP : DIRECTION_DOWN;
+	}
+
+	/**
+	 * calculate the absolute distance between two points
+	 * @param {Object} p1 {x, y}
+	 * @param {Object} p2 {x, y}
+	 * @param {Array} [props] containing x and y keys
+	 * @return {Number} distance
+	 */
+	function getDistance(p1, p2, props) {
+	    if (!props) {
+	        props = PROPS_XY;
+	    }
+	    var x = p2[props[0]] - p1[props[0]],
+	        y = p2[props[1]] - p1[props[1]];
+
+	    return Math.sqrt((x * x) + (y * y));
+	}
+
+	/**
+	 * calculate the angle between two coordinates
+	 * @param {Object} p1
+	 * @param {Object} p2
+	 * @param {Array} [props] containing x and y keys
+	 * @return {Number} angle
+	 */
+	function getAngle(p1, p2, props) {
+	    if (!props) {
+	        props = PROPS_XY;
+	    }
+	    var x = p2[props[0]] - p1[props[0]],
+	        y = p2[props[1]] - p1[props[1]];
+	    return Math.atan2(y, x) * 180 / Math.PI;
+	}
+
+	/**
+	 * calculate the rotation degrees between two pointersets
+	 * @param {Array} start array of pointers
+	 * @param {Array} end array of pointers
+	 * @return {Number} rotation
+	 */
+	function getRotation(start, end) {
+	    return getAngle(end[1], end[0], PROPS_CLIENT_XY) + getAngle(start[1], start[0], PROPS_CLIENT_XY);
+	}
+
+	/**
+	 * calculate the scale factor between two pointersets
+	 * no scale is 1, and goes down to 0 when pinched together, and bigger when pinched out
+	 * @param {Array} start array of pointers
+	 * @param {Array} end array of pointers
+	 * @return {Number} scale
+	 */
+	function getScale(start, end) {
+	    return getDistance(end[0], end[1], PROPS_CLIENT_XY) / getDistance(start[0], start[1], PROPS_CLIENT_XY);
+	}
+
+	var MOUSE_INPUT_MAP = {
+	    mousedown: INPUT_START,
+	    mousemove: INPUT_MOVE,
+	    mouseup: INPUT_END
+	};
+
+	var MOUSE_ELEMENT_EVENTS = 'mousedown';
+	var MOUSE_WINDOW_EVENTS = 'mousemove mouseup';
+
+	/**
+	 * Mouse events input
+	 * @constructor
+	 * @extends Input
+	 */
+	function MouseInput() {
+	    this.evEl = MOUSE_ELEMENT_EVENTS;
+	    this.evWin = MOUSE_WINDOW_EVENTS;
+
+	    this.pressed = false; // mousedown state
+
+	    Input.apply(this, arguments);
+	}
+
+	inherit(MouseInput, Input, {
+	    /**
+	     * handle mouse events
+	     * @param {Object} ev
+	     */
+	    handler: function MEhandler(ev) {
+	        var eventType = MOUSE_INPUT_MAP[ev.type];
+
+	        // on start we want to have the left mouse button down
+	        if (eventType & INPUT_START && ev.button === 0) {
+	            this.pressed = true;
+	        }
+
+	        if (eventType & INPUT_MOVE && ev.which !== 1) {
+	            eventType = INPUT_END;
+	        }
+
+	        // mouse must be down
+	        if (!this.pressed) {
+	            return;
+	        }
+
+	        if (eventType & INPUT_END) {
+	            this.pressed = false;
+	        }
+
+	        this.callback(this.manager, eventType, {
+	            pointers: [ev],
+	            changedPointers: [ev],
+	            pointerType: INPUT_TYPE_MOUSE,
+	            srcEvent: ev
+	        });
+	    }
+	});
+
+	var POINTER_INPUT_MAP = {
+	    pointerdown: INPUT_START,
+	    pointermove: INPUT_MOVE,
+	    pointerup: INPUT_END,
+	    pointercancel: INPUT_CANCEL,
+	    pointerout: INPUT_CANCEL
+	};
+
+	// in IE10 the pointer types is defined as an enum
+	var IE10_POINTER_TYPE_ENUM = {
+	    2: INPUT_TYPE_TOUCH,
+	    3: INPUT_TYPE_PEN,
+	    4: INPUT_TYPE_MOUSE,
+	    5: INPUT_TYPE_KINECT // see https://twitter.com/jacobrossi/status/480596438489890816
+	};
+
+	var POINTER_ELEMENT_EVENTS = 'pointerdown';
+	var POINTER_WINDOW_EVENTS = 'pointermove pointerup pointercancel';
+
+	// IE10 has prefixed support, and case-sensitive
+	if (window.MSPointerEvent && !window.PointerEvent) {
+	    POINTER_ELEMENT_EVENTS = 'MSPointerDown';
+	    POINTER_WINDOW_EVENTS = 'MSPointerMove MSPointerUp MSPointerCancel';
+	}
+
+	/**
+	 * Pointer events input
+	 * @constructor
+	 * @extends Input
+	 */
+	function PointerEventInput() {
+	    this.evEl = POINTER_ELEMENT_EVENTS;
+	    this.evWin = POINTER_WINDOW_EVENTS;
+
+	    Input.apply(this, arguments);
+
+	    this.store = (this.manager.session.pointerEvents = []);
+	}
+
+	inherit(PointerEventInput, Input, {
+	    /**
+	     * handle mouse events
+	     * @param {Object} ev
+	     */
+	    handler: function PEhandler(ev) {
+	        var store = this.store;
+	        var removePointer = false;
+
+	        var eventTypeNormalized = ev.type.toLowerCase().replace('ms', '');
+	        var eventType = POINTER_INPUT_MAP[eventTypeNormalized];
+	        var pointerType = IE10_POINTER_TYPE_ENUM[ev.pointerType] || ev.pointerType;
+
+	        var isTouch = (pointerType == INPUT_TYPE_TOUCH);
+
+	        // get index of the event in the store
+	        var storeIndex = inArray(store, ev.pointerId, 'pointerId');
+
+	        // start and mouse must be down
+	        if (eventType & INPUT_START && (ev.button === 0 || isTouch)) {
+	            if (storeIndex < 0) {
+	                store.push(ev);
+	                storeIndex = store.length - 1;
+	            }
+	        } else if (eventType & (INPUT_END | INPUT_CANCEL)) {
+	            removePointer = true;
+	        }
+
+	        // it not found, so the pointer hasn't been down (so it's probably a hover)
+	        if (storeIndex < 0) {
+	            return;
+	        }
+
+	        // update the event in the store
+	        store[storeIndex] = ev;
+
+	        this.callback(this.manager, eventType, {
+	            pointers: store,
+	            changedPointers: [ev],
+	            pointerType: pointerType,
+	            srcEvent: ev
+	        });
+
+	        if (removePointer) {
+	            // remove from the store
+	            store.splice(storeIndex, 1);
+	        }
+	    }
+	});
+
+	var SINGLE_TOUCH_INPUT_MAP = {
+	    touchstart: INPUT_START,
+	    touchmove: INPUT_MOVE,
+	    touchend: INPUT_END,
+	    touchcancel: INPUT_CANCEL
+	};
+
+	var SINGLE_TOUCH_TARGET_EVENTS = 'touchstart';
+	var SINGLE_TOUCH_WINDOW_EVENTS = 'touchstart touchmove touchend touchcancel';
+
+	/**
+	 * Touch events input
+	 * @constructor
+	 * @extends Input
+	 */
+	function SingleTouchInput() {
+	    this.evTarget = SINGLE_TOUCH_TARGET_EVENTS;
+	    this.evWin = SINGLE_TOUCH_WINDOW_EVENTS;
+	    this.started = false;
+
+	    Input.apply(this, arguments);
+	}
+
+	inherit(SingleTouchInput, Input, {
+	    handler: function TEhandler(ev) {
+	        var type = SINGLE_TOUCH_INPUT_MAP[ev.type];
+
+	        // should we handle the touch events?
+	        if (type === INPUT_START) {
+	            this.started = true;
+	        }
+
+	        if (!this.started) {
+	            return;
+	        }
+
+	        var touches = normalizeSingleTouches.call(this, ev, type);
+
+	        // when done, reset the started state
+	        if (type & (INPUT_END | INPUT_CANCEL) && touches[0].length - touches[1].length === 0) {
+	            this.started = false;
+	        }
+
+	        this.callback(this.manager, type, {
+	            pointers: touches[0],
+	            changedPointers: touches[1],
+	            pointerType: INPUT_TYPE_TOUCH,
+	            srcEvent: ev
+	        });
+	    }
+	});
+
+	/**
+	 * @this {TouchInput}
+	 * @param {Object} ev
+	 * @param {Number} type flag
+	 * @returns {undefined|Array} [all, changed]
+	 */
+	function normalizeSingleTouches(ev, type) {
+	    var all = toArray(ev.touches);
+	    var changed = toArray(ev.changedTouches);
+
+	    if (type & (INPUT_END | INPUT_CANCEL)) {
+	        all = uniqueArray(all.concat(changed), 'identifier', true);
+	    }
+
+	    return [all, changed];
+	}
+
+	var TOUCH_INPUT_MAP = {
+	    touchstart: INPUT_START,
+	    touchmove: INPUT_MOVE,
+	    touchend: INPUT_END,
+	    touchcancel: INPUT_CANCEL
+	};
+
+	var TOUCH_TARGET_EVENTS = 'touchstart touchmove touchend touchcancel';
+
+	/**
+	 * Multi-user touch events input
+	 * @constructor
+	 * @extends Input
+	 */
+	function TouchInput() {
+	    this.evTarget = TOUCH_TARGET_EVENTS;
+	    this.targetIds = {};
+
+	    Input.apply(this, arguments);
+	}
+
+	inherit(TouchInput, Input, {
+	    handler: function MTEhandler(ev) {
+	        var type = TOUCH_INPUT_MAP[ev.type];
+	        var touches = getTouches.call(this, ev, type);
+	        if (!touches) {
+	            return;
+	        }
+
+	        this.callback(this.manager, type, {
+	            pointers: touches[0],
+	            changedPointers: touches[1],
+	            pointerType: INPUT_TYPE_TOUCH,
+	            srcEvent: ev
+	        });
+	    }
+	});
+
+	/**
+	 * @this {TouchInput}
+	 * @param {Object} ev
+	 * @param {Number} type flag
+	 * @returns {undefined|Array} [all, changed]
+	 */
+	function getTouches(ev, type) {
+	    var allTouches = toArray(ev.touches);
+	    var targetIds = this.targetIds;
+
+	    // when there is only one touch, the process can be simplified
+	    if (type & (INPUT_START | INPUT_MOVE) && allTouches.length === 1) {
+	        targetIds[allTouches[0].identifier] = true;
+	        return [allTouches, allTouches];
+	    }
+
+	    var i,
+	        targetTouches,
+	        changedTouches = toArray(ev.changedTouches),
+	        changedTargetTouches = [],
+	        target = this.target;
+
+	    // get target touches from touches
+	    targetTouches = allTouches.filter(function(touch) {
+	        return hasParent(touch.target, target);
+	    });
+
+	    // collect touches
+	    if (type === INPUT_START) {
+	        i = 0;
+	        while (i < targetTouches.length) {
+	            targetIds[targetTouches[i].identifier] = true;
+	            i++;
+	        }
+	    }
+
+	    // filter changed touches to only contain touches that exist in the collected target ids
+	    i = 0;
+	    while (i < changedTouches.length) {
+	        if (targetIds[changedTouches[i].identifier]) {
+	            changedTargetTouches.push(changedTouches[i]);
+	        }
+
+	        // cleanup removed touches
+	        if (type & (INPUT_END | INPUT_CANCEL)) {
+	            delete targetIds[changedTouches[i].identifier];
+	        }
+	        i++;
+	    }
+
+	    if (!changedTargetTouches.length) {
+	        return;
+	    }
+
+	    return [
+	        // merge targetTouches with changedTargetTouches so it contains ALL touches, including 'end' and 'cancel'
+	        uniqueArray(targetTouches.concat(changedTargetTouches), 'identifier', true),
+	        changedTargetTouches
+	    ];
+	}
+
+	/**
+	 * Combined touch and mouse input
+	 *
+	 * Touch has a higher priority then mouse, and while touching no mouse events are allowed.
+	 * This because touch devices also emit mouse events while doing a touch.
+	 *
+	 * @constructor
+	 * @extends Input
+	 */
+
+	var DEDUP_TIMEOUT = 2500;
+	var DEDUP_DISTANCE = 25;
+
+	function TouchMouseInput() {
+	    Input.apply(this, arguments);
+
+	    var handler = bindFn(this.handler, this);
+	    this.touch = new TouchInput(this.manager, handler);
+	    this.mouse = new MouseInput(this.manager, handler);
+
+	    this.primaryTouch = null;
+	    this.lastTouches = [];
+	}
+
+	inherit(TouchMouseInput, Input, {
+	    /**
+	     * handle mouse and touch events
+	     * @param {Hammer} manager
+	     * @param {String} inputEvent
+	     * @param {Object} inputData
+	     */
+	    handler: function TMEhandler(manager, inputEvent, inputData) {
+	        var isTouch = (inputData.pointerType == INPUT_TYPE_TOUCH),
+	            isMouse = (inputData.pointerType == INPUT_TYPE_MOUSE);
+
+	        if (isMouse && inputData.sourceCapabilities && inputData.sourceCapabilities.firesTouchEvents) {
+	            return;
+	        }
+
+	        // when we're in a touch event, record touches to  de-dupe synthetic mouse event
+	        if (isTouch) {
+	            recordTouches.call(this, inputEvent, inputData);
+	        } else if (isMouse && isSyntheticEvent.call(this, inputData)) {
+	            return;
+	        }
+
+	        this.callback(manager, inputEvent, inputData);
+	    },
+
+	    /**
+	     * remove the event listeners
+	     */
+	    destroy: function destroy() {
+	        this.touch.destroy();
+	        this.mouse.destroy();
+	    }
+	});
+
+	function recordTouches(eventType, eventData) {
+	    if (eventType & INPUT_START) {
+	        this.primaryTouch = eventData.changedPointers[0].identifier;
+	        setLastTouch.call(this, eventData);
+	    } else if (eventType & (INPUT_END | INPUT_CANCEL)) {
+	        setLastTouch.call(this, eventData);
+	    }
+	}
+
+	function setLastTouch(eventData) {
+	    var touch = eventData.changedPointers[0];
+
+	    if (touch.identifier === this.primaryTouch) {
+	        var lastTouch = {x: touch.clientX, y: touch.clientY};
+	        this.lastTouches.push(lastTouch);
+	        var lts = this.lastTouches;
+	        var removeLastTouch = function() {
+	            var i = lts.indexOf(lastTouch);
+	            if (i > -1) {
+	                lts.splice(i, 1);
+	            }
+	        };
+	        setTimeout(removeLastTouch, DEDUP_TIMEOUT);
+	    }
+	}
+
+	function isSyntheticEvent(eventData) {
+	    var x = eventData.srcEvent.clientX, y = eventData.srcEvent.clientY;
+	    for (var i = 0; i < this.lastTouches.length; i++) {
+	        var t = this.lastTouches[i];
+	        var dx = Math.abs(x - t.x), dy = Math.abs(y - t.y);
+	        if (dx <= DEDUP_DISTANCE && dy <= DEDUP_DISTANCE) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
+	var PREFIXED_TOUCH_ACTION = prefixed(TEST_ELEMENT.style, 'touchAction');
+	var NATIVE_TOUCH_ACTION = PREFIXED_TOUCH_ACTION !== undefined;
+
+	// magical touchAction value
+	var TOUCH_ACTION_COMPUTE = 'compute';
+	var TOUCH_ACTION_AUTO = 'auto';
+	var TOUCH_ACTION_MANIPULATION = 'manipulation'; // not implemented
+	var TOUCH_ACTION_NONE = 'none';
+	var TOUCH_ACTION_PAN_X = 'pan-x';
+	var TOUCH_ACTION_PAN_Y = 'pan-y';
+	var TOUCH_ACTION_MAP = getTouchActionProps();
+
+	/**
+	 * Touch Action
+	 * sets the touchAction property or uses the js alternative
+	 * @param {Manager} manager
+	 * @param {String} value
+	 * @constructor
+	 */
+	function TouchAction(manager, value) {
+	    this.manager = manager;
+	    this.set(value);
+	}
+
+	TouchAction.prototype = {
+	    /**
+	     * set the touchAction value on the element or enable the polyfill
+	     * @param {String} value
+	     */
+	    set: function(value) {
+	        // find out the touch-action by the event handlers
+	        if (value == TOUCH_ACTION_COMPUTE) {
+	            value = this.compute();
+	        }
+
+	        if (NATIVE_TOUCH_ACTION && this.manager.element.style && TOUCH_ACTION_MAP[value]) {
+	            this.manager.element.style[PREFIXED_TOUCH_ACTION] = value;
+	        }
+	        this.actions = value.toLowerCase().trim();
+	    },
+
+	    /**
+	     * just re-set the touchAction value
+	     */
+	    update: function() {
+	        this.set(this.manager.options.touchAction);
+	    },
+
+	    /**
+	     * compute the value for the touchAction property based on the recognizer's settings
+	     * @returns {String} value
+	     */
+	    compute: function() {
+	        var actions = [];
+	        each(this.manager.recognizers, function(recognizer) {
+	            if (boolOrFn(recognizer.options.enable, [recognizer])) {
+	                actions = actions.concat(recognizer.getTouchAction());
+	            }
+	        });
+	        return cleanTouchActions(actions.join(' '));
+	    },
+
+	    /**
+	     * this method is called on each input cycle and provides the preventing of the browser behavior
+	     * @param {Object} input
+	     */
+	    preventDefaults: function(input) {
+	        var srcEvent = input.srcEvent;
+	        var direction = input.offsetDirection;
+
+	        // if the touch action did prevented once this session
+	        if (this.manager.session.prevented) {
+	            srcEvent.preventDefault();
+	            return;
+	        }
+
+	        var actions = this.actions;
+	        var hasNone = inStr(actions, TOUCH_ACTION_NONE) && !TOUCH_ACTION_MAP[TOUCH_ACTION_NONE];
+	        var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y) && !TOUCH_ACTION_MAP[TOUCH_ACTION_PAN_Y];
+	        var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X) && !TOUCH_ACTION_MAP[TOUCH_ACTION_PAN_X];
+
+	        if (hasNone) {
+	            //do not prevent defaults if this is a tap gesture
+
+	            var isTapPointer = input.pointers.length === 1;
+	            var isTapMovement = input.distance < 2;
+	            var isTapTouchTime = input.deltaTime < 250;
+
+	            if (isTapPointer && isTapMovement && isTapTouchTime) {
+	                return;
+	            }
+	        }
+
+	        if (hasPanX && hasPanY) {
+	            // `pan-x pan-y` means browser handles all scrolling/panning, do not prevent
+	            return;
+	        }
+
+	        if (hasNone ||
+	            (hasPanY && direction & DIRECTION_HORIZONTAL) ||
+	            (hasPanX && direction & DIRECTION_VERTICAL)) {
+	            return this.preventSrc(srcEvent);
+	        }
+	    },
+
+	    /**
+	     * call preventDefault to prevent the browser's default behavior (scrolling in most cases)
+	     * @param {Object} srcEvent
+	     */
+	    preventSrc: function(srcEvent) {
+	        this.manager.session.prevented = true;
+	        srcEvent.preventDefault();
+	    }
+	};
+
+	/**
+	 * when the touchActions are collected they are not a valid value, so we need to clean things up. *
+	 * @param {String} actions
+	 * @returns {*}
+	 */
+	function cleanTouchActions(actions) {
+	    // none
+	    if (inStr(actions, TOUCH_ACTION_NONE)) {
+	        return TOUCH_ACTION_NONE;
+	    }
+
+	    var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X);
+	    var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y);
+
+	    // if both pan-x and pan-y are set (different recognizers
+	    // for different directions, e.g. horizontal pan but vertical swipe?)
+	    // we need none (as otherwise with pan-x pan-y combined none of these
+	    // recognizers will work, since the browser would handle all panning
+	    if (hasPanX && hasPanY) {
+	        return TOUCH_ACTION_NONE;
+	    }
+
+	    // pan-x OR pan-y
+	    if (hasPanX || hasPanY) {
+	        return hasPanX ? TOUCH_ACTION_PAN_X : TOUCH_ACTION_PAN_Y;
+	    }
+
+	    // manipulation
+	    if (inStr(actions, TOUCH_ACTION_MANIPULATION)) {
+	        return TOUCH_ACTION_MANIPULATION;
+	    }
+
+	    return TOUCH_ACTION_AUTO;
+	}
+
+	function getTouchActionProps() {
+	    if (!NATIVE_TOUCH_ACTION) {
+	        return false;
+	    }
+	    var touchMap = {};
+	    var cssSupports = window.CSS && window.CSS.supports;
+	    ['auto', 'manipulation', 'pan-y', 'pan-x', 'pan-x pan-y', 'none'].forEach(function(val) {
+
+	        // If css.supports is not supported but there is native touch-action assume it supports
+	        // all values. This is the case for IE 10 and 11.
+	        touchMap[val] = cssSupports ? window.CSS.supports('touch-action', val) : true;
+	    });
+	    return touchMap;
+	}
+
+	/**
+	 * Recognizer flow explained; *
+	 * All recognizers have the initial state of POSSIBLE when a input session starts.
+	 * The definition of a input session is from the first input until the last input, with all it's movement in it. *
+	 * Example session for mouse-input: mousedown -> mousemove -> mouseup
+	 *
+	 * On each recognizing cycle (see Manager.recognize) the .recognize() method is executed
+	 * which determines with state it should be.
+	 *
+	 * If the recognizer has the state FAILED, CANCELLED or RECOGNIZED (equals ENDED), it is reset to
+	 * POSSIBLE to give it another change on the next cycle.
+	 *
+	 *               Possible
+	 *                  |
+	 *            +-----+---------------+
+	 *            |                     |
+	 *      +-----+-----+               |
+	 *      |           |               |
+	 *   Failed      Cancelled          |
+	 *                          +-------+------+
+	 *                          |              |
+	 *                      Recognized       Began
+	 *                                         |
+	 *                                      Changed
+	 *                                         |
+	 *                                  Ended/Recognized
+	 */
+	var STATE_POSSIBLE = 1;
+	var STATE_BEGAN = 2;
+	var STATE_CHANGED = 4;
+	var STATE_ENDED = 8;
+	var STATE_RECOGNIZED = STATE_ENDED;
+	var STATE_CANCELLED = 16;
+	var STATE_FAILED = 32;
+
+	/**
+	 * Recognizer
+	 * Every recognizer needs to extend from this class.
+	 * @constructor
+	 * @param {Object} options
+	 */
+	function Recognizer(options) {
+	    this.options = assign({}, this.defaults, options || {});
+
+	    this.id = uniqueId();
+
+	    this.manager = null;
+
+	    // default is enable true
+	    this.options.enable = ifUndefined(this.options.enable, true);
+
+	    this.state = STATE_POSSIBLE;
+
+	    this.simultaneous = {};
+	    this.requireFail = [];
+	}
+
+	Recognizer.prototype = {
+	    /**
+	     * @virtual
+	     * @type {Object}
+	     */
+	    defaults: {},
+
+	    /**
+	     * set options
+	     * @param {Object} options
+	     * @return {Recognizer}
+	     */
+	    set: function(options) {
+	        assign(this.options, options);
+
+	        // also update the touchAction, in case something changed about the directions/enabled state
+	        this.manager && this.manager.touchAction.update();
+	        return this;
+	    },
+
+	    /**
+	     * recognize simultaneous with an other recognizer.
+	     * @param {Recognizer} otherRecognizer
+	     * @returns {Recognizer} this
+	     */
+	    recognizeWith: function(otherRecognizer) {
+	        if (invokeArrayArg(otherRecognizer, 'recognizeWith', this)) {
+	            return this;
+	        }
+
+	        var simultaneous = this.simultaneous;
+	        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+	        if (!simultaneous[otherRecognizer.id]) {
+	            simultaneous[otherRecognizer.id] = otherRecognizer;
+	            otherRecognizer.recognizeWith(this);
+	        }
+	        return this;
+	    },
+
+	    /**
+	     * drop the simultaneous link. it doesnt remove the link on the other recognizer.
+	     * @param {Recognizer} otherRecognizer
+	     * @returns {Recognizer} this
+	     */
+	    dropRecognizeWith: function(otherRecognizer) {
+	        if (invokeArrayArg(otherRecognizer, 'dropRecognizeWith', this)) {
+	            return this;
+	        }
+
+	        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+	        delete this.simultaneous[otherRecognizer.id];
+	        return this;
+	    },
+
+	    /**
+	     * recognizer can only run when an other is failing
+	     * @param {Recognizer} otherRecognizer
+	     * @returns {Recognizer} this
+	     */
+	    requireFailure: function(otherRecognizer) {
+	        if (invokeArrayArg(otherRecognizer, 'requireFailure', this)) {
+	            return this;
+	        }
+
+	        var requireFail = this.requireFail;
+	        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+	        if (inArray(requireFail, otherRecognizer) === -1) {
+	            requireFail.push(otherRecognizer);
+	            otherRecognizer.requireFailure(this);
+	        }
+	        return this;
+	    },
+
+	    /**
+	     * drop the requireFailure link. it does not remove the link on the other recognizer.
+	     * @param {Recognizer} otherRecognizer
+	     * @returns {Recognizer} this
+	     */
+	    dropRequireFailure: function(otherRecognizer) {
+	        if (invokeArrayArg(otherRecognizer, 'dropRequireFailure', this)) {
+	            return this;
+	        }
+
+	        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+	        var index = inArray(this.requireFail, otherRecognizer);
+	        if (index > -1) {
+	            this.requireFail.splice(index, 1);
+	        }
+	        return this;
+	    },
+
+	    /**
+	     * has require failures boolean
+	     * @returns {boolean}
+	     */
+	    hasRequireFailures: function() {
+	        return this.requireFail.length > 0;
+	    },
+
+	    /**
+	     * if the recognizer can recognize simultaneous with an other recognizer
+	     * @param {Recognizer} otherRecognizer
+	     * @returns {Boolean}
+	     */
+	    canRecognizeWith: function(otherRecognizer) {
+	        return !!this.simultaneous[otherRecognizer.id];
+	    },
+
+	    /**
+	     * You should use `tryEmit` instead of `emit` directly to check
+	     * that all the needed recognizers has failed before emitting.
+	     * @param {Object} input
+	     */
+	    emit: function(input) {
+	        var self = this;
+	        var state = this.state;
+
+	        function emit(event) {
+	            self.manager.emit(event, input);
+	        }
+
+	        // 'panstart' and 'panmove'
+	        if (state < STATE_ENDED) {
+	            emit(self.options.event + stateStr(state));
+	        }
+
+	        emit(self.options.event); // simple 'eventName' events
+
+	        if (input.additionalEvent) { // additional event(panleft, panright, pinchin, pinchout...)
+	            emit(input.additionalEvent);
+	        }
+
+	        // panend and pancancel
+	        if (state >= STATE_ENDED) {
+	            emit(self.options.event + stateStr(state));
+	        }
+	    },
+
+	    /**
+	     * Check that all the require failure recognizers has failed,
+	     * if true, it emits a gesture event,
+	     * otherwise, setup the state to FAILED.
+	     * @param {Object} input
+	     */
+	    tryEmit: function(input) {
+	        if (this.canEmit()) {
+	            return this.emit(input);
+	        }
+	        // it's failing anyway
+	        this.state = STATE_FAILED;
+	    },
+
+	    /**
+	     * can we emit?
+	     * @returns {boolean}
+	     */
+	    canEmit: function() {
+	        var i = 0;
+	        while (i < this.requireFail.length) {
+	            if (!(this.requireFail[i].state & (STATE_FAILED | STATE_POSSIBLE))) {
+	                return false;
+	            }
+	            i++;
+	        }
+	        return true;
+	    },
+
+	    /**
+	     * update the recognizer
+	     * @param {Object} inputData
+	     */
+	    recognize: function(inputData) {
+	        // make a new copy of the inputData
+	        // so we can change the inputData without messing up the other recognizers
+	        var inputDataClone = assign({}, inputData);
+
+	        // is is enabled and allow recognizing?
+	        if (!boolOrFn(this.options.enable, [this, inputDataClone])) {
+	            this.reset();
+	            this.state = STATE_FAILED;
+	            return;
+	        }
+
+	        // reset when we've reached the end
+	        if (this.state & (STATE_RECOGNIZED | STATE_CANCELLED | STATE_FAILED)) {
+	            this.state = STATE_POSSIBLE;
+	        }
+
+	        this.state = this.process(inputDataClone);
+
+	        // the recognizer has recognized a gesture
+	        // so trigger an event
+	        if (this.state & (STATE_BEGAN | STATE_CHANGED | STATE_ENDED | STATE_CANCELLED)) {
+	            this.tryEmit(inputDataClone);
+	        }
+	    },
+
+	    /**
+	     * return the state of the recognizer
+	     * the actual recognizing happens in this method
+	     * @virtual
+	     * @param {Object} inputData
+	     * @returns {Const} STATE
+	     */
+	    process: function(inputData) { }, // jshint ignore:line
+
+	    /**
+	     * return the preferred touch-action
+	     * @virtual
+	     * @returns {Array}
+	     */
+	    getTouchAction: function() { },
+
+	    /**
+	     * called when the gesture isn't allowed to recognize
+	     * like when another is being recognized or it is disabled
+	     * @virtual
+	     */
+	    reset: function() { }
+	};
+
+	/**
+	 * get a usable string, used as event postfix
+	 * @param {Const} state
+	 * @returns {String} state
+	 */
+	function stateStr(state) {
+	    if (state & STATE_CANCELLED) {
+	        return 'cancel';
+	    } else if (state & STATE_ENDED) {
+	        return 'end';
+	    } else if (state & STATE_CHANGED) {
+	        return 'move';
+	    } else if (state & STATE_BEGAN) {
+	        return 'start';
+	    }
+	    return '';
+	}
+
+	/**
+	 * direction cons to string
+	 * @param {Const} direction
+	 * @returns {String}
+	 */
+	function directionStr(direction) {
+	    if (direction == DIRECTION_DOWN) {
+	        return 'down';
+	    } else if (direction == DIRECTION_UP) {
+	        return 'up';
+	    } else if (direction == DIRECTION_LEFT) {
+	        return 'left';
+	    } else if (direction == DIRECTION_RIGHT) {
+	        return 'right';
+	    }
+	    return '';
+	}
+
+	/**
+	 * get a recognizer by name if it is bound to a manager
+	 * @param {Recognizer|String} otherRecognizer
+	 * @param {Recognizer} recognizer
+	 * @returns {Recognizer}
+	 */
+	function getRecognizerByNameIfManager(otherRecognizer, recognizer) {
+	    var manager = recognizer.manager;
+	    if (manager) {
+	        return manager.get(otherRecognizer);
+	    }
+	    return otherRecognizer;
+	}
+
+	/**
+	 * This recognizer is just used as a base for the simple attribute recognizers.
+	 * @constructor
+	 * @extends Recognizer
+	 */
+	function AttrRecognizer() {
+	    Recognizer.apply(this, arguments);
+	}
+
+	inherit(AttrRecognizer, Recognizer, {
+	    /**
+	     * @namespace
+	     * @memberof AttrRecognizer
+	     */
+	    defaults: {
+	        /**
+	         * @type {Number}
+	         * @default 1
+	         */
+	        pointers: 1
+	    },
+
+	    /**
+	     * Used to check if it the recognizer receives valid input, like input.distance > 10.
+	     * @memberof AttrRecognizer
+	     * @param {Object} input
+	     * @returns {Boolean} recognized
+	     */
+	    attrTest: function(input) {
+	        var optionPointers = this.options.pointers;
+	        return optionPointers === 0 || input.pointers.length === optionPointers;
+	    },
+
+	    /**
+	     * Process the input and return the state for the recognizer
+	     * @memberof AttrRecognizer
+	     * @param {Object} input
+	     * @returns {*} State
+	     */
+	    process: function(input) {
+	        var state = this.state;
+	        var eventType = input.eventType;
+
+	        var isRecognized = state & (STATE_BEGAN | STATE_CHANGED);
+	        var isValid = this.attrTest(input);
+
+	        // on cancel input and we've recognized before, return STATE_CANCELLED
+	        if (isRecognized && (eventType & INPUT_CANCEL || !isValid)) {
+	            return state | STATE_CANCELLED;
+	        } else if (isRecognized || isValid) {
+	            if (eventType & INPUT_END) {
+	                return state | STATE_ENDED;
+	            } else if (!(state & STATE_BEGAN)) {
+	                return STATE_BEGAN;
+	            }
+	            return state | STATE_CHANGED;
+	        }
+	        return STATE_FAILED;
+	    }
+	});
+
+	/**
+	 * Pan
+	 * Recognized when the pointer is down and moved in the allowed direction.
+	 * @constructor
+	 * @extends AttrRecognizer
+	 */
+	function PanRecognizer() {
+	    AttrRecognizer.apply(this, arguments);
+
+	    this.pX = null;
+	    this.pY = null;
+	}
+
+	inherit(PanRecognizer, AttrRecognizer, {
+	    /**
+	     * @namespace
+	     * @memberof PanRecognizer
+	     */
+	    defaults: {
+	        event: 'pan',
+	        threshold: 10,
+	        pointers: 1,
+	        direction: DIRECTION_ALL
+	    },
+
+	    getTouchAction: function() {
+	        var direction = this.options.direction;
+	        var actions = [];
+	        if (direction & DIRECTION_HORIZONTAL) {
+	            actions.push(TOUCH_ACTION_PAN_Y);
+	        }
+	        if (direction & DIRECTION_VERTICAL) {
+	            actions.push(TOUCH_ACTION_PAN_X);
+	        }
+	        return actions;
+	    },
+
+	    directionTest: function(input) {
+	        var options = this.options;
+	        var hasMoved = true;
+	        var distance = input.distance;
+	        var direction = input.direction;
+	        var x = input.deltaX;
+	        var y = input.deltaY;
+
+	        // lock to axis?
+	        if (!(direction & options.direction)) {
+	            if (options.direction & DIRECTION_HORIZONTAL) {
+	                direction = (x === 0) ? DIRECTION_NONE : (x < 0) ? DIRECTION_LEFT : DIRECTION_RIGHT;
+	                hasMoved = x != this.pX;
+	                distance = Math.abs(input.deltaX);
+	            } else {
+	                direction = (y === 0) ? DIRECTION_NONE : (y < 0) ? DIRECTION_UP : DIRECTION_DOWN;
+	                hasMoved = y != this.pY;
+	                distance = Math.abs(input.deltaY);
+	            }
+	        }
+	        input.direction = direction;
+	        return hasMoved && distance > options.threshold && direction & options.direction;
+	    },
+
+	    attrTest: function(input) {
+	        return AttrRecognizer.prototype.attrTest.call(this, input) &&
+	            (this.state & STATE_BEGAN || (!(this.state & STATE_BEGAN) && this.directionTest(input)));
+	    },
+
+	    emit: function(input) {
+
+	        this.pX = input.deltaX;
+	        this.pY = input.deltaY;
+
+	        var direction = directionStr(input.direction);
+
+	        if (direction) {
+	            input.additionalEvent = this.options.event + direction;
+	        }
+	        this._super.emit.call(this, input);
+	    }
+	});
+
+	/**
+	 * Pinch
+	 * Recognized when two or more pointers are moving toward (zoom-in) or away from each other (zoom-out).
+	 * @constructor
+	 * @extends AttrRecognizer
+	 */
+	function PinchRecognizer() {
+	    AttrRecognizer.apply(this, arguments);
+	}
+
+	inherit(PinchRecognizer, AttrRecognizer, {
+	    /**
+	     * @namespace
+	     * @memberof PinchRecognizer
+	     */
+	    defaults: {
+	        event: 'pinch',
+	        threshold: 0,
+	        pointers: 2
+	    },
+
+	    getTouchAction: function() {
+	        return [TOUCH_ACTION_NONE];
+	    },
+
+	    attrTest: function(input) {
+	        return this._super.attrTest.call(this, input) &&
+	            (Math.abs(input.scale - 1) > this.options.threshold || this.state & STATE_BEGAN);
+	    },
+
+	    emit: function(input) {
+	        if (input.scale !== 1) {
+	            var inOut = input.scale < 1 ? 'in' : 'out';
+	            input.additionalEvent = this.options.event + inOut;
+	        }
+	        this._super.emit.call(this, input);
+	    }
+	});
+
+	/**
+	 * Press
+	 * Recognized when the pointer is down for x ms without any movement.
+	 * @constructor
+	 * @extends Recognizer
+	 */
+	function PressRecognizer() {
+	    Recognizer.apply(this, arguments);
+
+	    this._timer = null;
+	    this._input = null;
+	}
+
+	inherit(PressRecognizer, Recognizer, {
+	    /**
+	     * @namespace
+	     * @memberof PressRecognizer
+	     */
+	    defaults: {
+	        event: 'press',
+	        pointers: 1,
+	        time: 251, // minimal time of the pointer to be pressed
+	        threshold: 9 // a minimal movement is ok, but keep it low
+	    },
+
+	    getTouchAction: function() {
+	        return [TOUCH_ACTION_AUTO];
+	    },
+
+	    process: function(input) {
+	        var options = this.options;
+	        var validPointers = input.pointers.length === options.pointers;
+	        var validMovement = input.distance < options.threshold;
+	        var validTime = input.deltaTime > options.time;
+
+	        this._input = input;
+
+	        // we only allow little movement
+	        // and we've reached an end event, so a tap is possible
+	        if (!validMovement || !validPointers || (input.eventType & (INPUT_END | INPUT_CANCEL) && !validTime)) {
+	            this.reset();
+	        } else if (input.eventType & INPUT_START) {
+	            this.reset();
+	            this._timer = setTimeoutContext(function() {
+	                this.state = STATE_RECOGNIZED;
+	                this.tryEmit();
+	            }, options.time, this);
+	        } else if (input.eventType & INPUT_END) {
+	            return STATE_RECOGNIZED;
+	        }
+	        return STATE_FAILED;
+	    },
+
+	    reset: function() {
+	        clearTimeout(this._timer);
+	    },
+
+	    emit: function(input) {
+	        if (this.state !== STATE_RECOGNIZED) {
+	            return;
+	        }
+
+	        if (input && (input.eventType & INPUT_END)) {
+	            this.manager.emit(this.options.event + 'up', input);
+	        } else {
+	            this._input.timeStamp = now();
+	            this.manager.emit(this.options.event, this._input);
+	        }
+	    }
+	});
+
+	/**
+	 * Rotate
+	 * Recognized when two or more pointer are moving in a circular motion.
+	 * @constructor
+	 * @extends AttrRecognizer
+	 */
+	function RotateRecognizer() {
+	    AttrRecognizer.apply(this, arguments);
+	}
+
+	inherit(RotateRecognizer, AttrRecognizer, {
+	    /**
+	     * @namespace
+	     * @memberof RotateRecognizer
+	     */
+	    defaults: {
+	        event: 'rotate',
+	        threshold: 0,
+	        pointers: 2
+	    },
+
+	    getTouchAction: function() {
+	        return [TOUCH_ACTION_NONE];
+	    },
+
+	    attrTest: function(input) {
+	        return this._super.attrTest.call(this, input) &&
+	            (Math.abs(input.rotation) > this.options.threshold || this.state & STATE_BEGAN);
+	    }
+	});
+
+	/**
+	 * Swipe
+	 * Recognized when the pointer is moving fast (velocity), with enough distance in the allowed direction.
+	 * @constructor
+	 * @extends AttrRecognizer
+	 */
+	function SwipeRecognizer() {
+	    AttrRecognizer.apply(this, arguments);
+	}
+
+	inherit(SwipeRecognizer, AttrRecognizer, {
+	    /**
+	     * @namespace
+	     * @memberof SwipeRecognizer
+	     */
+	    defaults: {
+	        event: 'swipe',
+	        threshold: 10,
+	        velocity: 0.3,
+	        direction: DIRECTION_HORIZONTAL | DIRECTION_VERTICAL,
+	        pointers: 1
+	    },
+
+	    getTouchAction: function() {
+	        return PanRecognizer.prototype.getTouchAction.call(this);
+	    },
+
+	    attrTest: function(input) {
+	        var direction = this.options.direction;
+	        var velocity;
+
+	        if (direction & (DIRECTION_HORIZONTAL | DIRECTION_VERTICAL)) {
+	            velocity = input.overallVelocity;
+	        } else if (direction & DIRECTION_HORIZONTAL) {
+	            velocity = input.overallVelocityX;
+	        } else if (direction & DIRECTION_VERTICAL) {
+	            velocity = input.overallVelocityY;
+	        }
+
+	        return this._super.attrTest.call(this, input) &&
+	            direction & input.offsetDirection &&
+	            input.distance > this.options.threshold &&
+	            input.maxPointers == this.options.pointers &&
+	            abs(velocity) > this.options.velocity && input.eventType & INPUT_END;
+	    },
+
+	    emit: function(input) {
+	        var direction = directionStr(input.offsetDirection);
+	        if (direction) {
+	            this.manager.emit(this.options.event + direction, input);
+	        }
+
+	        this.manager.emit(this.options.event, input);
+	    }
+	});
+
+	/**
+	 * A tap is ecognized when the pointer is doing a small tap/click. Multiple taps are recognized if they occur
+	 * between the given interval and position. The delay option can be used to recognize multi-taps without firing
+	 * a single tap.
+	 *
+	 * The eventData from the emitted event contains the property `tapCount`, which contains the amount of
+	 * multi-taps being recognized.
+	 * @constructor
+	 * @extends Recognizer
+	 */
+	function TapRecognizer() {
+	    Recognizer.apply(this, arguments);
+
+	    // previous time and center,
+	    // used for tap counting
+	    this.pTime = false;
+	    this.pCenter = false;
+
+	    this._timer = null;
+	    this._input = null;
+	    this.count = 0;
+	}
+
+	inherit(TapRecognizer, Recognizer, {
+	    /**
+	     * @namespace
+	     * @memberof PinchRecognizer
+	     */
+	    defaults: {
+	        event: 'tap',
+	        pointers: 1,
+	        taps: 1,
+	        interval: 300, // max time between the multi-tap taps
+	        time: 250, // max time of the pointer to be down (like finger on the screen)
+	        threshold: 9, // a minimal movement is ok, but keep it low
+	        posThreshold: 10 // a multi-tap can be a bit off the initial position
+	    },
+
+	    getTouchAction: function() {
+	        return [TOUCH_ACTION_MANIPULATION];
+	    },
+
+	    process: function(input) {
+	        var options = this.options;
+
+	        var validPointers = input.pointers.length === options.pointers;
+	        var validMovement = input.distance < options.threshold;
+	        var validTouchTime = input.deltaTime < options.time;
+
+	        this.reset();
+
+	        if ((input.eventType & INPUT_START) && (this.count === 0)) {
+	            return this.failTimeout();
+	        }
+
+	        // we only allow little movement
+	        // and we've reached an end event, so a tap is possible
+	        if (validMovement && validTouchTime && validPointers) {
+	            if (input.eventType != INPUT_END) {
+	                return this.failTimeout();
+	            }
+
+	            var validInterval = this.pTime ? (input.timeStamp - this.pTime < options.interval) : true;
+	            var validMultiTap = !this.pCenter || getDistance(this.pCenter, input.center) < options.posThreshold;
+
+	            this.pTime = input.timeStamp;
+	            this.pCenter = input.center;
+
+	            if (!validMultiTap || !validInterval) {
+	                this.count = 1;
+	            } else {
+	                this.count += 1;
+	            }
+
+	            this._input = input;
+
+	            // if tap count matches we have recognized it,
+	            // else it has began recognizing...
+	            var tapCount = this.count % options.taps;
+	            if (tapCount === 0) {
+	                // no failing requirements, immediately trigger the tap event
+	                // or wait as long as the multitap interval to trigger
+	                if (!this.hasRequireFailures()) {
+	                    return STATE_RECOGNIZED;
+	                } else {
+	                    this._timer = setTimeoutContext(function() {
+	                        this.state = STATE_RECOGNIZED;
+	                        this.tryEmit();
+	                    }, options.interval, this);
+	                    return STATE_BEGAN;
+	                }
+	            }
+	        }
+	        return STATE_FAILED;
+	    },
+
+	    failTimeout: function() {
+	        this._timer = setTimeoutContext(function() {
+	            this.state = STATE_FAILED;
+	        }, this.options.interval, this);
+	        return STATE_FAILED;
+	    },
+
+	    reset: function() {
+	        clearTimeout(this._timer);
+	    },
+
+	    emit: function() {
+	        if (this.state == STATE_RECOGNIZED) {
+	            this._input.tapCount = this.count;
+	            this.manager.emit(this.options.event, this._input);
+	        }
+	    }
+	});
+
+	/**
+	 * Simple way to create a manager with a default set of recognizers.
+	 * @param {HTMLElement} element
+	 * @param {Object} [options]
+	 * @constructor
+	 */
+	function Hammer(element, options) {
+	    options = options || {};
+	    options.recognizers = ifUndefined(options.recognizers, Hammer.defaults.preset);
+	    return new Manager(element, options);
+	}
+
+	/**
+	 * @const {string}
+	 */
+	Hammer.VERSION = '2.0.7';
+
+	/**
+	 * default settings
+	 * @namespace
+	 */
+	Hammer.defaults = {
+	    /**
+	     * set if DOM events are being triggered.
+	     * But this is slower and unused by simple implementations, so disabled by default.
+	     * @type {Boolean}
+	     * @default false
+	     */
+	    domEvents: false,
+
+	    /**
+	     * The value for the touchAction property/fallback.
+	     * When set to `compute` it will magically set the correct value based on the added recognizers.
+	     * @type {String}
+	     * @default compute
+	     */
+	    touchAction: TOUCH_ACTION_COMPUTE,
+
+	    /**
+	     * @type {Boolean}
+	     * @default true
+	     */
+	    enable: true,
+
+	    /**
+	     * EXPERIMENTAL FEATURE -- can be removed/changed
+	     * Change the parent input target element.
+	     * If Null, then it is being set the to main element.
+	     * @type {Null|EventTarget}
+	     * @default null
+	     */
+	    inputTarget: null,
+
+	    /**
+	     * force an input class
+	     * @type {Null|Function}
+	     * @default null
+	     */
+	    inputClass: null,
+
+	    /**
+	     * Default recognizer setup when calling `Hammer()`
+	     * When creating a new Manager these will be skipped.
+	     * @type {Array}
+	     */
+	    preset: [
+	        // RecognizerClass, options, [recognizeWith, ...], [requireFailure, ...]
+	        [RotateRecognizer, {enable: false}],
+	        [PinchRecognizer, {enable: false}, ['rotate']],
+	        [SwipeRecognizer, {direction: DIRECTION_HORIZONTAL}],
+	        [PanRecognizer, {direction: DIRECTION_HORIZONTAL}, ['swipe']],
+	        [TapRecognizer],
+	        [TapRecognizer, {event: 'doubletap', taps: 2}, ['tap']],
+	        [PressRecognizer]
+	    ],
+
+	    /**
+	     * Some CSS properties can be used to improve the working of Hammer.
+	     * Add them to this method and they will be set when creating a new Manager.
+	     * @namespace
+	     */
+	    cssProps: {
+	        /**
+	         * Disables text selection to improve the dragging gesture. Mainly for desktop browsers.
+	         * @type {String}
+	         * @default 'none'
+	         */
+	        userSelect: 'none',
+
+	        /**
+	         * Disable the Windows Phone grippers when pressing an element.
+	         * @type {String}
+	         * @default 'none'
+	         */
+	        touchSelect: 'none',
+
+	        /**
+	         * Disables the default callout shown when you touch and hold a touch target.
+	         * On iOS, when you touch and hold a touch target such as a link, Safari displays
+	         * a callout containing information about the link. This property allows you to disable that callout.
+	         * @type {String}
+	         * @default 'none'
+	         */
+	        touchCallout: 'none',
+
+	        /**
+	         * Specifies whether zooming is enabled. Used by IE10>
+	         * @type {String}
+	         * @default 'none'
+	         */
+	        contentZooming: 'none',
+
+	        /**
+	         * Specifies that an entire element should be draggable instead of its contents. Mainly for desktop browsers.
+	         * @type {String}
+	         * @default 'none'
+	         */
+	        userDrag: 'none',
+
+	        /**
+	         * Overrides the highlight color shown when the user taps a link or a JavaScript
+	         * clickable element in iOS. This property obeys the alpha value, if specified.
+	         * @type {String}
+	         * @default 'rgba(0,0,0,0)'
+	         */
+	        tapHighlightColor: 'rgba(0,0,0,0)'
+	    }
+	};
+
+	var STOP = 1;
+	var FORCED_STOP = 2;
+
+	/**
+	 * Manager
+	 * @param {HTMLElement} element
+	 * @param {Object} [options]
+	 * @constructor
+	 */
+	function Manager(element, options) {
+	    this.options = assign({}, Hammer.defaults, options || {});
+
+	    this.options.inputTarget = this.options.inputTarget || element;
+
+	    this.handlers = {};
+	    this.session = {};
+	    this.recognizers = [];
+	    this.oldCssProps = {};
+
+	    this.element = element;
+	    this.input = createInputInstance(this);
+	    this.touchAction = new TouchAction(this, this.options.touchAction);
+
+	    toggleCssProps(this, true);
+
+	    each(this.options.recognizers, function(item) {
+	        var recognizer = this.add(new (item[0])(item[1]));
+	        item[2] && recognizer.recognizeWith(item[2]);
+	        item[3] && recognizer.requireFailure(item[3]);
+	    }, this);
+	}
+
+	Manager.prototype = {
+	    /**
+	     * set options
+	     * @param {Object} options
+	     * @returns {Manager}
+	     */
+	    set: function(options) {
+	        assign(this.options, options);
+
+	        // Options that need a little more setup
+	        if (options.touchAction) {
+	            this.touchAction.update();
+	        }
+	        if (options.inputTarget) {
+	            // Clean up existing event listeners and reinitialize
+	            this.input.destroy();
+	            this.input.target = options.inputTarget;
+	            this.input.init();
+	        }
+	        return this;
+	    },
+
+	    /**
+	     * stop recognizing for this session.
+	     * This session will be discarded, when a new [input]start event is fired.
+	     * When forced, the recognizer cycle is stopped immediately.
+	     * @param {Boolean} [force]
+	     */
+	    stop: function(force) {
+	        this.session.stopped = force ? FORCED_STOP : STOP;
+	    },
+
+	    /**
+	     * run the recognizers!
+	     * called by the inputHandler function on every movement of the pointers (touches)
+	     * it walks through all the recognizers and tries to detect the gesture that is being made
+	     * @param {Object} inputData
+	     */
+	    recognize: function(inputData) {
+	        var session = this.session;
+	        if (session.stopped) {
+	            return;
+	        }
+
+	        // run the touch-action polyfill
+	        this.touchAction.preventDefaults(inputData);
+
+	        var recognizer;
+	        var recognizers = this.recognizers;
+
+	        // this holds the recognizer that is being recognized.
+	        // so the recognizer's state needs to be BEGAN, CHANGED, ENDED or RECOGNIZED
+	        // if no recognizer is detecting a thing, it is set to `null`
+	        var curRecognizer = session.curRecognizer;
+
+	        // reset when the last recognizer is recognized
+	        // or when we're in a new session
+	        if (!curRecognizer || (curRecognizer && curRecognizer.state & STATE_RECOGNIZED)) {
+	            curRecognizer = session.curRecognizer = null;
+	        }
+
+	        var i = 0;
+	        while (i < recognizers.length) {
+	            recognizer = recognizers[i];
+
+	            // find out if we are allowed try to recognize the input for this one.
+	            // 1.   allow if the session is NOT forced stopped (see the .stop() method)
+	            // 2.   allow if we still haven't recognized a gesture in this session, or the this recognizer is the one
+	            //      that is being recognized.
+	            // 3.   allow if the recognizer is allowed to run simultaneous with the current recognized recognizer.
+	            //      this can be setup with the `recognizeWith()` method on the recognizer.
+	            if (session.stopped !== FORCED_STOP && ( // 1
+	                    !curRecognizer || recognizer == curRecognizer || // 2
+	                    recognizer.canRecognizeWith(curRecognizer))) { // 3
+	                recognizer.recognize(inputData);
+	            } else {
+	                recognizer.reset();
+	            }
+
+	            // if the recognizer has been recognizing the input as a valid gesture, we want to store this one as the
+	            // current active recognizer. but only if we don't already have an active recognizer
+	            if (!curRecognizer && recognizer.state & (STATE_BEGAN | STATE_CHANGED | STATE_ENDED)) {
+	                curRecognizer = session.curRecognizer = recognizer;
+	            }
+	            i++;
+	        }
+	    },
+
+	    /**
+	     * get a recognizer by its event name.
+	     * @param {Recognizer|String} recognizer
+	     * @returns {Recognizer|Null}
+	     */
+	    get: function(recognizer) {
+	        if (recognizer instanceof Recognizer) {
+	            return recognizer;
+	        }
+
+	        var recognizers = this.recognizers;
+	        for (var i = 0; i < recognizers.length; i++) {
+	            if (recognizers[i].options.event == recognizer) {
+	                return recognizers[i];
+	            }
+	        }
+	        return null;
+	    },
+
+	    /**
+	     * add a recognizer to the manager
+	     * existing recognizers with the same event name will be removed
+	     * @param {Recognizer} recognizer
+	     * @returns {Recognizer|Manager}
+	     */
+	    add: function(recognizer) {
+	        if (invokeArrayArg(recognizer, 'add', this)) {
+	            return this;
+	        }
+
+	        // remove existing
+	        var existing = this.get(recognizer.options.event);
+	        if (existing) {
+	            this.remove(existing);
+	        }
+
+	        this.recognizers.push(recognizer);
+	        recognizer.manager = this;
+
+	        this.touchAction.update();
+	        return recognizer;
+	    },
+
+	    /**
+	     * remove a recognizer by name or instance
+	     * @param {Recognizer|String} recognizer
+	     * @returns {Manager}
+	     */
+	    remove: function(recognizer) {
+	        if (invokeArrayArg(recognizer, 'remove', this)) {
+	            return this;
+	        }
+
+	        recognizer = this.get(recognizer);
+
+	        // let's make sure this recognizer exists
+	        if (recognizer) {
+	            var recognizers = this.recognizers;
+	            var index = inArray(recognizers, recognizer);
+
+	            if (index !== -1) {
+	                recognizers.splice(index, 1);
+	                this.touchAction.update();
+	            }
+	        }
+
+	        return this;
+	    },
+
+	    /**
+	     * bind event
+	     * @param {String} events
+	     * @param {Function} handler
+	     * @returns {EventEmitter} this
+	     */
+	    on: function(events, handler) {
+	        if (events === undefined) {
+	            return;
+	        }
+	        if (handler === undefined) {
+	            return;
+	        }
+
+	        var handlers = this.handlers;
+	        each(splitStr(events), function(event) {
+	            handlers[event] = handlers[event] || [];
+	            handlers[event].push(handler);
+	        });
+	        return this;
+	    },
+
+	    /**
+	     * unbind event, leave emit blank to remove all handlers
+	     * @param {String} events
+	     * @param {Function} [handler]
+	     * @returns {EventEmitter} this
+	     */
+	    off: function(events, handler) {
+	        if (events === undefined) {
+	            return;
+	        }
+
+	        var handlers = this.handlers;
+	        each(splitStr(events), function(event) {
+	            if (!handler) {
+	                delete handlers[event];
+	            } else {
+	                handlers[event] && handlers[event].splice(inArray(handlers[event], handler), 1);
+	            }
+	        });
+	        return this;
+	    },
+
+	    /**
+	     * emit event to the listeners
+	     * @param {String} event
+	     * @param {Object} data
+	     */
+	    emit: function(event, data) {
+	        // we also want to trigger dom events
+	        if (this.options.domEvents) {
+	            triggerDomEvent(event, data);
+	        }
+
+	        // no handlers, so skip it all
+	        var handlers = this.handlers[event] && this.handlers[event].slice();
+	        if (!handlers || !handlers.length) {
+	            return;
+	        }
+
+	        data.type = event;
+	        data.preventDefault = function() {
+	            data.srcEvent.preventDefault();
+	        };
+
+	        var i = 0;
+	        while (i < handlers.length) {
+	            handlers[i](data);
+	            i++;
+	        }
+	    },
+
+	    /**
+	     * destroy the manager and unbinds all events
+	     * it doesn't unbind dom events, that is the user own responsibility
+	     */
+	    destroy: function() {
+	        this.element && toggleCssProps(this, false);
+
+	        this.handlers = {};
+	        this.session = {};
+	        this.input.destroy();
+	        this.element = null;
+	    }
+	};
+
+	/**
+	 * add/remove the css properties as defined in manager.options.cssProps
+	 * @param {Manager} manager
+	 * @param {Boolean} add
+	 */
+	function toggleCssProps(manager, add) {
+	    var element = manager.element;
+	    if (!element.style) {
+	        return;
+	    }
+	    var prop;
+	    each(manager.options.cssProps, function(value, name) {
+	        prop = prefixed(element.style, name);
+	        if (add) {
+	            manager.oldCssProps[prop] = element.style[prop];
+	            element.style[prop] = value;
+	        } else {
+	            element.style[prop] = manager.oldCssProps[prop] || '';
+	        }
+	    });
+	    if (!add) {
+	        manager.oldCssProps = {};
+	    }
+	}
+
+	/**
+	 * trigger dom event
+	 * @param {String} event
+	 * @param {Object} data
+	 */
+	function triggerDomEvent(event, data) {
+	    var gestureEvent = document.createEvent('Event');
+	    gestureEvent.initEvent(event, true, true);
+	    gestureEvent.gesture = data;
+	    data.target.dispatchEvent(gestureEvent);
+	}
+
+	assign(Hammer, {
+	    INPUT_START: INPUT_START,
+	    INPUT_MOVE: INPUT_MOVE,
+	    INPUT_END: INPUT_END,
+	    INPUT_CANCEL: INPUT_CANCEL,
+
+	    STATE_POSSIBLE: STATE_POSSIBLE,
+	    STATE_BEGAN: STATE_BEGAN,
+	    STATE_CHANGED: STATE_CHANGED,
+	    STATE_ENDED: STATE_ENDED,
+	    STATE_RECOGNIZED: STATE_RECOGNIZED,
+	    STATE_CANCELLED: STATE_CANCELLED,
+	    STATE_FAILED: STATE_FAILED,
+
+	    DIRECTION_NONE: DIRECTION_NONE,
+	    DIRECTION_LEFT: DIRECTION_LEFT,
+	    DIRECTION_RIGHT: DIRECTION_RIGHT,
+	    DIRECTION_UP: DIRECTION_UP,
+	    DIRECTION_DOWN: DIRECTION_DOWN,
+	    DIRECTION_HORIZONTAL: DIRECTION_HORIZONTAL,
+	    DIRECTION_VERTICAL: DIRECTION_VERTICAL,
+	    DIRECTION_ALL: DIRECTION_ALL,
+
+	    Manager: Manager,
+	    Input: Input,
+	    TouchAction: TouchAction,
+
+	    TouchInput: TouchInput,
+	    MouseInput: MouseInput,
+	    PointerEventInput: PointerEventInput,
+	    TouchMouseInput: TouchMouseInput,
+	    SingleTouchInput: SingleTouchInput,
+
+	    Recognizer: Recognizer,
+	    AttrRecognizer: AttrRecognizer,
+	    Tap: TapRecognizer,
+	    Pan: PanRecognizer,
+	    Swipe: SwipeRecognizer,
+	    Pinch: PinchRecognizer,
+	    Rotate: RotateRecognizer,
+	    Press: PressRecognizer,
+
+	    on: addEventListeners,
+	    off: removeEventListeners,
+	    each: each,
+	    merge: merge,
+	    extend: extend,
+	    assign: assign,
+	    inherit: inherit,
+	    bindFn: bindFn,
+	    prefixed: prefixed
+	});
+
+	// this prevents errors when Hammer is loaded in the presence of an AMD
+	//  style loader but by script tag, not by the loader.
+	var freeGlobal = (typeof window !== 'undefined' ? window : (typeof self !== 'undefined' ? self : {})); // jshint ignore:line
+	freeGlobal.Hammer = Hammer;
+
+	if (true) {
+	    !(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
+	        return Hammer;
+	    }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else if (typeof module != 'undefined' && module.exports) {
+	    module.exports = Hammer;
+	} else {
+	    window[exportName] = Hammer;
+	}
+
+	})(window, document, 'Hammer');
+
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(33)
+	__vue_script__ = __webpack_require__(35)
+	__vue_template__ = __webpack_require__(36)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "E:\\nodejs\\vue-demo\\src\\components\\home.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(34);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(7)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-504be713&file=home.vue!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./home.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-504be713&file=home.vue!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./home.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(6)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\r\n\t.home{\r\n\t\t/*-webkit-user-select: none;*/\r\n\t\t-webkit-user-select: none;\r\n\t\t   -moz-user-select: none;\r\n\t\t    -ms-user-select: none;\r\n\t\t        user-select: none;\r\n\t\t/*overflow-y: scroll;*/\r\n\t\toverflow: auto;\r\n\t\t/*-webkit-*/\r\n\t\tpadding: 50px 0;\r\n\t}\r\n\t.home-large{\r\n\t\tpadding: 0px;\r\n\t}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _store = __webpack_require__(14);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _actions = __webpack_require__(16);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// <template>
+	// <!-- <div class="home"> -->
+	// <div v-bind:class="{ 'home-large' : !show }" class="home" v-touch:pan="onPan"
+	//    		v-touch-options:pan="{threshold:10}">
+	//    <p v-touch:tap="onTap">This is home!</p>
+	//    <p>This is noToShow!</p>
+	//    <p>This is yesToShow!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is home!</p>
+	//    <p>This is end!</p>
+	// </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+		store: _store2.default,
+		methods: {
+			onTap: function onTap(e) {
+				alert(e.type);
+			},
+			onPan: function onPan(e) {
+				if (e.deltaY > 0 && e.distance > 50) {
+					// if(!this.show){
+					this.yesToShow();
+					return true;
+
+					// }
+				} else if (e.deltaY < 0 && e.distance > 50) {
+					// if(this.show){
+					this.noToShow();
+					return true;
+					// }
+				}
+				e.target.parentNode.scrollTop = e.deltaY;
+				console.log('(' + e.deltaX + ',' + e.deltaY + ')');
+				// e.target.parentNode.scrollTop = e.deltaY
+				// console.log(e.target.parentNode.tagName.scrollTop = e.deltaY)
+			}
+		},
+		vuex: {
+			getters: {
+				show: function show(state) {
+					return state.isshow;
+				}
+			},
+			actions: {
+				yesToShow: _actions.yesToShow, noToShow: _actions.noToShow
+			}
+		}
+	};
+
+	// </script>
+	//
+	// <style>
+	// 	.home{
+	// 		/*-webkit-user-select: none;*/
+	// 		user-select: none;
+	// 		/*overflow-y: scroll;*/
+	// 		overflow: auto;
+	// 		/*-webkit-*/
+	// 		padding: 50px 0;
+	// 	}
+	// 	.home-large{
+	// 		padding: 0px;
+	// 	}
+	// </style>
+
+/***/ },
+/* 36 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n<!-- <div class=\"home\"> -->\r\n<div v-bind:class=\"{ 'home-large' : !show }\" class=\"home\" v-touch:pan=\"onPan\"\r\n   \t\tv-touch-options:pan=\"{threshold:10}\">\r\n   <p v-touch:tap=\"onTap\">This is home!</p>\r\n   <p>This is noToShow!</p>\r\n   <p>This is yesToShow!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is end!</p>\r\n</div>\r\n";
 
 /***/ }
 /******/ ]);
