@@ -46,16 +46,17 @@ export default{
 			if(e.deltaY > 0 && e.distance > 50){
 				// if(!this.show){
 					this.yesToShow()
+					document.body.scrollTop -= e.distance
 					return true
 
 				// }
 			}else if(e.deltaY < 0 && e.distance > 50){
 				// if(this.show){
 					this.noToShow()
+					document.body.scrollTop += e.distance
 					return true
 				// }
 			}
-			e.target.parentNode.scrollTop = e.deltaY
 			console.log('(' +e.deltaX + ',' + e.deltaY + ')')
 			// e.target.parentNode.scrollTop = e.deltaY
 			// console.log(e.target.parentNode.tagName.scrollTop = e.deltaY)
