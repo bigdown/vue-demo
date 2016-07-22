@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot",
-    "build": "webpack -p"
+    "dev": "webpack-dev-server --inline --hot --port 8088",
+    "build": "webpack -p",
+    "server": "node server.js",
+    "start": "node server.js & npm run dev"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +25,7 @@
     "vue-hot-reload-api": "^1.2.0",
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^7.3.0",
+    "vue-resource": "^0.9.3",
     "vue-touch": "^1.1.0",
     "webpack": "^1.12.2"
   },

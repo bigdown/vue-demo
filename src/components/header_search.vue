@@ -1,5 +1,5 @@
 <template>
-	<header v-if="show" :transition="menushow">
+	<header v-if="show" transition="menushow">
 		<input class="input-default" type="text" placeholder="搜索话题、问题或人" />
 	</header>
 </template>
@@ -56,13 +56,13 @@ export default {
 		background: url(../assets/search.png) no-repeat #49A1EB;
 		color: #6CAFE7;
 		background-size: 40px 40px;
-	}
-	.footershow-transition {
+	}	
+	.menushow-transition {
 		transition: all .3s ease;
 	}
-	.footershow-enter, .footershow-leave {
+	.menushow-enter, .menushow-leave {
 		height: 0;
 		opacity: 0;
-	}	
+	}
 
 </style>

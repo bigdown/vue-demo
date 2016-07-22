@@ -3,8 +3,14 @@ import App from './app.vue'
 import VueRouter from 'vue-router'
 import VueTouch from 'vue-touch'
 import Home from './components/home.vue'
+import VueResource from 'vue-resource'
+
 Vue.use(VueRouter)
 Vue.use(VueTouch)
+Vue.use(VueResource)
+Vue.http.options.emulateHTTP = true
+Vue.http.options.emulateJSON = true
+// Vue.http.headers.common['Authorization'] = 'TS';
 
 var router = new VueRouter({
 	hashbang: true,

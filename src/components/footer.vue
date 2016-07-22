@@ -1,14 +1,13 @@
 <template>
-	<footer v-if="show" :transition="footershow">
+	<footer v-if="show" transition="footershow">
 		<ul>
-<!-- 			<li v-for="menu in menus" v-link="{ path: '/'+menu.text}" v-bind:class="'icon-'+menu.text">
-			</li> -->
 			<li v-link="{ path: '/home' }" class="icon-home"></li>
 			<li v-link="{ path: '/clame' }" class="icon-clame"></li>
 			<li v-link="{ path: '/line' }" class="icon-line"></li>
 			<li v-link="{ path: '/message' }" class="icon-message"></li>
 			<li v-link="{ path: '/menu' }" class="icon-menu"></li>
 		</ul>
+<!-- 		<i v-on:click="addtype" class="add" v-bind:class="[clicktype?'add-hover':'add-default']"></i> -->
 	</footer>
 </template>
 
@@ -19,11 +18,13 @@ export default {
 	store,
 	data(){
 		return {
-
+			clicktype:false
 		}
 	},
 	methods:{
-
+		addtype(){
+			this.clicktype = !this.clicktype
+		}
 	},
 	vuex:{
 		getters:{
@@ -104,7 +105,23 @@ export default {
 		transition: all .3s ease;
 	}
 	.footershow-enter, .footershow-leave {
-		/*top: -50px;*/
+		height: 0;
+		opacity: 0;
 	}
-
+	footer .add{
+		position: fixed;
+		right: 10px;
+		bottom: 60px;
+		width: 60px;
+		height: 60px;
+		background-size: 60px 60px;
+		border-radius: 60px;
+		display: inline-block;
+	}
+	.add-default{
+		background: url(../assets/add.png) center center no-repeat;
+	}
+	.add-hover{
+		background: url(../assets/add-hover.png) center center no-repeat;
+	}
 </style>

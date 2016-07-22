@@ -54,22 +54,30 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _vueRouter = __webpack_require__(29);
+	var _vueRouter = __webpack_require__(31);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _vueTouch = __webpack_require__(30);
+	var _vueTouch = __webpack_require__(32);
 
 	var _vueTouch2 = _interopRequireDefault(_vueTouch);
 
-	var _home = __webpack_require__(32);
+	var _home = __webpack_require__(34);
 
 	var _home2 = _interopRequireDefault(_home);
+
+	var _vueResource = __webpack_require__(39);
+
+	var _vueResource2 = _interopRequireDefault(_vueResource);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_vue2.default.use(_vueRouter2.default);
 	_vue2.default.use(_vueTouch2.default);
+	_vue2.default.use(_vueResource2.default);
+	_vue2.default.http.options.emulateHTTP = true;
+	_vue2.default.http.options.emulateJSON = true;
+	_vue2.default.http.headers.common['Authorization'] = 'TS';
 
 	var router = new _vueRouter2.default({
 	    hashbang: true,
@@ -10328,7 +10336,7 @@
 	var __vue_script__, __vue_template__
 	__webpack_require__(4)
 	__vue_script__ = __webpack_require__(8)
-	__vue_template__ = __webpack_require__(28)
+	__vue_template__ = __webpack_require__(30)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10821,7 +10829,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\thtml[_v-1b16c596],body[_v-1b16c596]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\twidth: 100%;\r\n\t}\r\n\theader[_v-1b16c596]{\r\n\t\tposition: fixed;\r\n\t\ttop: 0px;\r\n\t\tleft: 0px;\r\n\t\tright: 0px;\r\n\t\t/*width: 100%;*/\r\n\t\theight: 40px;\r\n\t\t/*text-align: center;*/\r\n\t\tpadding: 5px;\r\n\t\tbackground: #1D8AE7;\r\n\t}\r\n\tinput[_v-1b16c596]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\ttext-indent: 40px;\r\n\t\theight: 40px;\r\n\t\twidth: 100%;\r\n\t\tfont-size: 20px;\r\n\t\tborder: none;\r\n\t}\r\n\t.input-default[_v-1b16c596]{\r\n\t\tbackground: url(" + __webpack_require__(12) + ") no-repeat #49A1EB;\r\n\t\tcolor: #6CAFE7;\r\n\t\tbackground-size: 40px 40px;\r\n\t}\r\n\t.footershow-transition[_v-1b16c596] {\r\n\t\t-webkit-transition: all .3s ease;\r\n\t\ttransition: all .3s ease;\r\n\t}\r\n\t.footershow-enter[_v-1b16c596], .footershow-leave[_v-1b16c596] {\r\n\t\theight: 0;\r\n\t\topacity: 0;\r\n\t}\t\r\n\r\n", ""]);
+	exports.push([module.id, "\r\n\thtml[_v-1b16c596],body[_v-1b16c596]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\twidth: 100%;\r\n\t}\r\n\theader[_v-1b16c596]{\r\n\t\tposition: fixed;\r\n\t\ttop: 0px;\r\n\t\tleft: 0px;\r\n\t\tright: 0px;\r\n\t\t/*width: 100%;*/\r\n\t\theight: 40px;\r\n\t\t/*text-align: center;*/\r\n\t\tpadding: 5px;\r\n\t\tbackground: #1D8AE7;\r\n\t}\r\n\tinput[_v-1b16c596]{\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t\ttext-indent: 40px;\r\n\t\theight: 40px;\r\n\t\twidth: 100%;\r\n\t\tfont-size: 20px;\r\n\t\tborder: none;\r\n\t}\r\n\t.input-default[_v-1b16c596]{\r\n\t\tbackground: url(" + __webpack_require__(12) + ") no-repeat #49A1EB;\r\n\t\tcolor: #6CAFE7;\r\n\t\tbackground-size: 40px 40px;\r\n\t}\t\r\n\t.menushow-transition[_v-1b16c596] {\r\n\t\t-webkit-transition: all .3s ease;\r\n\t\ttransition: all .3s ease;\r\n\t}\r\n\t.menushow-enter[_v-1b16c596], .menushow-leave[_v-1b16c596] {\r\n\t\theight: 0;\r\n\t\topacity: 0;\r\n\t}\r\n\r\n", ""]);
 
 	// exports
 
@@ -10851,7 +10859,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// <template>
-	// 	<header v-if="show" :transition="menushow">
+	// 	<header v-if="show" transition="menushow">
 	// 		<input class="input-default" type="text" placeholder="搜索话题、问题或人" />
 	// 	</header>
 	// </template>
@@ -10909,14 +10917,14 @@
 	// 		background: url(../assets/search.png) no-repeat #49A1EB;
 	// 		color: #6CAFE7;
 	// 		background-size: 40px 40px;
-	// 	}
-	// 	.footershow-transition {
+	// 	}	
+	// 	.menushow-transition {
 	// 		transition: all .3s ease;
 	// 	}
-	// 	.footershow-enter, .footershow-leave {
+	// 	.menushow-enter, .menushow-leave {
 	// 		height: 0;
 	// 		opacity: 0;
-	// 	}	
+	// 	}
 	//
 	// </style>
 
@@ -11662,7 +11670,7 @@
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\t<header v-if=\"show\" :transition=\"menushow\" _v-1b16c596=\"\">\n\t\t<input class=\"input-default\" type=\"text\" placeholder=\"搜索话题、问题或人\" _v-1b16c596=\"\">\n\t</header>\n";
+	module.exports = "\n\t<header v-if=\"show\" transition=\"menushow\" _v-1b16c596=\"\">\n\t\t<input class=\"input-default\" type=\"text\" placeholder=\"搜索话题、问题或人\" _v-1b16c596=\"\">\n\t</header>\n";
 
 /***/ },
 /* 18 */
@@ -11670,8 +11678,8 @@
 
 	var __vue_script__, __vue_template__
 	__webpack_require__(19)
-	__vue_script__ = __webpack_require__(26)
-	__vue_template__ = __webpack_require__(27)
+	__vue_script__ = __webpack_require__(28)
+	__vue_template__ = __webpack_require__(29)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -11722,7 +11730,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\tfooter[_v-69c4da62]{\r\n\t\tposition: fixed;\r\n\t\tbottom: 0px;\r\n\t\tleft: 0px;\r\n\t\tright: 0px;\r\n\t\theight: 40px;\r\n\t\tline-height: 40px;\r\n\t\ttext-align: center;\r\n\t\tborder-top: 1px solid #DDD;\r\n\t\tpadding: 5px;\r\n\t\tbackground: #FFF;\r\n\t}\r\n\tul[_v-69c4da62]{\r\n\t\tbox-sizing: border-box;\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t}\r\n\tli[_v-69c4da62]{\r\n\t\t/*display: inline-block;*/\r\n\t\twidth:20%;\r\n\t\tfloat: left;\r\n\t\tlist-style: none;\r\n\t\theight: 40px;\r\n\t}\r\n\t\r\n\tli[_v-69c4da62]:before{\r\n\t\tcontent: '';\r\n\t}\r\n\t.icon-message[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(21) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-clame[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(22) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-home[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(23) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-line[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(24) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-menu[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(25) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.v-link-active[_v-69c4da62]{\r\n\t\t-webkit-filter: grayscale(0);\r\n\t\tfilter: grayscale(0);\r\n\t}\r\n\t.footershow-transition[_v-69c4da62] {\r\n\t\t-webkit-transition: all .3s ease;\r\n\t\ttransition: all .3s ease;\r\n\t}\r\n\t.footershow-enter[_v-69c4da62], .footershow-leave[_v-69c4da62] {\r\n\t\t/*top: -50px;*/\r\n\t}\r\n\r\n", ""]);
+	exports.push([module.id, "\r\n\tfooter[_v-69c4da62]{\r\n\t\tposition: fixed;\r\n\t\tbottom: 0px;\r\n\t\tleft: 0px;\r\n\t\tright: 0px;\r\n\t\theight: 40px;\r\n\t\tline-height: 40px;\r\n\t\ttext-align: center;\r\n\t\tborder-top: 1px solid #DDD;\r\n\t\tpadding: 5px;\r\n\t\tbackground: #FFF;\r\n\t}\r\n\tul[_v-69c4da62]{\r\n\t\tbox-sizing: border-box;\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t}\r\n\tli[_v-69c4da62]{\r\n\t\t/*display: inline-block;*/\r\n\t\twidth:20%;\r\n\t\tfloat: left;\r\n\t\tlist-style: none;\r\n\t\theight: 40px;\r\n\t}\r\n\t\r\n\tli[_v-69c4da62]:before{\r\n\t\tcontent: '';\r\n\t}\r\n\t.icon-message[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(21) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-clame[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(22) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-home[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(23) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-line[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(24) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.icon-menu[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(25) + ") center center no-repeat;\r\n\t\tbackground-size: 40px 40px;\r\n\t\t-webkit-filter: grayscale(1);\r\n\t\tfilter: grayscale(1);\r\n\t}\r\n\t.v-link-active[_v-69c4da62]{\r\n\t\t-webkit-filter: grayscale(0);\r\n\t\tfilter: grayscale(0);\r\n\t}\r\n\t.footershow-transition[_v-69c4da62] {\r\n\t\t-webkit-transition: all .3s ease;\r\n\t\ttransition: all .3s ease;\r\n\t}\r\n\t.footershow-enter[_v-69c4da62], .footershow-leave[_v-69c4da62] {\r\n\t\theight: 0;\r\n\t\topacity: 0;\r\n\t}\r\n\tfooter .add[_v-69c4da62]{\r\n\t\tposition: fixed;\r\n\t\tright: 10px;\r\n\t\tbottom: 60px;\r\n\t\twidth: 60px;\r\n\t\theight: 60px;\r\n\t\tbackground-size: 60px 60px;\r\n\t\tborder-radius: 60px;\r\n\t\tdisplay: inline-block;\r\n\t}\r\n\t.add-default[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(26) + ") center center no-repeat;\r\n\t}\r\n\t.add-hover[_v-69c4da62]{\r\n\t\tbackground: url(" + __webpack_require__(27) + ") center center no-repeat;\r\n\t}\r\n", ""]);
 
 	// exports
 
@@ -11759,6 +11767,18 @@
 
 /***/ },
 /* 26 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ },
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11776,16 +11796,15 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// <template>
-	// 	<footer v-if="show" :transition="footershow">
+	// 	<footer v-if="show" transition="footershow">
 	// 		<ul>
-	// <!-- 			<li v-for="menu in menus" v-link="{ path: '/'+menu.text}" v-bind:class="'icon-'+menu.text">
-	// 			</li> -->
 	// 			<li v-link="{ path: '/home' }" class="icon-home"></li>
 	// 			<li v-link="{ path: '/clame' }" class="icon-clame"></li>
 	// 			<li v-link="{ path: '/line' }" class="icon-line"></li>
 	// 			<li v-link="{ path: '/message' }" class="icon-message"></li>
 	// 			<li v-link="{ path: '/menu' }" class="icon-menu"></li>
 	// 		</ul>
+	// <!-- 		<i v-on:click="addtype" class="add" v-bind:class="[clicktype?'add-hover':'add-default']"></i> -->
 	// 	</footer>
 	// </template>
 	//
@@ -11793,10 +11812,16 @@
 	exports.default = {
 		store: _store2.default,
 		data: function data() {
-			return {};
+			return {
+				clicktype: false
+			};
 		},
 
-		methods: {},
+		methods: {
+			addtype: function addtype() {
+				this.clicktype = !this.clicktype;
+			}
+		},
 		vuex: {
 			getters: {
 				title: function title(state) {
@@ -11880,25 +11905,41 @@
 	// 		transition: all .3s ease;
 	// 	}
 	// 	.footershow-enter, .footershow-leave {
-	// 		/*top: -50px;*/
+	// 		height: 0;
+	// 		opacity: 0;
 	// 	}
-	//
+	// 	footer .add{
+	// 		position: fixed;
+	// 		right: 10px;
+	// 		bottom: 60px;
+	// 		width: 60px;
+	// 		height: 60px;
+	// 		background-size: 60px 60px;
+	// 		border-radius: 60px;
+	// 		display: inline-block;
+	// 	}
+	// 	.add-default{
+	// 		background: url(../assets/add.png) center center no-repeat;
+	// 	}
+	// 	.add-hover{
+	// 		background: url(../assets/add-hover.png) center center no-repeat;
+	// 	}
 	// </style>
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\t<footer v-if=\"show\" :transition=\"footershow\" _v-69c4da62=\"\">\n\t\t<ul _v-69c4da62=\"\">\n<!-- \t\t\t<li v-for=\"menu in menus\" v-link=\"{ path: '/'+menu.text}\" v-bind:class=\"'icon-'+menu.text\">\n\t\t\t</li> -->\n\t\t\t<li v-link=\"{ path: '/home' }\" class=\"icon-home\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/clame' }\" class=\"icon-clame\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/line' }\" class=\"icon-line\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/message' }\" class=\"icon-message\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/menu' }\" class=\"icon-menu\" _v-69c4da62=\"\"></li>\n\t\t</ul>\n\t</footer>\n";
+	module.exports = "\n\t<footer v-if=\"show\" transition=\"footershow\" _v-69c4da62=\"\">\n\t\t<ul _v-69c4da62=\"\">\n\t\t\t<li v-link=\"{ path: '/home' }\" class=\"icon-home\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/clame' }\" class=\"icon-clame\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/line' }\" class=\"icon-line\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/message' }\" class=\"icon-message\" _v-69c4da62=\"\"></li>\n\t\t\t<li v-link=\"{ path: '/menu' }\" class=\"icon-menu\" _v-69c4da62=\"\"></li>\n\t\t</ul>\n<!-- \t\t<i v-on:click=\"addtype\" class=\"add\" v-bind:class=\"[clicktype?'add-hover':'add-default']\"></i> -->\n\t</footer>\n";
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div class=\"content\" _v-b9301b62=\"\">\n  \t<hea _v-b9301b62=\"\"></hea>\n    <router-view _v-b9301b62=\"\"></router-view>\n    <foo _v-b9301b62=\"\"></foo>\n  </div>\n";
 
 /***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -14612,14 +14653,14 @@
 	}));
 
 /***/ },
-/* 30 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	;(function () {
 
 	  var vueTouch = {}
 	  var Hammer =  true
-	    ? __webpack_require__(31)
+	    ? __webpack_require__(33)
 	    : window.Hammer
 	  var gestures = ['tap', 'pan', 'pinch', 'press', 'rotate', 'swipe']
 	  var directions = ['up', 'down', 'left', 'right', 'horizontal', 'vertical', 'all']
@@ -14782,7 +14823,7 @@
 
 
 /***/ },
-/* 31 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
@@ -17431,13 +17472,13 @@
 
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(33)
-	__vue_script__ = __webpack_require__(35)
-	__vue_template__ = __webpack_require__(36)
+	__webpack_require__(35)
+	__vue_script__ = __webpack_require__(37)
+	__vue_template__ = __webpack_require__(38)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17454,13 +17495,13 @@
 	})()}
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(34);
+	var content = __webpack_require__(36);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(7)(content, {});
@@ -17480,7 +17521,7 @@
 	}
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
@@ -17488,13 +17529,13 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\t.home{\r\n\t\t/*-webkit-user-select: none;*/\r\n\t\t-webkit-user-select: none;\r\n\t\t   -moz-user-select: none;\r\n\t\t    -ms-user-select: none;\r\n\t\t        user-select: none;\r\n\t\t/*overflow-y: scroll;*/\r\n\t\toverflow: auto;\r\n\t\t/*-webkit-*/\r\n\t\tpadding: 50px 0;\r\n\t}\r\n\t.home-large{\r\n\t\tpadding: 0px;\r\n\t}\r\n", ""]);
+	exports.push([module.id, "\r\n\t.home{\r\n\t\t-webkit-user-select: none;\r\n\t\t   -moz-user-select: none;\r\n\t\t    -ms-user-select: none;\r\n\t\t        user-select: none;\r\n\t\toverflow: auto;\r\n\t\tpadding: 50px 0;\r\n\t}\r\n\t.home-large{\r\n\t\tpadding: 0px;\r\n\t}\t\r\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17512,9 +17553,12 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// <template>
-	// <!-- <div class="home"> -->
-	// <div v-bind:class="{ 'home-large' : !show }" class="home" v-touch:pan="onPan"
-	//    		v-touch-options:pan="{threshold:10}">
+	// <div v-bind:class="{ 'home-large' : !show }" class="home" 
+	// 	v-touch:panstart="panstart"
+	// 	v-touch:panend="panend"
+	// 	v-touch:panup="panup"
+	// 	v-touch:pandown="pandown"
+	// 	>
 	//    <p v-touch:tap="onTap">This is home!</p>
 	//    <p>This is noToShow!</p>
 	//    <p>This is yesToShow!</p>
@@ -17549,28 +17593,37 @@
 	// <script>
 	exports.default = {
 		store: _store2.default,
+		data: function data() {
+			return {
+				top: 0
+			};
+		},
+
+		created: function created() {},
+		ready: function ready() {
+			this.$http.get('/api/default.json').then(function (response) {
+				alert('success');
+			}, function (response) {
+				alert('error');
+			});
+		},
 		methods: {
 			onTap: function onTap(e) {
 				alert(e.type);
 			},
-			onPan: function onPan(e) {
-				if (e.deltaY > 0 && e.distance > 50) {
-					// if(!this.show){
-					this.yesToShow();
-					document.body.scrollTop -= e.distance;
-					return true;
-
-					// }
-				} else if (e.deltaY < 0 && e.distance > 50) {
-					// if(this.show){
-					this.noToShow();
-					document.body.scrollTop += e.distance;
-					return true;
-					// }
-				}
-				console.log('(' + e.deltaX + ',' + e.deltaY + ')');
-				// e.target.parentNode.scrollTop = e.deltaY
-				// console.log(e.target.parentNode.tagName.scrollTop = e.deltaY)
+			panstart: function panstart(e) {
+				this.top = document.body.scrollTop;
+			},
+			panend: function panend(e) {
+				console.log(e.type);
+			},
+			panup: function panup(e) {
+				document.body.scrollTop = this.top - e.deltaY;
+				this.noToShow();
+			},
+			pandown: function pandown(e) {
+				document.body.scrollTop = this.top - e.deltaY;
+				this.yesToShow();
 			}
 		},
 		vuex: {
@@ -17589,23 +17642,1337 @@
 	//
 	// <style>
 	// 	.home{
-	// 		/*-webkit-user-select: none;*/
 	// 		user-select: none;
-	// 		/*overflow-y: scroll;*/
 	// 		overflow: auto;
-	// 		/*-webkit-*/
 	// 		padding: 50px 0;
 	// 	}
 	// 	.home-large{
 	// 		padding: 0px;
-	// 	}
+	// 	}	
 	// </style>
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<!-- <div class=\"home\"> -->\r\n<div v-bind:class=\"{ 'home-large' : !show }\" class=\"home\" v-touch:pan=\"onPan\"\r\n   \t\tv-touch-options:pan=\"{threshold:10}\">\r\n   <p v-touch:tap=\"onTap\">This is home!</p>\r\n   <p>This is noToShow!</p>\r\n   <p>This is yesToShow!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is end!</p>\r\n</div>\r\n";
+	module.exports = "\r\n<div v-bind:class=\"{ 'home-large' : !show }\" class=\"home\" \r\n\tv-touch:panstart=\"panstart\"\r\n\tv-touch:panend=\"panend\"\r\n\tv-touch:panup=\"panup\"\r\n\tv-touch:pandown=\"pandown\"\r\n\t>\r\n   <p v-touch:tap=\"onTap\">This is home!</p>\r\n   <p>This is noToShow!</p>\r\n   <p>This is yesToShow!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is home!</p>\r\n   <p>This is end!</p>\r\n</div>\r\n";
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	/*!
+	 * vue-resource v0.9.3
+	 * https://github.com/vuejs/vue-resource
+	 * Released under the MIT License.
+	 */
+
+	'use strict';
+
+	/**
+	 * Promises/A+ polyfill v1.1.4 (https://github.com/bramstein/promis)
+	 */
+
+	var RESOLVED = 0;
+	var REJECTED = 1;
+	var PENDING = 2;
+
+	function Promise$2(executor) {
+
+	    this.state = PENDING;
+	    this.value = undefined;
+	    this.deferred = [];
+
+	    var promise = this;
+
+	    try {
+	        executor(function (x) {
+	            promise.resolve(x);
+	        }, function (r) {
+	            promise.reject(r);
+	        });
+	    } catch (e) {
+	        promise.reject(e);
+	    }
+	}
+
+	Promise$2.reject = function (r) {
+	    return new Promise$2(function (resolve, reject) {
+	        reject(r);
+	    });
+	};
+
+	Promise$2.resolve = function (x) {
+	    return new Promise$2(function (resolve, reject) {
+	        resolve(x);
+	    });
+	};
+
+	Promise$2.all = function all(iterable) {
+	    return new Promise$2(function (resolve, reject) {
+	        var count = 0,
+	            result = [];
+
+	        if (iterable.length === 0) {
+	            resolve(result);
+	        }
+
+	        function resolver(i) {
+	            return function (x) {
+	                result[i] = x;
+	                count += 1;
+
+	                if (count === iterable.length) {
+	                    resolve(result);
+	                }
+	            };
+	        }
+
+	        for (var i = 0; i < iterable.length; i += 1) {
+	            Promise$2.resolve(iterable[i]).then(resolver(i), reject);
+	        }
+	    });
+	};
+
+	Promise$2.race = function race(iterable) {
+	    return new Promise$2(function (resolve, reject) {
+	        for (var i = 0; i < iterable.length; i += 1) {
+	            Promise$2.resolve(iterable[i]).then(resolve, reject);
+	        }
+	    });
+	};
+
+	var p$1 = Promise$2.prototype;
+
+	p$1.resolve = function resolve(x) {
+	    var promise = this;
+
+	    if (promise.state === PENDING) {
+	        if (x === promise) {
+	            throw new TypeError('Promise settled with itself.');
+	        }
+
+	        var called = false;
+
+	        try {
+	            var then = x && x['then'];
+
+	            if (x !== null && typeof x === 'object' && typeof then === 'function') {
+	                then.call(x, function (x) {
+	                    if (!called) {
+	                        promise.resolve(x);
+	                    }
+	                    called = true;
+	                }, function (r) {
+	                    if (!called) {
+	                        promise.reject(r);
+	                    }
+	                    called = true;
+	                });
+	                return;
+	            }
+	        } catch (e) {
+	            if (!called) {
+	                promise.reject(e);
+	            }
+	            return;
+	        }
+
+	        promise.state = RESOLVED;
+	        promise.value = x;
+	        promise.notify();
+	    }
+	};
+
+	p$1.reject = function reject(reason) {
+	    var promise = this;
+
+	    if (promise.state === PENDING) {
+	        if (reason === promise) {
+	            throw new TypeError('Promise settled with itself.');
+	        }
+
+	        promise.state = REJECTED;
+	        promise.value = reason;
+	        promise.notify();
+	    }
+	};
+
+	p$1.notify = function notify() {
+	    var promise = this;
+
+	    nextTick(function () {
+	        if (promise.state !== PENDING) {
+	            while (promise.deferred.length) {
+	                var deferred = promise.deferred.shift(),
+	                    onResolved = deferred[0],
+	                    onRejected = deferred[1],
+	                    resolve = deferred[2],
+	                    reject = deferred[3];
+
+	                try {
+	                    if (promise.state === RESOLVED) {
+	                        if (typeof onResolved === 'function') {
+	                            resolve(onResolved.call(undefined, promise.value));
+	                        } else {
+	                            resolve(promise.value);
+	                        }
+	                    } else if (promise.state === REJECTED) {
+	                        if (typeof onRejected === 'function') {
+	                            resolve(onRejected.call(undefined, promise.value));
+	                        } else {
+	                            reject(promise.value);
+	                        }
+	                    }
+	                } catch (e) {
+	                    reject(e);
+	                }
+	            }
+	        }
+	    });
+	};
+
+	p$1.then = function then(onResolved, onRejected) {
+	    var promise = this;
+
+	    return new Promise$2(function (resolve, reject) {
+	        promise.deferred.push([onResolved, onRejected, resolve, reject]);
+	        promise.notify();
+	    });
+	};
+
+	p$1.catch = function (onRejected) {
+	    return this.then(undefined, onRejected);
+	};
+
+	var PromiseObj = window.Promise || Promise$2;
+
+	function Promise$1(executor, context) {
+
+	    if (executor instanceof PromiseObj) {
+	        this.promise = executor;
+	    } else {
+	        this.promise = new PromiseObj(executor.bind(context));
+	    }
+
+	    this.context = context;
+	}
+
+	Promise$1.all = function (iterable, context) {
+	    return new Promise$1(PromiseObj.all(iterable), context);
+	};
+
+	Promise$1.resolve = function (value, context) {
+	    return new Promise$1(PromiseObj.resolve(value), context);
+	};
+
+	Promise$1.reject = function (reason, context) {
+	    return new Promise$1(PromiseObj.reject(reason), context);
+	};
+
+	Promise$1.race = function (iterable, context) {
+	    return new Promise$1(PromiseObj.race(iterable), context);
+	};
+
+	var p = Promise$1.prototype;
+
+	p.bind = function (context) {
+	    this.context = context;
+	    return this;
+	};
+
+	p.then = function (fulfilled, rejected) {
+
+	    if (fulfilled && fulfilled.bind && this.context) {
+	        fulfilled = fulfilled.bind(this.context);
+	    }
+
+	    if (rejected && rejected.bind && this.context) {
+	        rejected = rejected.bind(this.context);
+	    }
+
+	    return new Promise$1(this.promise.then(fulfilled, rejected), this.context);
+	};
+
+	p.catch = function (rejected) {
+
+	    if (rejected && rejected.bind && this.context) {
+	        rejected = rejected.bind(this.context);
+	    }
+
+	    return new Promise$1(this.promise.catch(rejected), this.context);
+	};
+
+	p.finally = function (callback) {
+
+	    return this.then(function (value) {
+	        callback.call(this);
+	        return value;
+	    }, function (reason) {
+	        callback.call(this);
+	        return PromiseObj.reject(reason);
+	    });
+	};
+
+	var debug = false;
+	var util = {};
+	var array = [];
+	function Util (Vue) {
+	    util = Vue.util;
+	    debug = Vue.config.debug || !Vue.config.silent;
+	}
+
+	function warn(msg) {
+	    if (typeof console !== 'undefined' && debug) {
+	        console.warn('[VueResource warn]: ' + msg);
+	    }
+	}
+
+	function error(msg) {
+	    if (typeof console !== 'undefined') {
+	        console.error(msg);
+	    }
+	}
+
+	function nextTick(cb, ctx) {
+	    return util.nextTick(cb, ctx);
+	}
+
+	function trim(str) {
+	    return str.replace(/^\s*|\s*$/g, '');
+	}
+
+	var isArray = Array.isArray;
+
+	function isString(val) {
+	    return typeof val === 'string';
+	}
+
+	function isBoolean(val) {
+	    return val === true || val === false;
+	}
+
+	function isFunction(val) {
+	    return typeof val === 'function';
+	}
+
+	function isObject(obj) {
+	    return obj !== null && typeof obj === 'object';
+	}
+
+	function isPlainObject(obj) {
+	    return isObject(obj) && Object.getPrototypeOf(obj) == Object.prototype;
+	}
+
+	function isFormData(obj) {
+	    return typeof FormData !== 'undefined' && obj instanceof FormData;
+	}
+
+	function when(value, fulfilled, rejected) {
+
+	    var promise = Promise$1.resolve(value);
+
+	    if (arguments.length < 2) {
+	        return promise;
+	    }
+
+	    return promise.then(fulfilled, rejected);
+	}
+
+	function options(fn, obj, opts) {
+
+	    opts = opts || {};
+
+	    if (isFunction(opts)) {
+	        opts = opts.call(obj);
+	    }
+
+	    return merge(fn.bind({ $vm: obj, $options: opts }), fn, { $options: opts });
+	}
+
+	function each(obj, iterator) {
+
+	    var i, key;
+
+	    if (typeof obj.length == 'number') {
+	        for (i = 0; i < obj.length; i++) {
+	            iterator.call(obj[i], obj[i], i);
+	        }
+	    } else if (isObject(obj)) {
+	        for (key in obj) {
+	            if (obj.hasOwnProperty(key)) {
+	                iterator.call(obj[key], obj[key], key);
+	            }
+	        }
+	    }
+
+	    return obj;
+	}
+
+	var assign = Object.assign || _assign;
+
+	function merge(target) {
+
+	    var args = array.slice.call(arguments, 1);
+
+	    args.forEach(function (source) {
+	        _merge(target, source, true);
+	    });
+
+	    return target;
+	}
+
+	function defaults(target) {
+
+	    var args = array.slice.call(arguments, 1);
+
+	    args.forEach(function (source) {
+
+	        for (var key in source) {
+	            if (target[key] === undefined) {
+	                target[key] = source[key];
+	            }
+	        }
+	    });
+
+	    return target;
+	}
+
+	function _assign(target) {
+
+	    var args = array.slice.call(arguments, 1);
+
+	    args.forEach(function (source) {
+	        _merge(target, source);
+	    });
+
+	    return target;
+	}
+
+	function _merge(target, source, deep) {
+	    for (var key in source) {
+	        if (deep && (isPlainObject(source[key]) || isArray(source[key]))) {
+	            if (isPlainObject(source[key]) && !isPlainObject(target[key])) {
+	                target[key] = {};
+	            }
+	            if (isArray(source[key]) && !isArray(target[key])) {
+	                target[key] = [];
+	            }
+	            _merge(target[key], source[key], deep);
+	        } else if (source[key] !== undefined) {
+	            target[key] = source[key];
+	        }
+	    }
+	}
+
+	function root (options, next) {
+
+	    var url = next(options);
+
+	    if (isString(options.root) && !url.match(/^(https?:)?\//)) {
+	        url = options.root + '/' + url;
+	    }
+
+	    return url;
+	}
+
+	function query (options, next) {
+
+	    var urlParams = Object.keys(Url.options.params),
+	        query = {},
+	        url = next(options);
+
+	    each(options.params, function (value, key) {
+	        if (urlParams.indexOf(key) === -1) {
+	            query[key] = value;
+	        }
+	    });
+
+	    query = Url.params(query);
+
+	    if (query) {
+	        url += (url.indexOf('?') == -1 ? '?' : '&') + query;
+	    }
+
+	    return url;
+	}
+
+	/**
+	 * URL Template v2.0.6 (https://github.com/bramstein/url-template)
+	 */
+
+	function expand(url, params, variables) {
+
+	    var tmpl = parse(url),
+	        expanded = tmpl.expand(params);
+
+	    if (variables) {
+	        variables.push.apply(variables, tmpl.vars);
+	    }
+
+	    return expanded;
+	}
+
+	function parse(template) {
+
+	    var operators = ['+', '#', '.', '/', ';', '?', '&'],
+	        variables = [];
+
+	    return {
+	        vars: variables,
+	        expand: function (context) {
+	            return template.replace(/\{([^\{\}]+)\}|([^\{\}]+)/g, function (_, expression, literal) {
+	                if (expression) {
+
+	                    var operator = null,
+	                        values = [];
+
+	                    if (operators.indexOf(expression.charAt(0)) !== -1) {
+	                        operator = expression.charAt(0);
+	                        expression = expression.substr(1);
+	                    }
+
+	                    expression.split(/,/g).forEach(function (variable) {
+	                        var tmp = /([^:\*]*)(?::(\d+)|(\*))?/.exec(variable);
+	                        values.push.apply(values, getValues(context, operator, tmp[1], tmp[2] || tmp[3]));
+	                        variables.push(tmp[1]);
+	                    });
+
+	                    if (operator && operator !== '+') {
+
+	                        var separator = ',';
+
+	                        if (operator === '?') {
+	                            separator = '&';
+	                        } else if (operator !== '#') {
+	                            separator = operator;
+	                        }
+
+	                        return (values.length !== 0 ? operator : '') + values.join(separator);
+	                    } else {
+	                        return values.join(',');
+	                    }
+	                } else {
+	                    return encodeReserved(literal);
+	                }
+	            });
+	        }
+	    };
+	}
+
+	function getValues(context, operator, key, modifier) {
+
+	    var value = context[key],
+	        result = [];
+
+	    if (isDefined(value) && value !== '') {
+	        if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+	            value = value.toString();
+
+	            if (modifier && modifier !== '*') {
+	                value = value.substring(0, parseInt(modifier, 10));
+	            }
+
+	            result.push(encodeValue(operator, value, isKeyOperator(operator) ? key : null));
+	        } else {
+	            if (modifier === '*') {
+	                if (Array.isArray(value)) {
+	                    value.filter(isDefined).forEach(function (value) {
+	                        result.push(encodeValue(operator, value, isKeyOperator(operator) ? key : null));
+	                    });
+	                } else {
+	                    Object.keys(value).forEach(function (k) {
+	                        if (isDefined(value[k])) {
+	                            result.push(encodeValue(operator, value[k], k));
+	                        }
+	                    });
+	                }
+	            } else {
+	                var tmp = [];
+
+	                if (Array.isArray(value)) {
+	                    value.filter(isDefined).forEach(function (value) {
+	                        tmp.push(encodeValue(operator, value));
+	                    });
+	                } else {
+	                    Object.keys(value).forEach(function (k) {
+	                        if (isDefined(value[k])) {
+	                            tmp.push(encodeURIComponent(k));
+	                            tmp.push(encodeValue(operator, value[k].toString()));
+	                        }
+	                    });
+	                }
+
+	                if (isKeyOperator(operator)) {
+	                    result.push(encodeURIComponent(key) + '=' + tmp.join(','));
+	                } else if (tmp.length !== 0) {
+	                    result.push(tmp.join(','));
+	                }
+	            }
+	        }
+	    } else {
+	        if (operator === ';') {
+	            result.push(encodeURIComponent(key));
+	        } else if (value === '' && (operator === '&' || operator === '?')) {
+	            result.push(encodeURIComponent(key) + '=');
+	        } else if (value === '') {
+	            result.push('');
+	        }
+	    }
+
+	    return result;
+	}
+
+	function isDefined(value) {
+	    return value !== undefined && value !== null;
+	}
+
+	function isKeyOperator(operator) {
+	    return operator === ';' || operator === '&' || operator === '?';
+	}
+
+	function encodeValue(operator, value, key) {
+
+	    value = operator === '+' || operator === '#' ? encodeReserved(value) : encodeURIComponent(value);
+
+	    if (key) {
+	        return encodeURIComponent(key) + '=' + value;
+	    } else {
+	        return value;
+	    }
+	}
+
+	function encodeReserved(str) {
+	    return str.split(/(%[0-9A-Fa-f]{2})/g).map(function (part) {
+	        if (!/%[0-9A-Fa-f]/.test(part)) {
+	            part = encodeURI(part);
+	        }
+	        return part;
+	    }).join('');
+	}
+
+	function template (options) {
+
+	    var variables = [],
+	        url = expand(options.url, options.params, variables);
+
+	    variables.forEach(function (key) {
+	        delete options.params[key];
+	    });
+
+	    return url;
+	}
+
+	/**
+	 * Service for URL templating.
+	 */
+
+	var ie = document.documentMode;
+	var el = document.createElement('a');
+
+	function Url(url, params) {
+
+	    var self = this || {},
+	        options = url,
+	        transform;
+
+	    if (isString(url)) {
+	        options = { url: url, params: params };
+	    }
+
+	    options = merge({}, Url.options, self.$options, options);
+
+	    Url.transforms.forEach(function (handler) {
+	        transform = factory(handler, transform, self.$vm);
+	    });
+
+	    return transform(options);
+	}
+
+	/**
+	 * Url options.
+	 */
+
+	Url.options = {
+	    url: '',
+	    root: null,
+	    params: {}
+	};
+
+	/**
+	 * Url transforms.
+	 */
+
+	Url.transforms = [template, query, root];
+
+	/**
+	 * Encodes a Url parameter string.
+	 *
+	 * @param {Object} obj
+	 */
+
+	Url.params = function (obj) {
+
+	    var params = [],
+	        escape = encodeURIComponent;
+
+	    params.add = function (key, value) {
+
+	        if (isFunction(value)) {
+	            value = value();
+	        }
+
+	        if (value === null) {
+	            value = '';
+	        }
+
+	        this.push(escape(key) + '=' + escape(value));
+	    };
+
+	    serialize(params, obj);
+
+	    return params.join('&').replace(/%20/g, '+');
+	};
+
+	/**
+	 * Parse a URL and return its components.
+	 *
+	 * @param {String} url
+	 */
+
+	Url.parse = function (url) {
+
+	    if (ie) {
+	        el.href = url;
+	        url = el.href;
+	    }
+
+	    el.href = url;
+
+	    return {
+	        href: el.href,
+	        protocol: el.protocol ? el.protocol.replace(/:$/, '') : '',
+	        port: el.port,
+	        host: el.host,
+	        hostname: el.hostname,
+	        pathname: el.pathname.charAt(0) === '/' ? el.pathname : '/' + el.pathname,
+	        search: el.search ? el.search.replace(/^\?/, '') : '',
+	        hash: el.hash ? el.hash.replace(/^#/, '') : ''
+	    };
+	};
+
+	function factory(handler, next, vm) {
+	    return function (options) {
+	        return handler.call(vm, options, next);
+	    };
+	}
+
+	function serialize(params, obj, scope) {
+
+	    var array = isArray(obj),
+	        plain = isPlainObject(obj),
+	        hash;
+
+	    each(obj, function (value, key) {
+
+	        hash = isObject(value) || isArray(value);
+
+	        if (scope) {
+	            key = scope + '[' + (plain || hash ? key : '') + ']';
+	        }
+
+	        if (!scope && array) {
+	            params.add(value.name, value.value);
+	        } else if (hash) {
+	            serialize(params, value, key);
+	        } else {
+	            params.add(key, value);
+	        }
+	    });
+	}
+
+	function xdrClient (request) {
+	    return new Promise$1(function (resolve) {
+
+	        var xdr = new XDomainRequest(),
+	            handler = function (event) {
+
+	            var response = request.respondWith(xdr.responseText, {
+	                status: xdr.status,
+	                statusText: xdr.statusText
+	            });
+
+	            resolve(response);
+	        };
+
+	        request.abort = function () {
+	            return xdr.abort();
+	        };
+
+	        xdr.open(request.method, request.getUrl(), true);
+	        xdr.timeout = 0;
+	        xdr.onload = handler;
+	        xdr.onerror = handler;
+	        xdr.ontimeout = function () {};
+	        xdr.onprogress = function () {};
+	        xdr.send(request.getBody());
+	    });
+	}
+
+	var ORIGIN_URL = Url.parse(location.href);
+	var SUPPORTS_CORS = 'withCredentials' in new XMLHttpRequest();
+
+	function cors (request, next) {
+
+	    if (!isBoolean(request.crossOrigin) && crossOrigin(request)) {
+	        request.crossOrigin = true;
+	    }
+
+	    if (request.crossOrigin) {
+
+	        if (!SUPPORTS_CORS) {
+	            request.client = xdrClient;
+	        }
+
+	        delete request.emulateHTTP;
+	    }
+
+	    next();
+	}
+
+	function crossOrigin(request) {
+
+	    var requestUrl = Url.parse(Url(request));
+
+	    return requestUrl.protocol !== ORIGIN_URL.protocol || requestUrl.host !== ORIGIN_URL.host;
+	}
+
+	function body (request, next) {
+
+	    if (request.emulateJSON && isPlainObject(request.body)) {
+	        request.body = Url.params(request.body);
+	        request.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+	    }
+
+	    if (isFormData(request.body)) {
+	        delete request.headers['Content-Type'];
+	    }
+
+	    if (isPlainObject(request.body)) {
+	        request.body = JSON.stringify(request.body);
+	    }
+
+	    next(function (response) {
+
+	        var contentType = response.headers['Content-Type'];
+
+	        if (isString(contentType) && contentType.indexOf('application/json') === 0) {
+
+	            try {
+	                response.data = response.json();
+	            } catch (e) {
+	                response.data = null;
+	            }
+	        } else {
+	            response.data = response.text();
+	        }
+	    });
+	}
+
+	function jsonpClient (request) {
+	    return new Promise$1(function (resolve) {
+
+	        var name = request.jsonp || 'callback',
+	            callback = '_jsonp' + Math.random().toString(36).substr(2),
+	            body = null,
+	            handler,
+	            script;
+
+	        handler = function (event) {
+
+	            var status = 0;
+
+	            if (event.type === 'load' && body !== null) {
+	                status = 200;
+	            } else if (event.type === 'error') {
+	                status = 404;
+	            }
+
+	            resolve(request.respondWith(body, { status: status }));
+
+	            delete window[callback];
+	            document.body.removeChild(script);
+	        };
+
+	        request.params[name] = callback;
+
+	        window[callback] = function (result) {
+	            body = JSON.stringify(result);
+	        };
+
+	        script = document.createElement('script');
+	        script.src = request.getUrl();
+	        script.type = 'text/javascript';
+	        script.async = true;
+	        script.onload = handler;
+	        script.onerror = handler;
+
+	        document.body.appendChild(script);
+	    });
+	}
+
+	function jsonp (request, next) {
+
+	    if (request.method == 'JSONP') {
+	        request.client = jsonpClient;
+	    }
+
+	    next(function (response) {
+
+	        if (request.method == 'JSONP') {
+	            response.data = response.json();
+	        }
+	    });
+	}
+
+	function before (request, next) {
+
+	    if (isFunction(request.before)) {
+	        request.before.call(this, request);
+	    }
+
+	    next();
+	}
+
+	/**
+	 * HTTP method override Interceptor.
+	 */
+
+	function method (request, next) {
+
+	    if (request.emulateHTTP && /^(PUT|PATCH|DELETE)$/i.test(request.method)) {
+	        request.headers['X-HTTP-Method-Override'] = request.method;
+	        request.method = 'POST';
+	    }
+
+	    next();
+	}
+
+	function header (request, next) {
+
+	    request.method = request.method.toUpperCase();
+	    request.headers = assign({}, Http.headers.common, !request.crossOrigin ? Http.headers.custom : {}, Http.headers[request.method.toLowerCase()], request.headers);
+
+	    next();
+	}
+
+	/**
+	 * Timeout Interceptor.
+	 */
+
+	function timeout (request, next) {
+
+	    var timeout;
+
+	    if (request.timeout) {
+	        timeout = setTimeout(function () {
+	            request.abort();
+	        }, request.timeout);
+	    }
+
+	    next(function (response) {
+
+	        clearTimeout(timeout);
+	    });
+	}
+
+	function xhrClient (request) {
+	    return new Promise$1(function (resolve) {
+
+	        var xhr = new XMLHttpRequest(),
+	            handler = function (event) {
+
+	            var response = request.respondWith('response' in xhr ? xhr.response : xhr.responseText, {
+	                status: xhr.status === 1223 ? 204 : xhr.status, // IE9 status bug
+	                statusText: xhr.status === 1223 ? 'No Content' : trim(xhr.statusText),
+	                headers: parseHeaders(xhr.getAllResponseHeaders())
+	            });
+
+	            resolve(response);
+	        };
+
+	        request.abort = function () {
+	            return xhr.abort();
+	        };
+
+	        xhr.open(request.method, request.getUrl(), true);
+	        xhr.timeout = 0;
+	        xhr.onload = handler;
+	        xhr.onerror = handler;
+
+	        if (request.progress) {
+	            if (request.method === 'GET') {
+	                xhr.addEventListener('progress', request.progress);
+	            } else if (/^(POST|PUT)$/i.test(request.method)) {
+	                xhr.upload.addEventListener('progress', request.progress);
+	            }
+	        }
+
+	        if (request.credentials === true) {
+	            xhr.withCredentials = true;
+	        }
+
+	        each(request.headers || {}, function (value, header) {
+	            xhr.setRequestHeader(header, value);
+	        });
+
+	        xhr.send(request.getBody());
+	    });
+	}
+
+	function parseHeaders(str) {
+
+	    var headers = {},
+	        value,
+	        name,
+	        i;
+
+	    each(trim(str).split('\n'), function (row) {
+
+	        i = row.indexOf(':');
+	        name = trim(row.slice(0, i));
+	        value = trim(row.slice(i + 1));
+
+	        if (headers[name]) {
+
+	            if (isArray(headers[name])) {
+	                headers[name].push(value);
+	            } else {
+	                headers[name] = [headers[name], value];
+	            }
+	        } else {
+
+	            headers[name] = value;
+	        }
+	    });
+
+	    return headers;
+	}
+
+	function Client (context) {
+
+	    var reqHandlers = [sendRequest],
+	        resHandlers = [],
+	        handler;
+
+	    if (!isObject(context)) {
+	        context = null;
+	    }
+
+	    function Client(request) {
+	        return new Promise$1(function (resolve) {
+
+	            function exec() {
+
+	                handler = reqHandlers.pop();
+
+	                if (isFunction(handler)) {
+	                    handler.call(context, request, next);
+	                } else {
+	                    warn('Invalid interceptor of type ' + typeof handler + ', must be a function');
+	                    next();
+	                }
+	            }
+
+	            function next(response) {
+
+	                if (isFunction(response)) {
+
+	                    resHandlers.unshift(response);
+	                } else if (isObject(response)) {
+
+	                    resHandlers.forEach(function (handler) {
+	                        response = when(response, function (response) {
+	                            return handler.call(context, response) || response;
+	                        });
+	                    });
+
+	                    when(response, resolve);
+
+	                    return;
+	                }
+
+	                exec();
+	            }
+
+	            exec();
+	        }, context);
+	    }
+
+	    Client.use = function (handler) {
+	        reqHandlers.push(handler);
+	    };
+
+	    return Client;
+	}
+
+	function sendRequest(request, resolve) {
+
+	    var client = request.client || xhrClient;
+
+	    resolve(client(request));
+	}
+
+	var classCallCheck = function (instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	};
+
+	/**
+	 * HTTP Response.
+	 */
+
+	var Response = function () {
+	    function Response(body, _ref) {
+	        var url = _ref.url;
+	        var headers = _ref.headers;
+	        var status = _ref.status;
+	        var statusText = _ref.statusText;
+	        classCallCheck(this, Response);
+
+
+	        this.url = url;
+	        this.body = body;
+	        this.headers = headers || {};
+	        this.status = status || 0;
+	        this.statusText = statusText || '';
+	        this.ok = status >= 200 && status < 300;
+	    }
+
+	    Response.prototype.text = function text() {
+	        return this.body;
+	    };
+
+	    Response.prototype.blob = function blob() {
+	        return new Blob([this.body]);
+	    };
+
+	    Response.prototype.json = function json() {
+	        return JSON.parse(this.body);
+	    };
+
+	    return Response;
+	}();
+
+	var Request = function () {
+	    function Request(options) {
+	        classCallCheck(this, Request);
+
+
+	        this.method = 'GET';
+	        this.body = null;
+	        this.params = {};
+	        this.headers = {};
+
+	        assign(this, options);
+	    }
+
+	    Request.prototype.getUrl = function getUrl() {
+	        return Url(this);
+	    };
+
+	    Request.prototype.getBody = function getBody() {
+	        return this.body;
+	    };
+
+	    Request.prototype.respondWith = function respondWith(body, options) {
+	        return new Response(body, assign(options || {}, { url: this.getUrl() }));
+	    };
+
+	    return Request;
+	}();
+
+	/**
+	 * Service for sending network requests.
+	 */
+
+	var CUSTOM_HEADERS = { 'X-Requested-With': 'XMLHttpRequest' };
+	var COMMON_HEADERS = { 'Accept': 'application/json, text/plain, */*' };
+	var JSON_CONTENT_TYPE = { 'Content-Type': 'application/json;charset=utf-8' };
+
+	function Http(options) {
+
+	    var self = this || {},
+	        client = Client(self.$vm);
+
+	    defaults(options || {}, self.$options, Http.options);
+
+	    Http.interceptors.forEach(function (handler) {
+	        client.use(handler);
+	    });
+
+	    return client(new Request(options)).then(function (response) {
+
+	        return response.ok ? response : Promise$1.reject(response);
+	    }, function (response) {
+
+	        if (response instanceof Error) {
+	            error(response);
+	        }
+
+	        return Promise$1.reject(response);
+	    });
+	}
+
+	Http.options = {};
+
+	Http.headers = {
+	    put: JSON_CONTENT_TYPE,
+	    post: JSON_CONTENT_TYPE,
+	    patch: JSON_CONTENT_TYPE,
+	    delete: JSON_CONTENT_TYPE,
+	    custom: CUSTOM_HEADERS,
+	    common: COMMON_HEADERS
+	};
+
+	Http.interceptors = [before, timeout, method, body, jsonp, header, cors];
+
+	['get', 'delete', 'head', 'jsonp'].forEach(function (method) {
+
+	    Http[method] = function (url, options) {
+	        return this(assign(options || {}, { url: url, method: method }));
+	    };
+	});
+
+	['post', 'put', 'patch'].forEach(function (method) {
+
+	    Http[method] = function (url, body, options) {
+	        return this(assign(options || {}, { url: url, method: method, body: body }));
+	    };
+	});
+
+	function Resource(url, params, actions, options) {
+
+	    var self = this || {},
+	        resource = {};
+
+	    actions = assign({}, Resource.actions, actions);
+
+	    each(actions, function (action, name) {
+
+	        action = merge({ url: url, params: params || {} }, options, action);
+
+	        resource[name] = function () {
+	            return (self.$http || Http)(opts(action, arguments));
+	        };
+	    });
+
+	    return resource;
+	}
+
+	function opts(action, args) {
+
+	    var options = assign({}, action),
+	        params = {},
+	        body;
+
+	    switch (args.length) {
+
+	        case 2:
+
+	            params = args[0];
+	            body = args[1];
+
+	            break;
+
+	        case 1:
+
+	            if (/^(POST|PUT|PATCH)$/i.test(options.method)) {
+	                body = args[0];
+	            } else {
+	                params = args[0];
+	            }
+
+	            break;
+
+	        case 0:
+
+	            break;
+
+	        default:
+
+	            throw 'Expected up to 4 arguments [params, body], got ' + args.length + ' arguments';
+	    }
+
+	    options.body = body;
+	    options.params = assign({}, options.params, params);
+
+	    return options;
+	}
+
+	Resource.actions = {
+
+	    get: { method: 'GET' },
+	    save: { method: 'POST' },
+	    query: { method: 'GET' },
+	    update: { method: 'PUT' },
+	    remove: { method: 'DELETE' },
+	    delete: { method: 'DELETE' }
+
+	};
+
+	function plugin(Vue) {
+
+	    if (plugin.installed) {
+	        return;
+	    }
+
+	    Util(Vue);
+
+	    Vue.url = Url;
+	    Vue.http = Http;
+	    Vue.resource = Resource;
+	    Vue.Promise = Promise$1;
+
+	    Object.defineProperties(Vue.prototype, {
+
+	        $url: {
+	            get: function () {
+	                return options(Vue.url, this, this.$options.url);
+	            }
+	        },
+
+	        $http: {
+	            get: function () {
+	                return options(Vue.http, this, this.$options.http);
+	            }
+	        },
+
+	        $resource: {
+	            get: function () {
+	                return Vue.resource.bind(this);
+	            }
+	        },
+
+	        $promise: {
+	            get: function () {
+	                var _this = this;
+
+	                return function (executor) {
+	                    return new Vue.Promise(executor, _this);
+	                };
+	            }
+	        }
+
+	    });
+	}
+
+	if (typeof window !== 'undefined' && window.Vue) {
+	    window.Vue.use(plugin);
+	}
+
+	module.exports = plugin;
 
 /***/ }
 /******/ ]);
