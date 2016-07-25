@@ -50,11 +50,11 @@ export default{
 
 	},
 	ready:function(){
-		this.$http.get('http://192.168.191.1/brand_api/query.php').then((response) => {
-			alert(response.data.error)
-		},(response) => {
-			alert('error')
-		})
+		// this.$http.get('http://192.168.191.1/brand_api/query.php').then((response) => {
+		// 	alert(response.data.error)
+		// },(response) => {
+		// 	alert('error')
+		// })
 	},
 	methods:{
 		onTap:function(e){

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './app.vue'
 import VueRouter from 'vue-router'
 import VueTouch from 'vue-touch'
-import Home from './components/home.vue'
+import Home from './micro/home.vue'
 import VueResource from 'vue-resource'
 
 Vue.use(VueRouter)
