@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 const state = {
   isshow:true,
-  title:'首页'
+  title:'首页',
+  islogin:false
 }
 
 const mutations = { 
@@ -17,6 +18,9 @@ const mutations = {
 	},
 	MODIFYTITLE(state , strTitle){
 		state.title = strTitle
+	},
+	GETLOGINFLAG(state){
+		return state.islogin
 	}
 }
 

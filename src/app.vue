@@ -1,11 +1,11 @@
 <template>
 <div>
   <div class="left-menu">
-    <div id="menu-header" class="menu-header">
-      <img src="./assets/logo.png" class="menu-img" />
-      <img src="./assets/logo-d.png" class="menu-img-small" />
+    <div id="menu-header" class="menu-header" v-bind:class="{ 'width60':isopen,'width180':!isopen }">
+      <img v-if="!isopen" src="./assets/logo.png" class="menu-img" />
+      <img v-if="isopen" src="./assets/logo-d.png" class="menu-img-small" />
     </div>
-    <div id="first-menu" class="first-menu">
+    <div id="first-menu" class="first-menu" v-bind:class="{ 'width60':isopen,'width180':!isopen }">
       <ul>
         <li class="menu-active">
           <i class="icon-service icon-service-dashboard"></i>
@@ -30,10 +30,10 @@
       </ul>
     </div>
   </div>
-  <div id="connent" class="connent">
-    <div>
+  <div id="connent" class="connent" v-bind:class="{ 'left60':isopen,'left180':!isopen }">
+    <!-- <div> -->
       <div class="top-bar">
-        <i id="icon-mc-slider" class="icon-mc-slider"></i>
+        <i v-on:click="menuTap" id="icon-mc-slider" class="icon-mc-slider"></i>
         <div class="link-wrap">
           问题反馈
         </div>
@@ -66,7 +66,8 @@
           </ul>
         </div>
       </div>
-    </div>
+      <router-view></router-view>
+    <!-- </div> -->
   </div>
 </div>
 </template>
@@ -79,7 +80,12 @@ export default {
   store,
   data () {
     return {
-    	message: 'message'
+    	isopen : false
+    }
+  },
+  methods:{
+    menuTap:function(e){
+      this.isopen = !this.isopen
     }
   },
   vuex:{
@@ -92,28 +98,6 @@ export default {
   	}
   }
 }
-      // var menuheader = document.getElementById('menu-header');
-      // var firstmenu = document.getElementById('first-menu');
-      // var connent = document.getElementById('connent');
-      // var isopen = true;
-      // var slider = document.getElementById('icon-mc-slider');
-      // slider.onclick = function(){
-      //   if(isopen){
-      //     menuheader.firstElementChild.style.display = "none";
-      //     menuheader.lastElementChild.style.display = "block";
-      //     menuheader.style.width = '60px';
-      //     firstmenu.style.width = '60px';
-      //     connent.style.left = '60px';
-      //     isopen = false;
-      //   }else{
-      //     menuheader.firstElementChild.style.display = "block";
-      //     menuheader.lastElementChild.style.display = "none";
-      //     menuheader.style.width = '180px';
-      //     firstmenu.style.width = '180px';
-      //     connent.style.left = '180px';
-      //     isopen = true;
-      //   }
-      // }
 </script>
 
 <style>
@@ -149,7 +133,7 @@ li{
   overflow: hidden;
 }
 .menu-img-small{
-  display: none;
+  /*display: none;*/
 }
 .menu-img{
   height: 22px;
@@ -166,7 +150,7 @@ li{
   left: 0;
   top: 50px;
   bottom: 0;
-  width: 180px;
+  /*width: 180px;*/
   overflow-y: auto;
   z-index: 1;
 }
@@ -224,11 +208,18 @@ li:hover,.menu-active{
 }
 .connent{
   position: absolute;
-  left: 180px;
+  /*left: 180px;*/
+  min-width: 1020px;
   top: 0px;
   bottom: 0px;
   right: 0px;
     /*transition: all .3s ease-in;*/
+}
+.left180{
+  left: 180px;
+}
+.left60{
+  left: 60px;
 }
 .top-bar{
     background: #f7f7f7;
@@ -337,5 +328,13 @@ em, i, b {
 .account:hover .account-ops{
   display: block;
 }
-
+.account{
+  cursor: pointer;
+}
+.width60{
+  width:60px;
+}
+.width180{
+  width:180px;
+}
 </style>

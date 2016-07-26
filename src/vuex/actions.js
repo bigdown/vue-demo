@@ -9,3 +9,7 @@ export const noToShow = ({ dispatch }) => {
 export const modifyTitle = ({ dispatch },title) => {
 	dispatch('MODIFYTITLE',title)
 } 
+
+export const getLoginFlag = ({ dispatch }) => {
+	dispatch('GETLOGINFLAG')
+} 
