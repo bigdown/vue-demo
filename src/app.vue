@@ -7,23 +7,23 @@
     </div>
     <div id="first-menu" class="first-menu" v-bind:class="{ 'width60':isopen,'width180':!isopen }">
       <ul>
-        <li class="menu-active">
+        <li v-link="{ path: '/home/userdata' }">
           <i class="icon-service icon-service-dashboard"></i>
           <span class="menu-title">用户统计数据</span>
         </li>
-        <li>
+        <li  v-link="{ path: '/home/userinfo' }">
           <i class="icon-service icon-service-cvm"></i>
           <span class="menu-title">用户详情</span>
         </li>
-        <li>
+        <li  v-link="{ path: '/home/chat' }">
           <i class="icon-service icon-service-domain"></i>
           <span class="menu-title">聊天</span>
         </li>
-        <li>
+        <li v-link="{ path: '/home/bl' }">
           <i class="icon-service icon-service-jiechi"></i>
           <span class="menu-title">部落</span>
         </li>
-        <li>
+        <li v-link="{ path: '/home/square' }">
           <i class="icon-service icon-service-account"></i>
           <span class="menu-title">广场</span>
         </li>
@@ -58,7 +58,7 @@
           <ul class="account-ops">
             <li>账户管理</li>
             <li class="switch-account">
-              账户切换
+              账户切换  
             </li>
             <li>
               退出
@@ -66,7 +66,7 @@
           </ul>
         </div>
       </div>
-      <router-view></router-view>
+      <router-view keep-alive class="main-content"></router-view>
     <!-- </div> -->
   </div>
 </div>
@@ -74,7 +74,6 @@
 
 <script>
 import store from './vuex/store'
-import { yesToShow,noToShow } from './vuex/actions'
 
 export default {
   store,
@@ -90,28 +89,14 @@ export default {
   },
   vuex:{
   	getters:{
-  		isshow : state => state.isshow
-  	},
-  	actions:{
-  		yesToShow,
-  		noToShow
+  		isshow : state => state.isshow,
+      login : state => state.islogin
   	}
   }
 }
 </script>
 
 <style>
-*{
-  margin: 0;
-  padding: 0;
-}
-body,html{
-  height: 100%;
-  overflow-y: hidden;
-  overflow-x: auto;
-  min-width: 1200px;
-  font-family: "Hiragino Sans GB","Tahoma","microsoft yahei ui","microsoft yahei","simsun";
-}
 li{
   list-style: none;
 }
@@ -166,7 +151,7 @@ li{
 }
 .icon-service-dashboard{
   background-image: url(./assets/v2-framework-1457580542.png);
-  background-position: -69px -51px;
+  background-position: 106px 38px;
 }
 .icon-service-jiechi{
   background-image: url(./assets/v2-framework-1457580542.png);
@@ -203,7 +188,7 @@ li{
 .menu-title {
     padding-left: 10px;
 }
-li:hover,.menu-active{
+li:hover,.v-link-active,.menu-active{
   color: #22B5E5;
 }
 .connent{

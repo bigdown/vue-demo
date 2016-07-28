@@ -24,46 +24,75 @@ var router = new VueRouter({
 	transitionOnLoad: true
 })
 
-var menu = Vue.extend({
-    template: '<p>This is menu!</p>'
-})
-
-var clame = Vue.extend({
-    template: '<p>This is clame!</p>'
-})
-var line = Vue.extend({
-    template: '<p>This is line!</p>'
-}) 
-var message = Vue.extend({
-    template: '<p>This is message!</p>'
-})
-router.map({
-	'/login':{
-    	component: Login
-	},
-    '/home':{
-    	component: App,
-        subRoutes:{
-            '/menu':{
-                component: menu
-            },
-            '/clame':{
-                component: clame
-            },
-            '/line':{
-                component: line
-            }
+router.beforeEach((transition) => {
+    // console.log(transition.to.auth)
+    if (transition.to.auth) {
+        transition.next()
+    } else {
+        if(localStorage.getItem('token') == '123'){
+            transition.next()
+        }else{
+            router.go('/login')
         }
     }
 })
 
-router.redirect({
-  '*': '/home'
+var userdata = Vue.extend({
+    template: '<div ><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p></div>'
 })
 
-if(this.getLoginFlag()){
+var userinfo = Vue.extend({
+    template: '<p>用户详情</p>'
+})
+var chat = Vue.extend({
+    template: '<p>聊天</p>'
+}) 
+var bl = Vue.extend({
+    template: '<p>部落</p>'
+})
+var square = Vue.extend({
+    template: '<p>广场</p>'
+})
+router.map({
+	'/login':{
+    	component: Login,
+        auth:true
+	},
+    '/home':{
+    	component: App,
+        auth: false,
+        subRoutes:{
+            '/userdata':{
+                component: userdata
+            },
+            '/userinfo':{
+                component: userinfo
+            },
+            '/chat':{
+                component: chat
+            },
+            '/bl':{
+                component: bl
+            },
+            '/square':{
+                component: square
+            }
+        }
+    }
+})
+router.redirect({
+  '*': '/home/userdata'
+})
 
-}
+// router.beforeEach(({to,from,next}) => {
+//     var to = to.path
+//     var from = from.path
+//     console.log(to+">>>"+from)
+//     console.log(getLoginFlag())
+//     next()
+// })
 
-var InitApp = Vue.extend({})
+var InitApp = Vue.extend({
+})
+
 router.start(InitApp,'#app')

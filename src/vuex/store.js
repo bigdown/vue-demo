@@ -19,8 +19,8 @@ const mutations = {
 	MODIFYTITLE(state , strTitle){
 		state.title = strTitle
 	},
-	GETLOGINFLAG(state){
-		return state.islogin
+	YESTOLOGIN(state){
+		state.islogin = true
 	}
 }
 

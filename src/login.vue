@@ -22,7 +22,7 @@
 				</div>
 				<input type="password" class="" />
 				<div>
-					<button class="btn">登录</button>
+					<button class="btn" v-on:click="login">登录</button>
 				</div>
 			</div>
 		</div>
@@ -46,7 +46,10 @@ export default{
 
 	},
 	methods:{
-
+		login:function(){
+			localStorage.setItem('token','123')
+			this.$route.router.go('/home')
+		}
 	}
 }
 
