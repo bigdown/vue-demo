@@ -16,11 +16,11 @@
 				<div class="login-info">
 					帐号
 				</div>
-				<input type="text" class="" />
+				<input type="text" v-model="account" class="" />
 				<div class="login-info">
 					密码
 				</div>
-				<input type="password" class="" />
+				<input type="password" v-model="password" class="" />
 				<div>
 					<button class="btn" v-on:click="login">登录</button>
 				</div>
@@ -37,6 +37,8 @@
 export default{
 	data(){
 		return {
+			account:'',
+			password:''
 		}
 	},
 	created: function () {
@@ -47,8 +49,37 @@ export default{
 	},
 	methods:{
 		login:function(){
-			localStorage.setItem('token','123')
-			this.$route.router.go('/home')
+			if(this.checkparams()){
+				this.$http.get('http://web.sns.movnow.com/brand_api/login_api.php?user='+this.account+'&pass='+this.password,{},{
+					headers:{
+						"X-Requested-With": "XMLHttpRequest"
+					}
+				}).then(function(response){
+					console.log(response.data)
+					var obj = JSON.parse(response.data)
+					if(obj.error == 0){
+						this.$route.router.go('/home')
+					}else{
+						alert('帐号或者密码错误')
+					}
+				}, function(response){
+					console.log("error")
+				})
+			}
+			// localStorage.setItem('token','123')
+			// this.$route.router.go('/home')
+		},
+		checkparams:function(){
+			if(this.account.trim() == "" || this.account.trim().length <= 0){
+				alert('帐号不能为空')
+				return false
+			}
+			if(this.password.trim() == "" || this.password.trim().length <= 0){
+				alert('密码不能为空')
+				return false
+			}
+			return true
+			// alert(this.account + '' + this.password)
 		}
 	}
 }

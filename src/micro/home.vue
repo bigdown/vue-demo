@@ -20,7 +20,7 @@ export default{
 	},
 	methods:{
 		onTap:function(e){
-			alert(e.type)
+			
 		}
 	},
 	vuex:{

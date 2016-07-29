@@ -5,17 +5,14 @@ import VueRouter from 'vue-router'
 import VueTouch from 'vue-touch'
 import Home from './components/home.vue'
 import VueResource from 'vue-resource'
-
-import store from './vuex/store'
-import { getLoginFlag } from './vuex/actions'
-
+import Userdata from './micro/userdata.vue'
 
 Vue.use(VueRouter)
 Vue.use(VueTouch)
 Vue.use(VueResource)
 Vue.http.options.emulateHTTP = true
 Vue.http.options.emulateJSON = true
-// Vue.http.headers.common['Authorization'] = 'TS';
+
 
 var router = new VueRouter({
 	hashbang: true,
@@ -35,10 +32,6 @@ router.beforeEach((transition) => {
             router.go('/login')
         }
     }
-})
-
-var userdata = Vue.extend({
-    template: '<div ><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p><p>用户统计数据</p></div>'
 })
 
 var userinfo = Vue.extend({
@@ -63,7 +56,7 @@ router.map({
         auth: false,
         subRoutes:{
             '/userdata':{
-                component: userdata
+                component: Userdata
             },
             '/userinfo':{
                 component: userinfo
