@@ -4,23 +4,26 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  isshow:true,
   title:'首页',
-  islogin:false
+  islogin:false,
+  defaulttype:false
 }
 
 const mutations = { 
-	YESTOSHOW(state){
-		state.isshow = true
-	},
-	NOTOSHOW(state){
-		state.isshow = false
-	},
 	MODIFYTITLE(state , strTitle){
 		state.title = strTitle
 	},
 	YESTOLOGIN(state){
 		state.islogin = true
+	},
+	YSETOOPEN(state){
+		state.defaulttype = true
+	},
+	NOTOOPEN(state){
+		state.defaulttype = false
+	},
+	TOOPLEOPEN(state){
+		state.defaulttype = !state.defaulttype
 	}
 }
 

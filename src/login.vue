@@ -1,4 +1,4 @@
-﻿<template>
+<template>
 <div>
 	<div class="topbar">
 		<div class="container">
@@ -58,7 +58,8 @@ export default{
 					console.log(response.data)
 					var obj = JSON.parse(response.data)
 					if(obj.error == 0){
-						this.$route.router.go('/home')
+						localStorage.setItem('token','123')
+						this.$route.router.go('/home/userdata')
 					}else{
 						alert('帐号或者密码错误')
 					}

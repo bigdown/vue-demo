@@ -1,12 +1,9 @@
 <template>
-<div>
-	{{ show }}
-</div>
+	<div>form组件{{ show }}</div>
 </template>
-
 <script>
 import store from '../vuex/store'
-import { yesToShow,noToShow } from '../vuex/actions'	
+import { toopleOpen } from '../vuex/actions'	
 export default{
 	store,
 	data(){
@@ -27,10 +24,10 @@ export default{
 	},
 	vuex:{
 		getters:{
-			show:state => state.isshow
+			show:state => state.defaulttype
 		},
 		actions:{
-			yesToShow,noToShow
+			toopleOpen
 		}
 	}
 }

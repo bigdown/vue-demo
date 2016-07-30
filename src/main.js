@@ -6,6 +6,7 @@ import VueTouch from 'vue-touch'
 import Home from './components/home.vue'
 import VueResource from 'vue-resource'
 import Userdata from './micro/userdata.vue'
+import Form from './components/form.vue'
 
 Vue.use(VueRouter)
 Vue.use(VueTouch)
@@ -69,6 +70,9 @@ router.map({
             },
             '/square':{
                 component: square
+            },
+            '/formdemo':{
+                component: Form
             }
         }
     }
@@ -77,15 +81,8 @@ router.redirect({
   '*': '/home/userdata'
 })
 
-// router.beforeEach(({to,from,next}) => {
-//     var to = to.path
-//     var from = from.path
-//     console.log(to+">>>"+from)
-//     console.log(getLoginFlag())
-//     next()
-// })
-
 var InitApp = Vue.extend({
 })
 
+// router.start(Vue.extend(App), '#app');
 router.start(InitApp,'#app')

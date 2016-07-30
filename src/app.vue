@@ -27,6 +27,10 @@
           <i class="icon-service icon-service-account"></i>
           <span class="menu-title">广场</span>
         </li>
+        <li v-link="{ path: '/home/formdemo' }">
+          <i class="icon-service icon-service-account"></i>
+          <span class="menu-title">列表插件</span>
+        </li>
       </ul>
     </div>
   </div>
@@ -60,7 +64,7 @@
             <li class="switch-account">
               账户切换  
             </li>
-            <li>
+            <li v-on:click="logout">
               退出
             </li>
           </ul>
@@ -74,24 +78,31 @@
 
 <script>
 import store from './vuex/store'
-
+import { toopleOpen } from './vuex/actions'
 export default {
   store,
   data () {
     return {
-    	isopen : false
+    	// isopen : false
     }
   },
   methods:{
     menuTap:function(e){
-      this.isopen = !this.isopen
+      this.toopleOpen()
+    },
+    logout:function(){
+      localStorage.setItem('token','')
+      this.$route.router.go('/login')
     }
   },
   vuex:{
   	getters:{
-  		isshow : state => state.isshow,
+      isopen : state => state.defaulttype,
       login : state => state.islogin
-  	}
+  	},
+    actions:{
+      toopleOpen
+    }    
   }
 }
 </script>
