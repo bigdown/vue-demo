@@ -27,22 +27,27 @@ router.beforeEach((transition) => {
     if (transition.to.auth) {
         transition.next()
     } else {
-        Vue.http.get('http://web.sns.movnow.com/brand_api/check.php',{},{
-            headers:{
-                "X-Requested-With": "XMLHttpRequest"
-            }
-        }).then(function(response){
-            console.log(response.data)
-            var obj = JSON.parse(response.data)
-            if(obj.error == 0){
-                transition.next()
-            }else{
-                router.go('/login')
-            }
-        }, function(response){
-            console.log("error")
-            router.go('/login')
-        })
+    	if(localStorage.getItem('token') == "123"){
+    		transition.next()
+    	}else{
+    		router.go('/login')
+    	}
+//      Vue.http.get('http://web.sns.movnow.com/brand_api/check.php',{},{
+//          headers:{
+//              "X-Requested-With": "XMLHttpRequest"
+//          }
+//      }).then(function(response){
+//          console.log(response.data)
+//          var obj = JSON.parse(response.data)
+//          if(obj.error == 0){
+//              transition.next()
+//          }else{
+//              router.go('/login')
+//          }
+//      }, function(response){
+//          console.log("error")
+//          router.go('/login')
+//      })
         // if(localStorage.getItem('token') == '123'){
         //     transition.next()
         // }else{

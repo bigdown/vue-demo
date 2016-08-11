@@ -102,22 +102,27 @@
 	    if (transition.to.auth) {
 	        transition.next();
 	    } else {
-	        _vue2.default.http.get('http://web.sns.movnow.com/brand_api/check.php', {}, {
-	            headers: {
-	                "X-Requested-With": "XMLHttpRequest"
-	            }
-	        }).then(function (response) {
-	            console.log(response.data);
-	            var obj = JSON.parse(response.data);
-	            if (obj.error == 0) {
-	                transition.next();
-	            } else {
-	                router.go('/login');
-	            }
-	        }, function (response) {
-	            console.log("error");
+	        if (localStorage.getItem('token') == "123") {
+	            transition.next();
+	        } else {
 	            router.go('/login');
-	        });
+	        }
+	        //      Vue.http.get('http://web.sns.movnow.com/brand_api/check.php',{},{
+	        //          headers:{
+	        //              "X-Requested-With": "XMLHttpRequest"
+	        //          }
+	        //      }).then(function(response){
+	        //          console.log(response.data)
+	        //          var obj = JSON.parse(response.data)
+	        //          if(obj.error == 0){
+	        //              transition.next()
+	        //          }else{
+	        //              router.go('/login')
+	        //          }
+	        //      }, function(response){
+	        //          console.log("error")
+	        //          router.go('/login')
+	        //      })
 	        // if(localStorage.getItem('token') == '123'){
 	        //     transition.next()
 	        // }else{
@@ -145,7 +150,7 @@
 	    },
 	    '/home': {
 	        component: _app2.default,
-	        auth: false,
+	        auth: true,
 	        subRoutes: {
 	            '/userdata': {
 	                component: _userdata2.default
@@ -19384,89 +19389,106 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\t.paging[_v-ecfaf710]{\r\n\t\toverflow: hidden;\r\n\t}\r\n\t.left[_v-ecfaf710]{\r\n\t\tfloat: left;\r\n\t}\r\n\t.btn[_v-ecfaf710]{\r\n\t\tdisplay: block;\r\n\t\twidth: 150px;\r\n\t\theight: 50px;\r\n\t\tline-height: 50px;\r\n\t\tbackground: #ddd;\r\n\t\ttext-align: center;\r\n\t}\r\n\t.item[_v-ecfaf710]{\r\n\t\tpadding: 20px;\r\n\t\tborder-bottom: 1px solid #DDD;\r\n\t}\r\n\t.header[_v-ecfaf710]{\r\n\t\twidth: 60px;\r\n\t\theight: 60px;\r\n\t}\r\n\t.user-info[_v-ecfaf710]{\r\n\t\tmargin-left: 80px;\r\n\r\n\t}\r\n\t.nick[_v-ecfaf710],.time[_v-ecfaf710]{\r\n\t\theight: 30px;\r\n\t\tline-height: 30px;\r\n\t}\r\n", ""]);
+	exports.push([module.id, "\r\n\t.paging[_v-ecfaf710]{\r\n\t\toverflow: hidden;\r\n\t}\r\n\t.left[_v-ecfaf710]{\r\n\t\tfloat: left;\r\n\t}\r\n\t.btn[_v-ecfaf710]{\r\n\t\tdisplay: block;\r\n\t\twidth: 150px;\r\n\t\theight: 50px;\r\n\t\tline-height: 50px;\r\n\t\tbackground: #ddd;\r\n\t\ttext-align: center;\r\n\t}\r\n\t.item[_v-ecfaf710]{\r\n\t\tpadding: 20px;\r\n\t\tborder-bottom: 1px solid #DDD;\r\n\t}\r\n\t.header[_v-ecfaf710]{\r\n\t\twidth: 60px;\r\n\t\theight: 60px;\r\n\t}\r\n\t.user-info[_v-ecfaf710]{\r\n\t\tmargin-left: 80px;\r\n\r\n\t}\r\n\t.nick[_v-ecfaf710],.time[_v-ecfaf710]{\r\n\t\theight: 30px;\r\n\t\tline-height: 30px;\r\n\t}\r\n\t.pagination[_v-ecfaf710]{\r\n\t\theight: 50px;\r\n\t\tline-height: 50px;\r\n\t}\r\n\t.page-node[_v-ecfaf710]{\r\n\t\tdisplay: inline-block;\r\n\t\twidth: 20px;\r\n\t\tline-height: 20px;\r\n\t\tmargin-left: 10px;\r\n\t\tmargin-right: 10px;\r\n\t\ttext-align: center;\r\n\t\t/*background: #ddd;*/\r\n\t}\r\n\t.selected[_v-ecfaf710]{\r\n\t\tbackground: #ddd;\r\n\t}\r\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 40 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
-	var _store = __webpack_require__(10);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _actions = __webpack_require__(12);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	// <template>
 	// <div>
 	// 	<div class="paging">
 	// 		<label class="btn left">刷新</label>
-	// 		<label class="btn left">上一页</label>
-	// 		<label class="btn left">下一页</label>
+	// 		<label class="btn left" @click="previous" v-show="currentpage>1">上一页</label>
+	// 		<div class="pagination left">
+	// 			<label class="page-node" v-for="page in pages" v-bind:class="{ 'selected':(page==currentpage-1) }" @click="gotopage($index)">{{ $index+1 }}</label>
+	// 		</div>
+	// 		<label class="btn left" @click="next" v-show="currentpage<pages">下一页</label>
 	// 	</div>
 	// 	<div>
-	// 		<div class="item">
+	// 		<div v-for="data in datas" v-show="($index >= (currentpage-1)*pagesize && $index < (currentpage)*pagesize)" class="item">
 	// 			<img class="header left" src="../assets/bear.png">
 	// 			<div class="user-info">
-	// 				<div class="nick"><span>昵称</span>(<span>200151</span>)</div>
-	// 				<div class="time"><span>2016-07-30 13:57:18</span></div>
+	// 				<div class="nick"><span>{{ data.nick }}</span>(<span>200151</span>)</div>
+	// 				<div class="time"><span>{{ data.time }}</span></div>
 	// 				<div class="title">
-	// 					标题标题标题标题标题
+	// 					{{ data.title }}
 	// 				</div>
 	// 				<div class="title">
-	// 					正文正文正文正文正文正文正文正文正文正文正文正文正文正文
+	// 					{{ data.content }}
 	// 				</div>
-	// 			</div>
-	// 		</div>
-	// 		<div class="item">
-	// 			<img class="header left" src="../assets/bear.png">
-	// 			<div class="user-info">
-	// 				<div class="nick"><span>昵称</span>(<span>200151</span>)</div>
-	// 				<div class="time"><span>2016-07-30 13:57:18</span></div>
-	// 				<div class="title">
-	// 					标题标题标题标题标题
-	// 				</div>
-	// 				<div class="title">
-	// 					正文正文正文正文正文正文正文正文正文正文正文正文正文正文
-	// 				</div>
-	// 			</div>
+	// 			</div>			
 	// 		</div>
 	// 	</div>
 	// </div>
 	// </template>
 	// <script>
 	exports.default = {
-		store: _store2.default,
 		data: function data() {
 			return {
-				datas: [],
+				datas: [{
+					nick: "昵称1",
+					time: "2016-08-01 16:15:10",
+					title: "标题",
+					content: "正文"
+				}, {
+					nick: "昵称2",
+					time: "2016-08-01 16:15:10",
+					title: "标题",
+					content: "正文"
+				}, {
+					nick: "昵称3",
+					time: "2016-08-01 16:15:10",
+					title: "标题",
+					content: "正文"
+				}, {
+					nick: "昵称4",
+					time: "2016-08-01 16:15:10",
+					title: "标题",
+					content: "正文"
+				}, {
+					nick: "昵称5",
+					time: "2016-08-01 16:15:10",
+					title: "标题",
+					content: "正文"
+				}, {
+					nick: "昵称6",
+					time: "2016-08-01 16:15:10",
+					title: "标题",
+					content: "正文"
+				}, {
+					nick: "昵称7",
+					time: "2016-08-01 16:15:10",
+					title: "标题",
+					content: "正文"
+				}],
 				pages: 0,
-				currentpage: 0,
-				pagesize: 10
+				currentpage: 1,
+				pagesize: 2
 			};
 		},
 
 		created: function created() {},
-		ready: function ready() {},
-		methods: {},
-		vuex: {
-			getters: {
-				show: function show(state) {
-					return state.defaulttype;
-				}
+		ready: function ready() {
+			this.pages = Math.ceil(this.datas.length / this.pagesize);
+		},
+		methods: {
+			previous: function previous() {
+				this.currentpage--;
 			},
-			actions: {
-				toopleOpen: _actions.toopleOpen
+			next: function next() {
+				this.currentpage++;
+			},
+			gotopage: function gotopage(page) {
+				this.currentpage = page + 1;
 			}
 		}
 	};
@@ -19504,13 +19526,29 @@
 	// 		height: 30px;
 	// 		line-height: 30px;
 	// 	}
+	// 	.pagination{
+	// 		height: 50px;
+	// 		line-height: 50px;
+	// 	}
+	// 	.page-node{
+	// 		display: inline-block;
+	// 		width: 20px;
+	// 		line-height: 20px;
+	// 		margin-left: 10px;
+	// 		margin-right: 10px;
+	// 		text-align: center;
+	// 		/*background: #ddd;*/
+	// 	}
+	// 	.selected{
+	// 		background: #ddd;
+	// 	}
 	// </style>
 
 /***/ },
 /* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<div _v-ecfaf710=\"\">\n\t<div class=\"paging\" _v-ecfaf710=\"\">\n\t\t<label class=\"btn left\" _v-ecfaf710=\"\">刷新</label>\n\t\t<label class=\"btn left\" _v-ecfaf710=\"\">上一页</label>\n\t\t<label class=\"btn left\" _v-ecfaf710=\"\">下一页</label>\n\t</div>\n\t<div _v-ecfaf710=\"\">\n\t\t<div class=\"item\" _v-ecfaf710=\"\">\n\t\t\t<img class=\"header left\" src=\"" + __webpack_require__(42) + "\" _v-ecfaf710=\"\">\n\t\t\t<div class=\"user-info\" _v-ecfaf710=\"\">\n\t\t\t\t<div class=\"nick\" _v-ecfaf710=\"\"><span _v-ecfaf710=\"\">昵称</span>(<span _v-ecfaf710=\"\">200151</span>)</div>\n\t\t\t\t<div class=\"time\" _v-ecfaf710=\"\"><span _v-ecfaf710=\"\">2016-07-30 13:57:18</span></div>\n\t\t\t\t<div class=\"title\" _v-ecfaf710=\"\">\n\t\t\t\t\t标题标题标题标题标题\n\t\t\t\t</div>\n\t\t\t\t<div class=\"title\" _v-ecfaf710=\"\">\n\t\t\t\t\t正文正文正文正文正文正文正文正文正文正文正文正文正文正文\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"item\" _v-ecfaf710=\"\">\n\t\t\t<img class=\"header left\" src=\"" + __webpack_require__(42) + "\" _v-ecfaf710=\"\">\n\t\t\t<div class=\"user-info\" _v-ecfaf710=\"\">\n\t\t\t\t<div class=\"nick\" _v-ecfaf710=\"\"><span _v-ecfaf710=\"\">昵称</span>(<span _v-ecfaf710=\"\">200151</span>)</div>\n\t\t\t\t<div class=\"time\" _v-ecfaf710=\"\"><span _v-ecfaf710=\"\">2016-07-30 13:57:18</span></div>\n\t\t\t\t<div class=\"title\" _v-ecfaf710=\"\">\n\t\t\t\t\t标题标题标题标题标题\n\t\t\t\t</div>\n\t\t\t\t<div class=\"title\" _v-ecfaf710=\"\">\n\t\t\t\t\t正文正文正文正文正文正文正文正文正文正文正文正文正文正文\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div _v-ecfaf710=\"\">\n\t<div class=\"paging\" _v-ecfaf710=\"\">\n\t\t<label class=\"btn left\" _v-ecfaf710=\"\">刷新</label>\n\t\t<label class=\"btn left\" @click=\"previous\" v-show=\"currentpage>1\" _v-ecfaf710=\"\">上一页</label>\n\t\t<div class=\"pagination left\" _v-ecfaf710=\"\">\n\t\t\t<label class=\"page-node\" v-for=\"page in pages\" v-bind:class=\"{ 'selected':(page==currentpage-1) }\" @click=\"gotopage($index)\" _v-ecfaf710=\"\">{{ $index+1 }}</label>\n\t\t</div>\n\t\t<label class=\"btn left\" @click=\"next\" v-show=\"currentpage<pages\" _v-ecfaf710=\"\">下一页</label>\n\t</div>\n\t<div _v-ecfaf710=\"\">\n\t\t<div v-for=\"data in datas\" v-show=\"($index >= (currentpage-1)*pagesize &amp;&amp; $index < (currentpage)*pagesize)\" class=\"item\" _v-ecfaf710=\"\">\n\t\t\t<img class=\"header left\" src=\"" + __webpack_require__(42) + "\" _v-ecfaf710=\"\">\n\t\t\t<div class=\"user-info\" _v-ecfaf710=\"\">\n\t\t\t\t<div class=\"nick\" _v-ecfaf710=\"\"><span _v-ecfaf710=\"\">{{ data.nick }}</span>(<span _v-ecfaf710=\"\">200151</span>)</div>\n\t\t\t\t<div class=\"time\" _v-ecfaf710=\"\"><span _v-ecfaf710=\"\">{{ data.time }}</span></div>\n\t\t\t\t<div class=\"title\" _v-ecfaf710=\"\">\n\t\t\t\t\t{{ data.title }}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"title\" _v-ecfaf710=\"\">\n\t\t\t\t\t{{ data.content }}\n\t\t\t\t</div>\n\t\t\t</div>\t\t\t\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 42 */
